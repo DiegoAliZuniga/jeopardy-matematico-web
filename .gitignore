@@ -1,0 +1,15 @@
+node_modules/
+.env
+.DS_Store
+Thumbs.db
+
+# Local server logs
+server.out.log
+server.err.log
+
+# Browser verification artifacts
+edge-profile*/
+*-headless.png
+editor-fixed.png
+math-fixed.png
+math-algebra-fixed.png

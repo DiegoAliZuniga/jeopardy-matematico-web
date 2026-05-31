@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Buzzer</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script defer src="/buzzer.js"></script>
+  </head>
+  <body class="buzzer-page">
+    <main class="buzzer-shell">
+      <section class="buzzer-card">
+        <div class="brand-mark large">JQ</div>
+        <p id="mobileStatus" class="status-pill status-wait">Conectando</p>
+        <h1 id="mobileTitle">Buzzer</h1>
+        <p class="room-code mobile-room">Sala <strong id="mobileRoom">----</strong></p>
+
+        <form id="playerForm" class="player-form">
+          <label class="field-label">Nombre
+            <input id="playerName" type="text" maxlength="40" autocomplete="name" required>
+          </label>
+          <label class="field-label">Equipo
+            <select id="playerTeam"></select>
+          </label>
+          <button class="tool-button primary full" type="submit">Entrar</button>
+        </form>
+
+        <button id="buzzButton" class="buzz-button" type="button" disabled>
+          <span>BUZZ</span>
+        </button>
+        <p id="buzzMessage" class="buzz-message">Esperando partida</p>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "name": "jeopardy-matematico-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Juego interactivo tipo Jeopardy con TeX y buzzers remotos.",
+  "scripts": {
+    "start": "node server.js"
+  }
+}

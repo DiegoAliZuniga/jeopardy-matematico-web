@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jeopardy Matematico</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [["$", "$"], ["\\(", "\\)"]],
+          displayMath: [["$$", "$$"], ["\\[", "\\]"]]
+        },
+        svg: { fontCache: "global" },
+        startup: { typeset: false }
+      };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <script defer src="/app.js"></script>
+  </head>
+  <body>
+    <svg class="icon-sprite" aria-hidden="true">
+      <symbol id="i-edit" viewBox="0 0 24 24"><path d="M4 20h4.4L19.7 8.7a2.1 2.1 0 0 0 0-3l-1.4-1.4a2.1 2.1 0 0 0-3 0L4 15.6V20Zm2-3.6 9.8-9.8 1.6 1.6L7.6 18H6v-1.6Z"/></symbol>
+      <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7L8 5Z"/></symbol>
+      <symbol id="i-users" viewBox="0 0 24 24"><path d="M8 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm8.5 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7ZM2 21c0-4 2.7-7 6-7s6 3 6 7H2Zm11.8 0c-.2-2.4-1.1-4.4-2.5-5.8 1-.8 2.3-1.2 3.7-1.2 3.1 0 5.5 2.9 5.5 7h-6.7Z"/></symbol>
+      <symbol id="i-bell" viewBox="0 0 24 24"><path d="M12 22a2.8 2.8 0 0 0 2.7-2h-5.4A2.8 2.8 0 0 0 12 22Zm7-6-1.8-2.7V10a5.2 5.2 0 0 0-4-5V3a1.2 1.2 0 1 0-2.4 0v2a5.2 5.2 0 0 0-4 5v3.3L5 16v2h14v-2Z"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="m9.2 16.2-4-4L3.8 13.6l5.4 5.4L21 7.2 19.6 5.8 9.2 16.2Z"/></symbol>
+      <symbol id="i-x" viewBox="0 0 24 24"><path d="m6.4 5 5.6 5.6L17.6 5 19 6.4 13.4 12 19 17.6 17.6 19 12 13.4 6.4 19 5 17.6 10.6 12 5 6.4 6.4 5Z"/></symbol>
+      <symbol id="i-eye" viewBox="0 0 24 24"><path d="M12 5C6.8 5 3.2 9.2 2 12c1.2 2.8 4.8 7 10 7s8.8-4.2 10-7c-1.2-2.8-4.8-7-10-7Zm0 11.5a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9Zm0-2a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/></symbol>
+      <symbol id="i-copy" viewBox="0 0 24 24"><path d="M8 8h11v13H8V8Zm2 2v9h7v-9h-7ZM5 3h11v3h-2V5H7v9H5V3Z"/></symbol>
+      <symbol id="i-full" viewBox="0 0 24 24"><path d="M4 4h7v2H7.4l4.1 4.1-1.4 1.4L6 7.4V11H4V4Zm9 0h7v7h-2V7.4l-4.1 4.1-1.4-1.4L16.6 6H13V4ZM4 13h2v3.6l4.1-4.1 1.4 1.4L7.4 18H11v2H4v-7Zm15 0h2v7h-7v-2h3.6l-4.1-4.1 1.4-1.4 4.1 4.1V13Z"/></symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24"><path d="M11 5h2v6h6v2h-6v6h-2v-6H5v-2h6V5Z"/></symbol>
+      <symbol id="i-trash" viewBox="0 0 24 24"><path d="M8 4h8l1 2h4v2H3V6h4l1-2Zm-2 6h12l-1 11H7L6 10Zm4 2v7h2v-7h-2Zm4 0v7h2v-7h-2Z"/></symbol>
+      <symbol id="i-download" viewBox="0 0 24 24"><path d="M11 4h2v9l3.2-3.2 1.4 1.4L12 16.8l-5.6-5.6 1.4-1.4L11 13V4ZM5 19h14v2H5v-2Z"/></symbol>
+      <symbol id="i-sound" viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9H4Zm12.5 7.5a6.3 6.3 0 0 0 0-9l-1.4 1.4a4.3 4.3 0 0 1 0 6.2l1.4 1.4Zm2.8 2.8a10.4 10.4 0 0 0 0-14.6l-1.4 1.4a8.4 8.4 0 0 1 0 11.8l1.4 1.4Z"/></symbol>
+      <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M7 4h10v2h4v3a5 5 0 0 1-4.4 5A6 6 0 0 1 13 17.9V20h4v2H7v-2h4v-2.1A6 6 0 0 1 7.4 14 5 5 0 0 1 3 9V6h4V4Zm10 4v3.8A3 3 0 0 0 19 9V8h-2ZM5 8v1a3 3 0 0 0 2 2.8V8H5Zm4-2v6a3 3 0 0 0 6 0V6H9Z"/></symbol>
+      <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 11 9-8 9 8-1.4 1.5L18 11.1V21h-5v-6h-2v6H6v-9.9l-1.6 1.4L3 11Z"/></symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm1 5v4.6l3.2 3.2-1.4 1.4L11 12.4V7h2Z"/></symbol>
+    </svg>
+
+    <section id="startScreen" class="start-screen">
+      <div class="stage-lights" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <div class="start-content">
+        <div class="brand-mark large">JQ</div>
+        <p class="show-label">Concurso academico</p>
+        <h1 id="startTitle">Jeopardy Matematico</h1>
+        <p class="start-copy">Categorias, puntajes, TeX matematico y buzzers remotos para celulares.</p>
+        <div class="start-actions">
+          <button id="startGameBtn" class="show-button primary" type="button"><svg><use href="#i-play"></use></svg><span>Iniciar partida</span></button>
+          <button id="showInstructionsBtn" class="show-button" type="button"><svg><use href="#i-eye"></use></svg><span>Instrucciones</span></button>
+          <button id="startSetupBtn" class="show-button" type="button"><svg><use href="#i-edit"></use></svg><span>Configurar</span></button>
+        </div>
+        <div class="start-stats">
+          <span id="startCategoryCount">6 categorias</span>
+          <span>Valores 100-500</span>
+          <span id="startTeamCount">3 equipos</span>
+        </div>
+      </div>
+      <div class="preview-board" aria-hidden="true">
+        <span>100</span><span>200</span><span>300</span><span>400</span><span>500</span>
+      </div>
+    </section>
+
+    <div id="gameShell" class="app-shell hidden">
+      <header class="topbar">
+        <div class="brand-block">
+          <div class="brand-mark">JQ</div>
+          <div>
+            <h1 id="gameTitle">Jeopardy Matematico</h1>
+            <p id="subtitle">TeX, equipos y buzzers remotos</p>
+          </div>
+        </div>
+        <div class="room-strip">
+          <span id="wsStatus" class="status-pill status-wait">Conectando</span>
+          <span class="room-code">Sala <strong id="roomCode">----</strong></span>
+          <a id="buzzerLink" href="/buzzer" target="_blank" rel="noreferrer">/buzzer</a>
+          <button id="copyBuzzerLink" class="icon-button" title="Copiar enlace de buzzer" type="button"><svg><use href="#i-copy"></use></svg></button>
+        </div>
+        <nav class="toolbar" aria-label="Controles">
+          <button id="homeBtn" class="tool-button" title="Inicio" type="button"><svg><use href="#i-home"></use></svg><span>Inicio</span></button>
+          <button id="instructionsBtn" class="tool-button" title="Instrucciones" type="button"><svg><use href="#i-eye"></use></svg><span>Reglas</span></button>
+          <button id="muteBtn" class="tool-button" title="Sonido" type="button"><svg><use href="#i-sound"></use></svg><span>Sonido</span></button>
+          <button id="fullscreenBtn" class="tool-button" title="Pantalla completa" type="button"><svg><use href="#i-full"></use></svg><span>Pantalla</span></button>
+          <button id="finalBtn" class="tool-button accent" type="button"><svg><use href="#i-play"></use></svg><span>Final</span></button>
+          <button id="resultsBtn" class="tool-button success" type="button"><svg><use href="#i-trophy"></use></svg><span>Resultados</span></button>
+          <button id="editBtn" class="tool-button primary" type="button"><svg><use href="#i-edit"></use></svg><span>Editar</span></button>
+        </nav>
+      </header>
+
+      <main class="game-layout">
+        <section class="board-area" aria-label="Tablero">
+          <div id="categoryRow" class="category-row"></div>
+          <div id="boardGrid" class="board-grid"></div>
+        </section>
+
+        <aside class="host-panel">
+          <section class="panel-section remote-section">
+            <header>
+              <h2><svg><use href="#i-bell"></use></svg> Buzzers</h2>
+              <button id="clearBuzzers" class="mini-button" type="button">Limpiar</button>
+            </header>
+            <div id="buzzerUrl" class="buzzer-url">http://localhost:3000/buzzer</div>
+            <div class="buzzer-switch">
+              <button id="openBuzzers" class="small-action success" type="button">Abrir</button>
+              <button id="lockBuzzers" class="small-action danger" type="button">Cerrar</button>
+            </div>
+            <ol id="buzzList" class="buzz-list"></ol>
+            <div id="playerCount" class="small-note">0 celulares</div>
+          </section>
+
+          <section class="panel-section team-section">
+            <header>
+              <h2><svg><use href="#i-users"></use></svg> Equipos</h2>
+              <button id="addTeamBtn" class="mini-button" type="button"><svg><use href="#i-plus"></use></svg></button>
+            </header>
+            <div id="teamList" class="team-list"></div>
+          </section>
+
+          <section class="panel-section game-section">
+            <header>
+              <h2>Partida</h2>
+            </header>
+            <div class="control-grid">
+              <button id="resetBoardBtn" class="small-action" type="button">Reiniciar tablero</button>
+              <button id="resetScoresBtn" class="small-action" type="button">Puntajes a 0</button>
+              <button id="showResultsPanelBtn" class="small-action success wide-action" type="button">Premiacion</button>
+            </div>
+          </section>
+        </aside>
+      </main>
+    </div>
+
+    <section id="resultsScreen" class="result-screen hidden">
+      <div id="confettiLayer" class="confetti-layer" aria-hidden="true"></div>
+      <div class="result-panel">
+        <p class="show-label">Premiacion</p>
+        <h2 id="winnerTitle">Equipo ganador</h2>
+        <p id="winnerSubtitle" class="winner-subtitle">Puntuacion final</p>
+        <div class="trophy-badge"><svg><use href="#i-trophy"></use></svg></div>
+        <div id="podium" class="podium"></div>
+        <div class="result-actions">
+          <button id="backToBoardBtn" class="show-button primary" type="button"><svg><use href="#i-play"></use></svg><span>Volver al tablero</span></button>
+          <button id="resultsHomeBtn" class="show-button" type="button"><svg><use href="#i-home"></use></svg><span>Inicio</span></button>
+        </div>
+      </div>
+    </section>
+
+    <div id="clueModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="clueTitle">
+      <div class="modal-backdrop" data-close="clue"></div>
+      <section class="modal-panel clue-panel">
+        <header class="modal-header">
+          <div>
+            <p id="clueMeta" class="modal-kicker"></p>
+            <h2 id="clueTitle">Pregunta</h2>
+          </div>
+          <button class="icon-button" data-close="clue" title="Cerrar" type="button"><svg><use href="#i-x"></use></svg></button>
+        </header>
+        <div id="questionText" class="math-box question-box"></div>
+        <div id="hintText" class="hint-box hidden"></div>
+        <div id="answerText" class="math-box answer-box hidden"></div>
+        <div id="feedbackBox" class="feedback-box hidden">
+          <strong id="feedbackTitle"></strong>
+          <div id="feedbackText"></div>
+          <div id="explanationText" class="math-box explanation-box"></div>
+        </div>
+        <div class="timer-row">
+          <button id="timerBtn" class="small-action" type="button"><svg><use href="#i-clock"></use></svg><span>Iniciar 30s</span></button>
+          <div class="timer-track"><div id="timerBar" class="timer-bar"></div></div>
+          <strong id="timerText">30</strong>
+        </div>
+        <div id="teamChooser" class="team-chooser"></div>
+        <div class="modal-actions">
+          <button id="hintBtn" class="tool-button" type="button"><svg><use href="#i-eye"></use></svg><span>Pista</span></button>
+          <button id="showAnswerBtn" class="tool-button accent" type="button"><svg><use href="#i-eye"></use></svg><span>Respuesta</span></button>
+          <button id="wrongBtn" class="tool-button danger" type="button"><svg><use href="#i-x"></use></svg><span>Incorrecta</span></button>
+          <button id="correctBtn" class="tool-button success" type="button"><svg><use href="#i-check"></use></svg><span>Correcta</span></button>
+          <button id="markAnsweredBtn" class="tool-button" type="button"><span>Marcar usada</span></button>
+        </div>
+      </section>
+    </div>
+
+    <div id="editorModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="editorTitle">
+      <div class="modal-backdrop" data-close="editor"></div>
+      <section class="modal-panel editor-panel">
+        <header class="modal-header">
+          <div>
+            <p class="modal-kicker">Configuracion</p>
+            <h2 id="editorTitle">Editor del juego</h2>
+          </div>
+          <button class="icon-button" data-close="editor" title="Cerrar" type="button"><svg><use href="#i-x"></use></svg></button>
+        </header>
+        <div class="editor-grid">
+          <section class="editor-column">
+            <label class="field-label">Titulo
+              <input id="editTitle" type="text" maxlength="80">
+            </label>
+            <div class="editor-heading">
+              <h3>Equipos</h3>
+              <button id="editorAddTeam" class="mini-button" type="button"><svg><use href="#i-plus"></use></svg></button>
+            </div>
+            <div id="teamEditor" class="stack-list"></div>
+            <div class="editor-heading">
+              <h3>Categorias</h3>
+              <button id="addCategoryBtn" class="mini-button" type="button"><svg><use href="#i-plus"></use></svg></button>
+            </div>
+            <div id="categoryEditor" class="stack-list"></div>
+          </section>
+
+          <section class="editor-column editor-main">
+            <div class="field-row">
+              <label class="field-label">Categoria
+                <select id="categorySelect"></select>
+              </label>
+              <label class="field-label">Casilla
+                <select id="clueSelect"></select>
+              </label>
+              <label class="field-label compact">Valor
+                <input id="editValue" type="number" step="50" min="0">
+              </label>
+            </div>
+            <label class="field-label">Pregunta
+              <textarea id="editQuestion" rows="5"></textarea>
+            </label>
+            <label class="field-label">Respuesta
+              <textarea id="editAnswer" rows="3"></textarea>
+            </label>
+            <label class="field-label">Pista
+              <textarea id="editHint" rows="2"></textarea>
+            </label>
+            <label class="field-label">Explicacion
+              <textarea id="editExplanation" rows="3"></textarea>
+            </label>
+            <div id="texPreview" class="math-box preview-box"></div>
+          </section>
+
+          <section class="editor-column json-column">
+            <div class="editor-heading">
+              <h3>JSON</h3>
+              <button id="downloadJsonBtn" class="mini-button" title="Descargar JSON" type="button"><svg><use href="#i-download"></use></svg></button>
+            </div>
+            <textarea id="jsonBox" rows="14" spellcheck="false"></textarea>
+            <div class="control-grid">
+              <button id="exportJsonBtn" class="small-action" type="button">Exportar</button>
+              <button id="importJsonBtn" class="small-action" type="button">Importar</button>
+              <button id="resetGameBtn" class="small-action danger" type="button">Plantilla</button>
+            </div>
+          </section>
+        </div>
+      </section>
+    </div>
+
+    <div id="finalModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="finalTitle">
+      <div class="modal-backdrop" data-close="final"></div>
+      <section class="modal-panel final-panel">
+        <header class="modal-header">
+          <div>
+            <p id="finalCategory" class="modal-kicker">Final</p>
+            <h2 id="finalTitle">Jeopardy final</h2>
+          </div>
+          <button class="icon-button" data-close="final" title="Cerrar" type="button"><svg><use href="#i-x"></use></svg></button>
+        </header>
+        <div id="finalQuestion" class="math-box question-box"></div>
+        <div id="finalAnswer" class="math-box answer-box hidden"></div>
+        <div id="finalWagers" class="final-wagers"></div>
+        <div class="modal-actions">
+          <button id="showFinalAnswerBtn" class="tool-button accent" type="button"><svg><use href="#i-eye"></use></svg><span>Respuesta</span></button>
+          <button id="applyFinalCorrect" class="tool-button success" type="button"><svg><use href="#i-check"></use></svg><span>Aplicar +</span></button>
+          <button id="applyFinalWrong" class="tool-button danger" type="button"><svg><use href="#i-x"></use></svg><span>Aplicar -</span></button>
+        </div>
+      </section>
+    </div>
+
+    <div id="instructionsModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="instructionsTitle">
+      <div class="modal-backdrop" data-close="instructions"></div>
+      <section class="modal-panel instructions-panel">
+        <header class="modal-header">
+          <div>
+            <p class="modal-kicker">Reglas del concurso</p>
+            <h2 id="instructionsTitle">Como jugar</h2>
+          </div>
+          <button class="icon-button" data-close="instructions" title="Cerrar" type="button"><svg><use href="#i-x"></use></svg></button>
+        </header>
+        <div class="instruction-grid">
+          <article>
+            <h3>1. Elegir casilla</h3>
+            <p>El anfitrion selecciona una categoria y un valor. Las casillas de mayor valor representan mayor dificultad.</p>
+          </article>
+          <article>
+            <h3>2. Responder</h3>
+            <p>El equipo pulsa el buzzer desde el celular y responde. Si se desea seguir el estilo original, la respuesta puede formularse como pregunta.</p>
+          </article>
+          <article>
+            <h3>3. Puntuar</h3>
+            <p>Una respuesta correcta suma el valor de la casilla. Una respuesta incorrecta resta ese valor y muestra la retroalimentacion.</p>
+          </article>
+          <article>
+            <h3>4. Ganar</h3>
+            <p>Al final gana el equipo con mayor dinero ficticio. La ronda final permite apostar puntos antes de una ultima pregunta.</p>
+          </article>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

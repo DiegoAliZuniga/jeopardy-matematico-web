@@ -43,3 +43,22 @@ Cada pregunta tiene pista y explicacion. En el editor puedes modificar pregunta,
 El proyecto se puede subir a GitHub como repositorio normal. Para jugar con buzzers remotos, el servidor `server.js` debe ejecutarse en un entorno que soporte Node.js y WebSockets, por ejemplo una computadora local en la misma red, Render, Railway, Fly.io o un VPS.
 
 GitHub Pages solo publica archivos estaticos, por lo que puede mostrar la interfaz, pero no puede ejecutar el servidor de buzzers por si solo.
+
+### Desplegar en Render
+
+1. Entra a https://render.com y conecta tu cuenta de GitHub.
+2. Crea un servicio nuevo con **New > Web Service**.
+3. Selecciona el repositorio `DiegoAliZuniga/jeopardy-matematico-web`.
+4. Usa esta configuracion:
+   - **Language:** Node
+   - **Build Command:** `npm install`
+   - **Start Command:** `npm start`
+5. Publica el servicio y espera a que termine el despliegue.
+
+Render generara una URL publica parecida a `https://jeopardy-matematico-web.onrender.com`. Esa URL sera la pantalla principal del anfitrion; los celulares deben entrar a la misma URL con `/buzzer` al final.
+
+Ejemplo:
+
+```text
+https://jeopardy-matematico-web.onrender.com/buzzer
+```

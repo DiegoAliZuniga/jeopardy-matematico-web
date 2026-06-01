@@ -98,6 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
   connectSocket();
   loadInfo();
   applyInitialScreenFromUrl();
+  whenMathJaxReady(refreshRenderedMath);
 });
 
 window.addEventListener("beforeunload", () => {
@@ -300,8 +301,10 @@ function renderGameSurface() {
 
 function renderBoard() {
   const columns = Math.max(1, game.categories.length);
+  const rows = Math.max(...game.categories.map((category) => category.clues.length));
   $("#categoryRow").style.setProperty("--columns", columns);
   $("#boardGrid").style.setProperty("--columns", columns);
+  $("#boardGrid").style.setProperty("--rows", rows);
 
   $("#categoryRow").innerHTML = "";
   $("#boardGrid").innerHTML = "";
@@ -313,7 +316,6 @@ function renderBoard() {
     $("#categoryRow").append(header);
   });
 
-  const rows = Math.max(...game.categories.map((category) => category.clues.length));
   for (let row = 0; row < rows; row += 1) {
     game.categories.forEach((category, categoryIndex) => {
       const clueData = category.clues[row];
@@ -752,15 +754,121 @@ function playNotes(notes) {
 
 function renderMath(element) {
   if (!element) return;
-  const sourceText = element.textContent.trim();
+  const alreadyTypeset = Boolean(element.querySelector("mjx-container"));
+  const sourceText = alreadyTypeset && element.dataset.mathSource
+    ? element.dataset.mathSource
+    : element.textContent.trim();
   element.dataset.mathSource = sourceText;
   markMathDensity(element, sourceText);
   if (window.MathJax?.typesetPromise) {
     window.MathJax.typesetClear?.([element]);
+    element.textContent = normalizeInlineMath(sourceText);
     window.MathJax.typesetPromise([element])
-      .then(() => markMathDensity(element, element.dataset.mathSource || sourceText))
-      .catch(() => {});
+      .then(() => {
+        markMathDensity(element, element.dataset.mathSource || sourceText);
+        applyMathSizing(element);
+      })
+      .catch(() => {
+        element.textContent = sourceText;
+        markMathDensity(element, sourceText);
+      });
   }
+}
+
+function whenMathJaxReady(callback, attempts = 0) {
+  if (window.MathJax?.startup?.promise) {
+    window.MathJax.startup.promise.then(callback).catch(() => {});
+    return;
+  }
+
+  if (attempts < 40) {
+    setTimeout(() => whenMathJaxReady(callback, attempts + 1), 125);
+  }
+}
+
+function refreshRenderedMath() {
+  document.querySelectorAll(".math-box").forEach((element) => {
+    const sourceText = element.dataset.mathSource || element.textContent.trim();
+    if (sourceText) renderMath(element);
+  });
+}
+
+function normalizeInlineMath(sourceText) {
+  let output = "";
+  let index = 0;
+
+  while (index < sourceText.length) {
+    if (sourceText.startsWith("$$", index)) {
+      const end = sourceText.indexOf("$$", index + 2);
+      if (end === -1) break;
+      output += sourceText.slice(index, end + 2);
+      index = end + 2;
+      continue;
+    }
+
+    if (sourceText[index] === "$") {
+      const end = findClosingDollar(sourceText, index + 1);
+      if (end !== -1) {
+        output += `$${withDisplayStyle(sourceText.slice(index + 1, end))}$`;
+        index = end + 1;
+        continue;
+      }
+    }
+
+    if (sourceText.startsWith("\\(", index)) {
+      const end = sourceText.indexOf("\\)", index + 2);
+      if (end !== -1) {
+        output += `\\(${withDisplayStyle(sourceText.slice(index + 2, end))}\\)`;
+        index = end + 2;
+        continue;
+      }
+    }
+
+    output += sourceText[index];
+    index += 1;
+  }
+
+  return output + sourceText.slice(index);
+}
+
+function findClosingDollar(sourceText, startIndex) {
+  for (let index = startIndex; index < sourceText.length; index += 1) {
+    if (sourceText[index] === "$" && sourceText[index - 1] !== "\\") return index;
+  }
+  return -1;
+}
+
+function withDisplayStyle(tex) {
+  const leading = tex.match(/^\s*/)?.[0] || "";
+  const trailing = tex.match(/\s*$/)?.[0] || "";
+  const body = tex.trim().replace(/\\t?frac\b/g, "\\dfrac");
+  if (!body) return tex;
+  if (/^\\displaystyle\b/.test(body)) return `${leading}${body}${trailing}`;
+  return `${leading}\\displaystyle ${body}${trailing}`;
+}
+
+function applyMathSizing(element) {
+  const styles = getComputedStyle(element);
+  const inlineSize = styles.getPropertyValue("--math-inline-size").trim() || "1.15em";
+  const displaySize = styles.getPropertyValue("--math-display-size").trim() || inlineSize;
+  const onlySize = styles.getPropertyValue("--math-only-size").trim() || displaySize;
+
+  element.querySelectorAll("mjx-container").forEach((mathNode) => {
+    const isDisplay = mathNode.getAttribute("display") === "true";
+    const size = element.classList.contains("math-only")
+      ? onlySize
+      : isDisplay
+        ? displaySize
+        : inlineSize;
+
+    mathNode.style.setProperty("font-size", size, "important");
+    mathNode.style.setProperty("line-height", "1.25", "important");
+    mathNode.style.setProperty("vertical-align", isDisplay ? "0" : "middle", "important");
+
+    mathNode.querySelectorAll("mjx-mfrac").forEach((fraction) => {
+      fraction.style.setProperty("font-size", "1em", "important");
+    });
+  });
 }
 
 function markMathDensity(element, sourceText) {

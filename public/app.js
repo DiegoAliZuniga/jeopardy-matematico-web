@@ -1,6 +1,7 @@
 const STORAGE_KEY = "jeopardy-matematico-state-v1";
 const TIMER_SECONDS = 30;
 const MAX_IMAGE_BYTES = 1_200_000;
+const PUBLIC_BUZZER_URL = "https://jeopardy-matematico-web.onrender.com/buzzer";
 
 const defaultGame = {
   title: "Jeopardy Matematico",
@@ -139,6 +140,8 @@ function bindUi() {
     $("#muteBtn").querySelector("span").textContent = muted ? "Mudo" : "Sonido";
   });
   $("#copyBuzzerLink").addEventListener("click", copyBuzzerLink);
+  $("#buzzerQrButton").addEventListener("click", openQrModal);
+  $("#copyQrLink").addEventListener("click", copyBuzzerLink);
   $("#clearBuzzers").addEventListener("click", clearBuzzers);
   $("#openBuzzers").addEventListener("click", () => sendWs({ type: "open-buzzers" }));
   $("#lockBuzzers").addEventListener("click", () => sendWs({ type: "lock-buzzers" }));
@@ -302,6 +305,10 @@ function applyInitialScreenFromUrl() {
   }
   if (screen === "results") openResults();
   if (screen === "instructions") openInstructions();
+  if (screen === "qr") {
+    startGame();
+    openQrModal();
+  }
   if (screen === "clue" || screen === "feedback") {
     startGame();
     setTimeout(() => {
@@ -709,30 +716,24 @@ async function loadInfo() {
   try {
     const info = await fetch("/api/info").then((res) => res.json());
     $("#roomCode").textContent = info.roomCode || "----";
-    const path = info.buzzerPath || "/buzzer";
-    const currentUrl = `${location.origin}${path}`;
-    const urls = [
-      currentUrl,
-      ...(info.lanUrls || []).map((url) => `${url}${path}`)
-    ].filter((url, index, list) => list.indexOf(url) === index);
-    const primary = urls.find((url) => !url.includes("localhost")) || urls[0];
-    const urlBox = $("#buzzerUrl");
-    urlBox.dataset.primaryUrl = primary;
-    urlBox.innerHTML = "";
-    urls.forEach((url) => {
-      const link = document.createElement("a");
-      link.href = url;
-      link.target = "_blank";
-      link.rel = "noreferrer";
-      link.textContent = url;
-      urlBox.append(link);
-    });
-    $("#buzzerLink").href = primary;
-    $("#buzzerLink").textContent = new URL(primary).host + "/buzzer";
+    setPublicBuzzerUrl();
   } catch {
-    $("#buzzerUrl").textContent = `${location.origin}/buzzer`;
-    $("#buzzerUrl").dataset.primaryUrl = `${location.origin}/buzzer`;
+    setPublicBuzzerUrl();
   }
+}
+
+function setPublicBuzzerUrl() {
+  const urlBox = $("#buzzerUrl");
+  urlBox.dataset.primaryUrl = PUBLIC_BUZZER_URL;
+  urlBox.textContent = PUBLIC_BUZZER_URL;
+  $("#buzzerLink").href = PUBLIC_BUZZER_URL;
+  $("#buzzerLink").textContent = new URL(PUBLIC_BUZZER_URL).host + "/buzzer";
+  $("#qrModalLink").href = PUBLIC_BUZZER_URL;
+  $("#qrModalLink").textContent = PUBLIC_BUZZER_URL;
+}
+
+function openQrModal() {
+  $("#qrModal").classList.remove("hidden");
 }
 
 async function copyBuzzerLink() {

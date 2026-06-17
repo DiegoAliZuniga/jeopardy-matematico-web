@@ -562,26 +562,67 @@ h1 {
   gap: 8px;
 }
 
-.buzzer-url {
+.buzzer-qr-card {
+  align-items: center;
   background: var(--ink);
+  border: 0;
   border-radius: var(--radius);
   color: var(--gold);
-  font-size: clamp(0.72rem, 0.68vw, 0.9rem);
-  font-weight: 850;
-  overflow-wrap: anywhere;
-  padding: clamp(7px, 0.6vw, 10px);
+  cursor: zoom-in;
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+  padding: clamp(8px, 0.75vw, 12px);
+  text-align: center;
+  width: 100%;
 }
 
-.buzzer-url a {
-  color: var(--gold);
+.buzzer-qr-card img {
+  background: var(--white);
+  border: 4px solid var(--white);
+  border-radius: 8px;
   display: block;
-  text-decoration: none;
+  height: auto;
+  width: min(100%, 168px);
 }
 
-.buzzer-url a + a {
-  border-top: 1px solid rgba(255, 228, 91, 0.2);
-  margin-top: 7px;
-  padding-top: 7px;
+.buzzer-url {
+  color: var(--gold);
+  font-size: clamp(0.72rem, 0.68vw, 0.9rem);
+  font-weight: 900;
+  line-height: 1.18;
+  overflow-wrap: anywhere;
+}
+
+.qr-hint {
+  color: var(--white);
+  font-size: 0.78rem;
+  font-weight: 900;
+  opacity: 0.84;
+}
+
+.qr-panel {
+  text-align: center;
+  width: min(100%, 620px);
+}
+
+.qr-large {
+  background: var(--white);
+  border: 10px solid var(--white);
+  border-radius: var(--radius);
+  box-shadow: 0 12px 24px rgba(8, 43, 54, 0.18);
+  display: block;
+  height: auto;
+  margin: 0 auto 14px;
+  width: min(82vw, 420px);
+}
+
+.qr-link {
+  color: var(--board-3);
+  display: block;
+  font-weight: 900;
+  overflow-wrap: anywhere;
+  text-decoration: none;
 }
 
 .buzzer-switch,
@@ -746,9 +787,13 @@ h1 {
     overflow: hidden;
   }
 
-  .buzzer-url {
-    max-height: 60px;
-    overflow: auto;
+  .buzzer-qr-card {
+    gap: 5px;
+    padding: 7px;
+  }
+
+  .buzzer-qr-card img {
+    width: min(100%, 118px);
   }
 
   .buzz-list,
@@ -763,11 +808,6 @@ h1 {
 
   .team-list {
     max-height: 132px;
-  }
-
-  .buzzer-url a + a {
-    margin-top: 5px;
-    padding-top: 5px;
   }
 
   .buzzer-switch,

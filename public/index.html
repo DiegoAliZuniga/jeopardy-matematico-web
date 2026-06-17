@@ -101,7 +101,11 @@
               <h2><svg><use href="#i-bell"></use></svg> Buzzers</h2>
               <button id="clearBuzzers" class="mini-button" type="button">Limpiar</button>
             </header>
-            <div id="buzzerUrl" class="buzzer-url">http://localhost:3000/buzzer</div>
+            <button id="buzzerQrButton" class="buzzer-qr-card" type="button" aria-label="Ampliar QR de buzzers">
+              <img id="buzzerQrImage" src="/buzzer-qr.svg?v=1" alt="QR para abrir los buzzers en el celular">
+              <span id="buzzerUrl" class="buzzer-url">https://jeopardy-matematico-web.onrender.com/buzzer</span>
+              <span class="qr-hint">Click para ampliar</span>
+            </button>
             <div class="buzzer-switch">
               <button id="openBuzzers" class="small-action success" type="button">Abrir</button>
               <button id="lockBuzzers" class="small-action danger" type="button">Cerrar</button>
@@ -146,6 +150,25 @@
         </div>
       </div>
     </section>
+
+    <div id="qrModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="qrTitle">
+      <div class="modal-backdrop" data-close="qr"></div>
+      <section class="modal-panel qr-panel">
+        <header class="modal-header">
+          <div>
+            <p class="modal-kicker">Buzzers remotos</p>
+            <h2 id="qrTitle">Escanear QR</h2>
+          </div>
+          <button class="icon-button" data-close="qr" title="Cerrar" type="button"><svg><use href="#i-x"></use></svg></button>
+        </header>
+        <img class="qr-large" src="/buzzer-qr.svg?v=1" alt="QR grande para abrir los buzzers en el celular">
+        <a id="qrModalLink" class="qr-link" href="https://jeopardy-matematico-web.onrender.com/buzzer" target="_blank" rel="noreferrer">https://jeopardy-matematico-web.onrender.com/buzzer</a>
+        <div class="modal-actions">
+          <button id="copyQrLink" class="tool-button primary" type="button"><svg><use href="#i-copy"></use></svg><span>Copiar enlace</span></button>
+          <button class="tool-button" data-close="qr" type="button">Cerrar</button>
+        </div>
+      </section>
+    </div>
 
     <div id="clueModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="clueTitle">
       <div class="modal-backdrop" data-close="clue"></div>

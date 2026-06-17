@@ -1,16 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="Hipotenusa">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="Lado mas largo">
   <defs>
-      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-        <path d="M 0 0 L 10 5 L 0 10 z" fill="#082b36"/>
-      </marker>
-    </defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#082b36"/>
+    </marker>
+  </defs>
   <rect width="640" height="360" rx="18" fill="#f7f5e8"/>
-  <text x="320" y="34" text-anchor="middle" font-size="24" font-weight="900" fill="#197a95" font-family="Arial, sans-serif">Lado m?s largo</text>
+  <text x="320" y="34" text-anchor="middle" font-size="24" font-weight="900" fill="#197a95" font-family="Arial, sans-serif">Lado m&#225;s largo</text>
   <polygon points="150,285 470,285 150,85" fill="#ffffff" stroke="#082b36" stroke-width="5" stroke-linejoin="round"/>
+  <line x1="470" y1="285" x2="150" y2="85" stroke="#ef8a62" stroke-width="9" stroke-linecap="round"/>
   <path d="M 178 285 L 178 257 L 150 257" fill="none" stroke="#082b36" stroke-width="3"/>
   <text x="310.0" y="319" text-anchor="middle" font-size="22" font-weight="900" fill="#1f88b5" font-family="Arial, sans-serif">cateto</text>
   <text x="116" y="185.0" text-anchor="middle" font-size="22" font-weight="900" fill="#2ea66f" font-family="Arial, sans-serif">cateto</text>
-  <text x="330" y="175" text-anchor="middle" font-size="22" font-weight="900" fill="#ef8a62" font-family="Arial, sans-serif">hipotenusa</text>
-  <text x="436" y="267" text-anchor="middle" font-size="22" font-weight="900" fill="#ffe45b" font-family="Arial, sans-serif">90?</text>
-  <text x="320" y="335" text-anchor="middle" font-size="20" font-weight="800" fill="#082b36" font-family="Arial, sans-serif">La hipotenusa est? frente al ?ngulo recto</text>
+  <text x="332" y="174" text-anchor="middle" font-size="22" font-weight="900" fill="#ef8a62" font-family="Arial, sans-serif">lado &#63;</text>
+  <text x="436" y="267" text-anchor="middle" font-size="22" font-weight="900" fill="#ffe45b" font-family="Arial, sans-serif">90&#176;</text>
+  <text x="320" y="335" text-anchor="middle" font-size="20" font-weight="800" fill="#082b36" font-family="Arial, sans-serif">Observa el lado opuesto al &#225;ngulo recto</text>
 </svg>

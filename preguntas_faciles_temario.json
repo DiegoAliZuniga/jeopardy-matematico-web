@@ -1,0 +1,332 @@
+{
+  "title": "Jeopardy Matemático - Repaso fácil",
+  "final": {
+    "category": "Reto final fácil",
+    "question": "En un triángulo rectángulo con catetos $6$ cm y $8$ cm, calcula $\\tan(\\alpha)$ si $\\alpha$ es el ángulo opuesto al cateto de $6$ cm.",
+    "answer": "$\\tan(\\alpha)=\\frac{6}{8}=\\frac{3}{4}$",
+    "explanation": "La respuesta correcta es $\\frac{3}{4}$ porque, para el ángulo indicado, el cateto opuesto mide $6$ y el cateto adyacente mide $8$. Entonces $\\tan(\\alpha)=\\frac{6}{8}=\\frac{3}{4}$.",
+    "questionImage": "/figuras/final-tangente-6-8.svg"
+  },
+  "teams": [
+    {
+      "id": "team-1",
+      "name": "Equipo Azul",
+      "score": 0,
+      "color": "#1f88b5"
+    },
+    {
+      "id": "team-2",
+      "name": "Equipo Verde",
+      "score": 0,
+      "color": "#2ea66f"
+    },
+    {
+      "id": "team-3",
+      "name": "Equipo Coral",
+      "score": 0,
+      "color": "#ef8a62"
+    }
+  ],
+  "categories": [
+    {
+      "title": "Plano cartesiano",
+      "clues": [
+        {
+          "value": 100,
+          "question": "En el punto $A(3, -2)$, ¿cuál es la coordenada $x$?",
+          "answer": "$3$",
+          "hint": "La coordenada $x$ es el primer número del par ordenado.",
+          "explanation": "La respuesta correcta es $3$ porque en un par ordenado $(x,y)$ la coordenada $x$ siempre es el primer número. En $A(3,-2)$, el primer número es $3$.",
+          "answered": false,
+          "questionImage": "/figuras/plano-100.svg"
+        },
+        {
+          "value": 200,
+          "question": "En el punto $B(-4, 5)$, ¿cuál es la coordenada $y$?",
+          "answer": "$5$",
+          "hint": "La coordenada $y$ es el segundo número.",
+          "explanation": "La respuesta correcta es $5$ porque en un par ordenado $(x,y)$ la coordenada $y$ es el segundo número. En $B(-4,5)$, el segundo número es $5$.",
+          "answered": false,
+          "questionImage": "/figuras/plano-200.svg"
+        },
+        {
+          "value": 300,
+          "question": "¿Cuál es la distancia entre $A(0,0)$ y $B(3,4)$?",
+          "answer": "$5$",
+          "hint": "Usa $d=\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$.",
+          "explanation": "La respuesta correcta es $5$ porque la distancia entre $(0,0)$ y $(3,4)$ es $d=\\sqrt{(3-0)^2+(4-0)^2}=\\sqrt{9+16}=\\sqrt{25}=5$.",
+          "answered": false,
+          "questionImage": "/figuras/plano-300.svg"
+        },
+        {
+          "value": 400,
+          "question": "Si dos puntos tienen la misma coordenada $y$, por ejemplo $A(1,2)$ y $B(6,2)$, ¿la distancia entre ellos se calcula restando cuáles coordenadas?",
+          "answer": "Las coordenadas $x$.",
+          "hint": "Están en una línea horizontal.",
+          "explanation": "La respuesta correcta es restar las coordenadas $x$ porque los dos puntos tienen la misma coordenada $y=2$. Están en una línea horizontal, así que solo cambia la coordenada $x$.",
+          "answered": false,
+          "questionImage": "/figuras/plano-400.svg"
+        },
+        {
+          "value": 500,
+          "question": "¿Cuál fórmula permite calcular la distancia entre dos puntos $A(x_1,y_1)$ y $B(x_2,y_2)$?",
+          "answer": "$d=\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$",
+          "hint": "Proviene del teorema de Pitágoras.",
+          "explanation": "La respuesta correcta es $d=\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$ porque las diferencias en $x$ y en $y$ forman los catetos de un triángulo rectángulo.",
+          "answered": false,
+          "questionImage": "/figuras/plano-500.svg"
+        }
+      ]
+    },
+    {
+      "title": "Triángulos",
+      "clues": [
+        {
+          "value": 100,
+          "question": "¿Cuánto suman los ángulos internos de cualquier triángulo?",
+          "answer": "$180^\\circ$",
+          "hint": "Es una propiedad básica de los triángulos.",
+          "explanation": "La respuesta correcta es $180^\\circ$ porque la suma de los tres ángulos internos de cualquier triángulo siempre da $180^\\circ$.",
+          "answered": false,
+          "questionImage": "/figuras/triangulos-100.svg"
+        },
+        {
+          "value": 200,
+          "question": "En un triángulo rectángulo, ¿cómo se llama el lado más largo?",
+          "answer": "Hipotenusa.",
+          "hint": "Es el lado opuesto al ángulo recto.",
+          "explanation": "La respuesta correcta es hipotenusa porque en un triángulo rectángulo el lado más largo está frente al ángulo de $90^\\circ$.",
+          "answered": false,
+          "questionImage": "/figuras/triangulos-200.svg"
+        },
+        {
+          "value": 300,
+          "question": "En un triángulo rectángulo con catetos $3$ y $4$, ¿cuánto mide la hipotenusa?",
+          "answer": "$5$",
+          "hint": "Usa $3^2+4^2=c^2$.",
+          "explanation": "La respuesta correcta es $5$ porque, por Pitágoras, $c^2=3^2+4^2=9+16=25$, entonces $c=\\sqrt{25}=5$.",
+          "answered": false,
+          "questionImage": "/figuras/triangulos-300.svg"
+        },
+        {
+          "value": 400,
+          "question": "¿Cuál es el perímetro de un triángulo con lados $9$ cm, $12$ cm y $15$ cm?",
+          "answer": "$36$ cm",
+          "hint": "Suma los tres lados.",
+          "explanation": "La respuesta correcta es $36$ cm porque el perímetro se obtiene sumando todos los lados: $9+12+15=36$.",
+          "answered": false,
+          "questionImage": "/figuras/triangulos-400.svg"
+        },
+        {
+          "value": 500,
+          "question": "¿Cuál es el área de un triángulo rectángulo con catetos $6$ cm y $8$ cm?",
+          "answer": "$24$ cm$^2$",
+          "hint": "Usa $A=\\frac{bh}{2}$.",
+          "explanation": "La respuesta correcta es $24$ cm$^2$ porque el área del triángulo es $A=\\frac{bh}{2}=\\frac{6\\cdot8}{2}=24$.",
+          "answered": false,
+          "questionImage": "/figuras/triangulos-500.svg"
+        }
+      ]
+    },
+    {
+      "title": "Tangente",
+      "clues": [
+        {
+          "value": 100,
+          "question": "¿Cómo se define la tangente de un ángulo agudo en un triángulo rectángulo?",
+          "answer": "$\\tan(\\theta)=\\frac{\\text{cateto opuesto}}{\\text{cateto adyacente}}$",
+          "hint": "Compara dos catetos.",
+          "explanation": "La respuesta correcta es cateto opuesto entre cateto adyacente porque esa es la definición de la tangente en un triángulo rectángulo.",
+          "answered": false,
+          "questionImage": "/figuras/tangente-100.svg"
+        },
+        {
+          "value": 200,
+          "question": "Si el cateto opuesto mide $3$ y el adyacente mide $4$, ¿cuánto vale $\\tan(\\theta)$?",
+          "answer": "$\\frac{3}{4}$",
+          "hint": "Opuesto entre adyacente.",
+          "explanation": "La respuesta correcta es $\\frac{3}{4}$ porque $\\tan(\\theta)=\\frac{\\text{opuesto}}{\\text{adyacente}}$ y aquí el opuesto mide $3$ y el adyacente mide $4$.",
+          "answered": false,
+          "questionImage": "/figuras/tangente-200.svg"
+        },
+        {
+          "value": 300,
+          "question": "Un cable se ancla a $18$ m de una torre y forma un ángulo de $30^\\circ$ con el suelo. ¿Qué razón se usa para hallar la altura?",
+          "answer": "Tangente.",
+          "hint": "Se conoce distancia horizontal y ángulo con el suelo.",
+          "explanation": "La respuesta correcta es tangente porque se conoce el ángulo y la distancia horizontal. La altura sería el cateto opuesto y los $18$ m serían el cateto adyacente.",
+          "answered": false,
+          "questionImage": "/figuras/tangente-300.svg"
+        },
+        {
+          "value": 400,
+          "question": "Si dos cables llegan al mismo punto alto, pero uno se ancla más lejos de la base, ¿el ángulo con el suelo será mayor o menor?",
+          "answer": "Menor.",
+          "hint": "La altura es la misma, pero aumenta la distancia horizontal.",
+          "explanation": "La respuesta correcta es menor porque ambos cables llegan a la misma altura, pero el segundo está más lejos. Al aumentar la distancia horizontal, el ángulo con el suelo disminuye.",
+          "answered": false,
+          "questionImage": "/figuras/tangente-400.svg"
+        },
+        {
+          "value": 500,
+          "question": "Si $\\tan(\\alpha)=\\frac{2}{3}$, ¿cuánto vale $\\tan(90^\\circ-\\alpha)$?",
+          "answer": "$\\frac{3}{2}$",
+          "hint": "La tangente del ángulo complementario invierte la razón.",
+          "explanation": "La respuesta correcta es $\\frac{3}{2}$ porque el ángulo complementario intercambia los catetos. Si $\\tan(\\alpha)=\\frac{2}{3}$, entonces $\\tan(90^\\circ-\\alpha)=\\frac{3}{2}$.",
+          "answered": false,
+          "questionImage": "/figuras/tangente-500.svg"
+        }
+      ]
+    },
+    {
+      "title": "Seno y coseno",
+      "clues": [
+        {
+          "value": 100,
+          "question": "¿Cómo se define el seno de un ángulo agudo?",
+          "answer": "$\\sen(\\theta)=\\frac{\\text{cateto opuesto}}{\\text{hipotenusa}}$",
+          "hint": "Compara el opuesto con el lado mas largo.",
+          "explanation": "La respuesta correcta es cateto opuesto entre hipotenusa porque esa es la definición de seno en un triángulo rectángulo.",
+          "answered": false,
+          "questionImage": "/figuras/seno-coseno-100.svg"
+        },
+        {
+          "value": 200,
+          "question": "¿Cómo se define el coseno de un ángulo agudo?",
+          "answer": "$\\cos(\\theta)=\\frac{\\text{cateto adyacente}}{\\text{hipotenusa}}$",
+          "hint": "Compara el adyacente con la hipotenusa.",
+          "explanation": "La respuesta correcta es cateto adyacente entre hipotenusa porque esa es la definición de coseno en un triángulo rectángulo.",
+          "answered": false,
+          "questionImage": "/figuras/seno-coseno-200.svg"
+        },
+        {
+          "value": 300,
+          "question": "En un triángulo $3$-$4$-$5$, si el ángulo tiene cateto opuesto $3$, ¿cuál es $\\sen(\\theta)$?",
+          "answer": "$\\frac{3}{5}$",
+          "hint": "Seno es opuesto entre hipotenusa.",
+          "explanation": "La respuesta correcta es $\\frac{3}{5}$ porque el seno se calcula como opuesto entre hipotenusa. En este caso, el opuesto mide $3$ y la hipotenusa mide $5$.",
+          "answered": false,
+          "questionImage": "/figuras/seno-coseno-300.svg"
+        },
+        {
+          "value": 400,
+          "question": "En un triángulo $3$-$4$-$5$, si el ángulo tiene cateto adyacente $4$, ¿cuál es $\\cos(\\theta)$?",
+          "answer": "$\\frac{4}{5}$",
+          "hint": "Coseno es adyacente entre hipotenusa.",
+          "explanation": "La respuesta correcta es $\\frac{4}{5}$ porque el coseno se calcula como adyacente entre hipotenusa. En este caso, el adyacente mide $4$ y la hipotenusa mide $5$.",
+          "answered": false,
+          "questionImage": "/figuras/seno-coseno-400.svg"
+        },
+        {
+          "value": 500,
+          "question": "Si $\\sen(\\theta)=\\frac{5}{10}$, ¿cuál fracción simplificada representa ese seno?",
+          "answer": "$\\frac{1}{2}$",
+          "hint": "Divide numerador y denominador entre $5$.",
+          "explanation": "La respuesta correcta es $\\frac{1}{2}$ porque $\\frac{5}{10}$ se simplifica dividiendo numerador y denominador entre $5$.",
+          "answered": false,
+          "questionImage": "/figuras/seno-coseno-500.svg"
+        }
+      ]
+    },
+    {
+      "title": "Elevación y depresión",
+      "clues": [
+        {
+          "value": 100,
+          "question": "Si una persona mira hacia arriba para observar la cima de un faro, ¿qué tipo de ángulo se forma?",
+          "answer": "Ángulo de elevación.",
+          "hint": "La mirada sube desde la horizontal.",
+          "explanation": "La respuesta correcta es ángulo de elevación porque la persona mira hacia arriba desde una línea horizontal para observar la cima del faro.",
+          "answered": false,
+          "questionImage": "/figuras/elevacion-100.svg"
+        },
+        {
+          "value": 200,
+          "question": "Si una persona mira hacia abajo desde un edificio para observar un auto, ¿qué tipo de ángulo se forma?",
+          "answer": "Ángulo de depresión.",
+          "hint": "La mirada baja desde la horizontal.",
+          "explanation": "La respuesta correcta es ángulo de depresión porque la persona mira hacia abajo desde una línea horizontal para observar el auto.",
+          "answered": false,
+          "questionImage": "/figuras/elevacion-200.svg"
+        },
+        {
+          "value": 300,
+          "question": "Un barco está a $120$ m de un faro y el ángulo de elevación es $15^\\circ$. ¿Qué fórmula permite hallar la altura $h$?",
+          "answer": "$h=120\\tan(15^\\circ)$",
+          "hint": "Altura sobre distancia horizontal.",
+          "explanation": "La respuesta correcta es $h=120\\tan(15^\\circ)$ porque la altura es el cateto opuesto y los $120$ m son el cateto adyacente.",
+          "answered": false,
+          "questionImage": "/figuras/elevacion-300.svg"
+        },
+        {
+          "value": 400,
+          "question": "Una cuerda de $10$ m forma un ángulo de elevación de $30^\\circ$. ¿Qué razón sirve para hallar la altura vertical?",
+          "answer": "Seno.",
+          "hint": "La cuerda es la hipotenusa.",
+          "explanation": "La respuesta correcta es seno porque la altura es el cateto opuesto y la cuerda de $10$ m es la hipotenusa. Por eso $\\sen(30^\\circ)=\\frac{h}{10}$.",
+          "answered": false,
+          "questionImage": "/figuras/elevacion-400.svg"
+        },
+        {
+          "value": 500,
+          "question": "En una situación de depresión desde un edificio, ¿el ángulo de depresión hacia un objeto es igual al ángulo de elevación visto desde el objeto?",
+          "answer": "Sí, son iguales.",
+          "hint": "Las horizontales son paralelas.",
+          "explanation": "La respuesta correcta es sí, son iguales, porque las horizontales son paralelas y los ángulos de elevación y depresión quedan como ángulos alternos internos.",
+          "answered": false,
+          "questionImage": "/figuras/elevacion-500.svg"
+        }
+      ]
+    },
+    {
+      "title": "Ley de senos",
+      "clues": [
+        {
+          "value": 100,
+          "question": "¿La ley de senos se usa principalmente en triángulos rectángulos u oblicuángulos?",
+          "answer": "Oblicuángulos.",
+          "hint": "No necesariamente tienen un ángulo de $90^\\circ$.",
+          "explanation": "La respuesta correcta es oblicuángulos porque la ley de senos se usa especialmente en triángulos que no necesariamente tienen un ángulo recto.",
+          "answered": false,
+          "questionImage": "/figuras/ley-senos-100.svg"
+        },
+        {
+          "value": 200,
+          "question": "Completa la relación: $\\frac{a}{\\sen(A)}=\\frac{b}{\\sen(B)}=\\ ?$",
+          "answer": "$\\frac{c}{\\sen(C)}$",
+          "hint": "Se repite la razón lado sobre seno del ángulo opuesto.",
+          "explanation": "La respuesta correcta es $\\frac{c}{\\sen(C)}$ porque la ley de senos compara cada lado con el seno de su ángulo opuesto.",
+          "answered": false,
+          "questionImage": "/figuras/ley-senos-200.svg"
+        },
+        {
+          "value": 300,
+          "question": "En un triángulo, ¿el lado $a$ está frente a cuál ángulo?",
+          "answer": "Frente al ángulo $A$.",
+          "hint": "Las letras correspondientes se oponen.",
+          "explanation": "La respuesta correcta es el ángulo $A$ porque, por convención, el lado $a$ está frente al ángulo $A$.",
+          "answered": false,
+          "questionImage": "/figuras/ley-senos-300.svg"
+        },
+        {
+          "value": 400,
+          "question": "Si en un triángulo $A=35^\\circ$ y $B=75^\\circ$, ¿cuánto mide $C$?",
+          "answer": "$70^\\circ$",
+          "hint": "Los ángulos internos suman $180^\\circ$.",
+          "explanation": "La respuesta correcta es $70^\\circ$ porque los ángulos internos suman $180^\\circ$: $C=180^\\circ-35^\\circ-75^\\circ=70^\\circ$.",
+          "answered": false,
+          "questionImage": "/figuras/ley-senos-400.svg"
+        },
+        {
+          "value": 500,
+          "question": "Si $a=12$, $A=35^\\circ$ y $B=75^\\circ$, ¿qué expresión permite calcular $b$ con ley de senos?",
+          "answer": "$b=\\frac{12\\sen(75^\\circ)}{\\sen(35^\\circ)}$",
+          "hint": "Usa $\\frac{a}{\\sen(A)}=\\frac{b}{\\sen(B)}$.",
+          "explanation": "La respuesta correcta es $b=\\frac{12\\sen(75^\\circ)}{\\sen(35^\\circ)}$ porque se parte de $\\frac{12}{\\sen(35^\\circ)}=\\frac{b}{\\sen(75^\\circ)}$ y se despeja $b$.",
+          "answered": false,
+          "questionImage": "/figuras/ley-senos-500.svg"
+        }
+      ]
+    }
+  ]
+}

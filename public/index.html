@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Jeopardy Matematico</title>
-    <link rel="stylesheet" href="/styles.css?v=layout-fit-2">
+    <link rel="stylesheet" href="/styles.css?v=image-support-1">
     <script>
       window.MathJax = {
         tex: {
@@ -16,7 +16,7 @@
       };
     </script>
     <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-    <script defer src="/app.js?v=layout-fit-2"></script>
+    <script defer src="/app.js?v=image-support-1"></script>
   </head>
   <body>
     <svg class="icon-sprite" aria-hidden="true">
@@ -158,7 +158,7 @@
           <button class="icon-button" data-close="clue" title="Cerrar" type="button"><svg><use href="#i-x"></use></svg></button>
         </header>
         <div id="questionText" class="math-box question-box"></div>
-        <div id="hintText" class="hint-box hidden"></div>
+        <div id="hintText" class="math-box hint-box hidden"></div>
         <div id="answerText" class="math-box answer-box hidden"></div>
         <div id="feedbackBox" class="feedback-box hidden">
           <strong id="feedbackTitle"></strong>
@@ -223,12 +223,39 @@
             <label class="field-label">Pregunta
               <textarea id="editQuestion" rows="5"></textarea>
             </label>
+            <div class="image-editor-row">
+              <label class="field-label">Imagen de pregunta
+                <input id="editQuestionImage" type="url" placeholder="URL o data:image/...">
+              </label>
+              <label class="file-input-label">Subir
+                <input id="editQuestionImageFile" type="file" accept="image/*">
+              </label>
+              <button id="clearQuestionImage" class="mini-button" type="button">Quitar</button>
+            </div>
             <label class="field-label">Respuesta
               <textarea id="editAnswer" rows="3"></textarea>
             </label>
+            <div class="image-editor-row">
+              <label class="field-label">Imagen de respuesta
+                <input id="editAnswerImage" type="url" placeholder="URL o data:image/...">
+              </label>
+              <label class="file-input-label">Subir
+                <input id="editAnswerImageFile" type="file" accept="image/*">
+              </label>
+              <button id="clearAnswerImage" class="mini-button" type="button">Quitar</button>
+            </div>
             <label class="field-label">Pista
               <textarea id="editHint" rows="2"></textarea>
             </label>
+            <div class="image-editor-row">
+              <label class="field-label">Imagen de pista
+                <input id="editHintImage" type="url" placeholder="URL o data:image/...">
+              </label>
+              <label class="file-input-label">Subir
+                <input id="editHintImageFile" type="file" accept="image/*">
+              </label>
+              <button id="clearHintImage" class="mini-button" type="button">Quitar</button>
+            </div>
             <label class="field-label">Explicacion
               <textarea id="editExplanation" rows="3"></textarea>
             </label>

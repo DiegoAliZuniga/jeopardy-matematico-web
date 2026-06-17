@@ -875,6 +875,35 @@ h1 {
   white-space: pre-wrap;
 }
 
+.content-text + .content-image,
+.preview-section .content-image {
+  margin-top: 12px;
+}
+
+.content-image {
+  background: var(--white);
+  border: 2px solid var(--line);
+  border-radius: var(--radius);
+  display: block;
+  height: auto;
+  max-height: 34vh;
+  max-width: 100%;
+  object-fit: contain;
+  width: auto;
+}
+
+.question-box .content-image {
+  margin-left: auto;
+  margin-right: auto;
+  max-height: 38vh;
+}
+
+.answer-box .content-image,
+.hint-box .content-image,
+.explanation-box .content-image {
+  max-height: 24vh;
+}
+
 .math-box mjx-container {
   color: inherit;
   display: inline-block !important;
@@ -1116,6 +1145,53 @@ h1 {
   --math-display-size: 1.2rem;
   --math-only-size: 1.25rem;
   min-height: 130px;
+}
+
+.preview-section {
+  display: grid;
+  gap: 6px;
+}
+
+.preview-section + .preview-section {
+  border-top: 1px solid var(--line);
+  margin-top: 10px;
+  padding-top: 10px;
+}
+
+.preview-label {
+  color: var(--teal);
+  font-size: 0.84rem;
+  text-transform: uppercase;
+}
+
+.preview-box .content-image {
+  max-height: 150px;
+}
+
+.image-editor-row {
+  align-items: end;
+  display: grid;
+  gap: 8px;
+  grid-template-columns: minmax(0, 1fr) minmax(120px, 0.35fr) auto;
+}
+
+.file-input-label {
+  display: grid;
+  gap: 5px;
+  font-size: 0.82rem;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.file-input-label input {
+  background: var(--white);
+  border: 2px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--ink);
+  min-height: 42px;
+  padding: 7px;
+  text-transform: none;
+  width: 100%;
 }
 
 .final-wagers {
@@ -1483,6 +1559,7 @@ h1 {
 
   .host-panel,
   .editor-grid,
+  .image-editor-row,
   .instruction-grid,
   .podium {
     grid-template-columns: 1fr;

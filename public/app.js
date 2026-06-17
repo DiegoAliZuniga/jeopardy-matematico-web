@@ -1,5 +1,6 @@
 const STORAGE_KEY = "jeopardy-matematico-state-v1";
 const TIMER_SECONDS = 30;
+const MAX_IMAGE_BYTES = 1_200_000;
 
 const defaultGame = {
   title: "Jeopardy Matematico",
@@ -105,8 +106,18 @@ window.addEventListener("beforeunload", () => {
   sendWs({ type: "lock-buzzers" });
 });
 
-function clue(value, question, answer, hint = "", explanation = "") {
-  return { value, question, answer, hint, explanation: explanation || hint, answered: false };
+function clue(value, question, answer, hint = "", explanation = "", images = {}) {
+  return {
+    value,
+    question,
+    answer,
+    hint,
+    explanation: explanation || hint,
+    questionImage: images.questionImage || "",
+    hintImage: images.hintImage || "",
+    answerImage: images.answerImage || "",
+    answered: false
+  };
 }
 
 function bindUi() {
@@ -139,7 +150,11 @@ function bindUi() {
     button.addEventListener("click", () => closeModal(button.dataset.close));
   });
 
-  $("#hintBtn").addEventListener("click", () => $("#hintText").classList.toggle("hidden"));
+  $("#hintBtn").addEventListener("click", () => {
+    const hint = $("#hintText");
+    hint.classList.toggle("hidden");
+    if (!hint.classList.contains("hidden")) renderMath(hint);
+  });
   $("#showAnswerBtn").addEventListener("click", showAnswer);
   $("#correctBtn").addEventListener("click", () => scoreCurrent(true));
   $("#wrongBtn").addEventListener("click", () => scoreCurrent(false));
@@ -153,9 +168,12 @@ function bindUi() {
   });
   $("#categorySelect").addEventListener("change", renderClueEditor);
   $("#clueSelect").addEventListener("change", renderClueEditor);
-  ["editValue", "editQuestion", "editAnswer", "editHint", "editExplanation"].forEach((id) => {
+  ["editValue", "editQuestion", "editQuestionImage", "editAnswer", "editAnswerImage", "editHint", "editHintImage", "editExplanation"].forEach((id) => {
     $(`#${id}`).addEventListener("input", updateCurrentClueFromEditor);
   });
+  bindImageEditorControls("Question");
+  bindImageEditorControls("Answer");
+  bindImageEditorControls("Hint");
   $("#editorAddTeam").addEventListener("click", addTeam);
   $("#addCategoryBtn").addEventListener("click", addCategory);
   $("#exportJsonBtn").addEventListener("click", exportJson);
@@ -199,7 +217,9 @@ function normalizeGame(raw) {
     category: raw.final?.category || defaultGame.final.category,
     question: raw.final?.question || defaultGame.final.question,
     answer: raw.final?.answer || defaultGame.final.answer,
-    explanation: raw.final?.explanation || defaultGame.final.explanation
+    explanation: raw.final?.explanation || defaultGame.final.explanation,
+    questionImage: normalizeImageSource(raw.final?.questionImage),
+    answerImage: normalizeImageSource(raw.final?.answerImage)
   };
   return safe;
 }
@@ -212,8 +232,15 @@ function ensureClues(clues) {
     answer: clues?.[index]?.answer || "Respuesta",
     hint: clues?.[index]?.hint || "",
     explanation: clues?.[index]?.explanation || clues?.[index]?.hint || "Compara el procedimiento con la respuesta correcta.",
+    questionImage: normalizeImageSource(clues?.[index]?.questionImage),
+    hintImage: normalizeImageSource(clues?.[index]?.hintImage),
+    answerImage: normalizeImageSource(clues?.[index]?.answerImage),
     answered: Boolean(clues?.[index]?.answered)
   }));
+}
+
+function normalizeImageSource(value) {
+  return typeof value === "string" ? value.trim() : "";
 }
 
 function clone(value) {
@@ -221,7 +248,11 @@ function clone(value) {
 }
 
 function saveGame() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(game));
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(game));
+  } catch {
+    alert("No se pudo guardar. Es posible que una imagen sea demasiado pesada para el almacenamiento del navegador.");
+  }
 }
 
 function saveAndRender() {
@@ -431,9 +462,9 @@ function openClue(categoryIndex, clueIndex, sourceButton) {
 
   $("#clueMeta").textContent = `${category.title} - $${clueData.value}`;
   $("#clueTitle").textContent = "Pregunta";
-  $("#questionText").textContent = clueData.question;
-  $("#answerText").textContent = clueData.answer;
-  $("#hintText").textContent = clueData.hint || "Sin pista";
+  renderRichContent($("#questionText"), clueData.question, clueData.questionImage, "Pregunta sin texto", "Imagen de la pregunta");
+  renderRichContent($("#answerText"), clueData.answer, clueData.answerImage, "Respuesta sin texto", "Imagen de la respuesta");
+  renderRichContent($("#hintText"), clueData.hint, clueData.hintImage, "Sin pista", "Imagen de la pista");
   $("#answerText").classList.add("hidden");
   $("#hintText").classList.add("hidden");
   $("#feedbackBox").classList.add("hidden");
@@ -442,7 +473,6 @@ function openClue(categoryIndex, clueIndex, sourceButton) {
   $("#clueModal").classList.remove("hidden");
   renderTeamChooser();
   clearBuzzers();
-  renderMath($("#questionText"));
 }
 
 function showAnswer() {
@@ -752,24 +782,78 @@ function playNotes(notes) {
   setTimeout(() => context.close?.(), Math.ceil((endAt + 0.25) * 1000));
 }
 
+function renderRichContent(element, text, imageSource = "", fallbackText = "", imageAlt = "Imagen") {
+  if (!element) return;
+  const sourceText = String(text || "").trim() || (!imageSource ? fallbackText : "");
+  element.textContent = "";
+  element.dataset.mathSource = "";
+
+  if (sourceText) {
+    const textNode = document.createElement("div");
+    textNode.className = "content-text";
+    textNode.dataset.mathText = "true";
+    textNode.dataset.mathSource = sourceText;
+    textNode.textContent = sourceText;
+    element.append(textNode);
+  }
+
+  const safeImageSource = normalizeImageSource(imageSource);
+  if (safeImageSource) {
+    const image = document.createElement("img");
+    image.className = "content-image";
+    image.src = safeImageSource;
+    image.alt = imageAlt;
+    image.loading = "lazy";
+    image.decoding = "async";
+    element.append(image);
+  }
+
+  if (sourceText) {
+    renderMath(element);
+  } else {
+    markMathDensity(element, "");
+  }
+}
+
 function renderMath(element) {
   if (!element) return;
-  const alreadyTypeset = Boolean(element.querySelector("mjx-container"));
-  const sourceText = alreadyTypeset && element.dataset.mathSource
-    ? element.dataset.mathSource
-    : element.textContent.trim();
-  element.dataset.mathSource = sourceText;
+  const richTextNodes = [...element.querySelectorAll("[data-math-text]")];
+  if (!richTextNodes.length && element.querySelector(".content-image")) {
+    markMathDensity(element, "");
+    return;
+  }
+  const sourceText = richTextNodes.length
+    ? richTextNodes.map((node) => node.dataset.mathSource || node.textContent.trim()).join("\n").trim()
+    : element.dataset.mathSource || element.textContent.trim();
   markMathDensity(element, sourceText);
+
   if (window.MathJax?.typesetPromise) {
     window.MathJax.typesetClear?.([element]);
-    element.textContent = normalizeInlineMath(sourceText);
+
+    if (richTextNodes.length) {
+      richTextNodes.forEach((node) => {
+        const nodeSource = node.dataset.mathSource || node.textContent.trim();
+        node.dataset.mathSource = nodeSource;
+        node.textContent = normalizeInlineMath(nodeSource);
+      });
+    } else {
+      element.dataset.mathSource = sourceText;
+      element.textContent = normalizeInlineMath(sourceText);
+    }
+
     window.MathJax.typesetPromise([element])
       .then(() => {
-        markMathDensity(element, element.dataset.mathSource || sourceText);
+        markMathDensity(element, sourceText);
         applyMathSizing(element);
       })
       .catch(() => {
-        element.textContent = sourceText;
+        if (richTextNodes.length) {
+          richTextNodes.forEach((node) => {
+            node.textContent = node.dataset.mathSource || node.textContent;
+          });
+        } else {
+          element.textContent = sourceText;
+        }
         markMathDensity(element, sourceText);
       });
   }
@@ -788,7 +872,10 @@ function whenMathJaxReady(callback, attempts = 0) {
 
 function refreshRenderedMath() {
   document.querySelectorAll(".math-box").forEach((element) => {
-    const sourceText = element.dataset.mathSource || element.textContent.trim();
+    const textNodes = [...element.querySelectorAll("[data-math-text]")];
+    const sourceText = textNodes.length
+      ? textNodes.map((node) => node.dataset.mathSource || node.textContent.trim()).join("\n").trim()
+      : element.dataset.mathSource || element.textContent.trim();
     if (sourceText) renderMath(element);
   });
 }
@@ -874,7 +961,7 @@ function applyMathSizing(element) {
 function markMathDensity(element, sourceText) {
   const text = (sourceText || element.dataset.mathSource || element.textContent).trim();
   const mathOnly = /^(\${1,2}[\s\S]+\${1,2}|\\\[[\s\S]+\\\]|\\\([\s\S]+\\\))\.?$/.test(text);
-  element.classList.toggle("math-only", mathOnly);
+  element.classList.toggle("math-only", mathOnly && !element.querySelector(".content-image"));
 }
 
 function openEditor() {
@@ -969,13 +1056,54 @@ function renderEditorSelects(categoryIndex = 0, clueIndex = 0) {
   clueSelect.value = String(Math.min(clueIndex, clueSelect.options.length - 1));
 }
 
+function bindImageEditorControls(kind) {
+  const urlInput = $(`#edit${kind}Image`);
+  const fileInput = $(`#edit${kind}ImageFile`);
+  const clearButton = $(`#clear${kind}Image`);
+  if (!urlInput || !fileInput || !clearButton) return;
+
+  fileInput.addEventListener("change", () => {
+    const file = fileInput.files?.[0];
+    if (!file) return;
+    if (!file.type.startsWith("image/")) {
+      alert("El archivo seleccionado no es una imagen.");
+      fileInput.value = "";
+      return;
+    }
+    if (file.size > MAX_IMAGE_BYTES) {
+      alert("La imagen es muy grande. Usa una imagen menor a 1.2 MB o pega una URL.");
+      fileInput.value = "";
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.addEventListener("load", () => {
+      urlInput.value = reader.result;
+      updateCurrentClueFromEditor();
+    });
+    reader.readAsDataURL(file);
+  });
+
+  clearButton.addEventListener("click", () => {
+    urlInput.value = "";
+    fileInput.value = "";
+    updateCurrentClueFromEditor();
+  });
+}
+
 function renderClueEditor() {
   const category = game.categories[Number($("#categorySelect").value || 0)];
   const clueData = category.clues[Number($("#clueSelect").value || 0)];
   $("#editValue").value = clueData.value;
   $("#editQuestion").value = clueData.question;
+  $("#editQuestionImage").value = clueData.questionImage || "";
+  $("#editQuestionImageFile").value = "";
   $("#editAnswer").value = clueData.answer;
+  $("#editAnswerImage").value = clueData.answerImage || "";
+  $("#editAnswerImageFile").value = "";
   $("#editHint").value = clueData.hint || "";
+  $("#editHintImage").value = clueData.hintImage || "";
+  $("#editHintImageFile").value = "";
   $("#editExplanation").value = clueData.explanation || "";
   renderPreview();
 }
@@ -986,8 +1114,11 @@ function updateCurrentClueFromEditor() {
   const clueData = game.categories[categoryIndex].clues[clueIndex];
   clueData.value = Number($("#editValue").value || 0);
   clueData.question = $("#editQuestion").value;
+  clueData.questionImage = normalizeImageSource($("#editQuestionImage").value);
   clueData.answer = $("#editAnswer").value;
+  clueData.answerImage = normalizeImageSource($("#editAnswerImage").value);
   clueData.hint = $("#editHint").value;
+  clueData.hintImage = normalizeImageSource($("#editHintImage").value);
   clueData.explanation = $("#editExplanation").value;
   saveAndRender();
   renderEditorSelects(categoryIndex, clueIndex);
@@ -998,7 +1129,41 @@ function updateCurrentClueFromEditor() {
 
 function renderPreview() {
   const preview = $("#texPreview");
-  preview.textContent = `${$("#editQuestion").value}\n\nRespuesta: ${$("#editAnswer").value}\n\nExplicacion: ${$("#editExplanation").value}`;
+  preview.textContent = "";
+  [
+    ["Pregunta", $("#editQuestion").value, $("#editQuestionImage").value],
+    ["Pista", $("#editHint").value, $("#editHintImage").value],
+    ["Respuesta", $("#editAnswer").value, $("#editAnswerImage").value],
+    ["Explicacion", $("#editExplanation").value, ""]
+  ].forEach(([label, text, imageSource]) => {
+    const section = document.createElement("section");
+    section.className = "preview-section";
+    const heading = document.createElement("strong");
+    heading.className = "preview-label";
+    heading.textContent = label;
+    section.append(heading);
+
+    if (text.trim()) {
+      const textNode = document.createElement("div");
+      textNode.className = "content-text";
+      textNode.dataset.mathText = "true";
+      textNode.dataset.mathSource = text.trim();
+      textNode.textContent = text.trim();
+      section.append(textNode);
+    }
+
+    const safeImageSource = normalizeImageSource(imageSource);
+    if (safeImageSource) {
+      const image = document.createElement("img");
+      image.className = "content-image";
+      image.src = safeImageSource;
+      image.alt = `Imagen de ${label.toLowerCase()}`;
+      image.loading = "lazy";
+      section.append(image);
+    }
+
+    preview.append(section);
+  });
   renderMath(preview);
 }
 
@@ -1090,13 +1255,12 @@ function renderConfetti() {
 
 function openFinal() {
   $("#finalCategory").textContent = game.final.category;
-  $("#finalQuestion").textContent = game.final.question;
-  $("#finalAnswer").textContent = game.final.answer;
+  renderRichContent($("#finalQuestion"), game.final.question, game.final.questionImage, "Pregunta final sin texto", "Imagen de la pregunta final");
+  renderRichContent($("#finalAnswer"), game.final.answer, game.final.answerImage, "Respuesta final sin texto", "Imagen de la respuesta final");
   $("#finalAnswer").classList.add("hidden");
   renderFinalWagers();
   $("#finalModal").classList.remove("hidden");
   playNotes([[262, 0, 0.12], [392, 0.14, 0.12]]);
-  renderMath($("#finalQuestion"));
 }
 
 function renderFinalWagers() {

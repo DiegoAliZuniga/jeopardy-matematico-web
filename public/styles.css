@@ -290,6 +290,20 @@ svg {
   width: clamp(38px, 3.1vw, 52px);
 }
 
+.brand-mark.has-logo-image,
+.logo-preview.has-logo-image {
+  background: var(--white);
+  overflow: hidden;
+}
+
+.brand-mark img,
+.logo-preview img {
+  display: block;
+  height: 100%;
+  object-fit: contain;
+  width: 100%;
+}
+
 .brand-mark.large {
   height: 72px;
   margin: 0 auto;
@@ -884,6 +898,37 @@ h1 {
   width: min(100%, 1180px);
 }
 
+.modal.editor-fullscreen {
+  align-items: stretch;
+  justify-items: stretch;
+  padding: 0;
+}
+
+.modal.editor-fullscreen .modal-backdrop {
+  background: rgba(0, 0, 0, 0.82);
+}
+
+.modal.editor-fullscreen .editor-panel {
+  border-radius: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  height: 100dvh;
+  max-height: none;
+  width: 100%;
+}
+
+.modal.editor-fullscreen .editor-grid {
+  flex: 1;
+  min-height: 0;
+}
+
+.modal.editor-fullscreen .editor-column {
+  min-height: 0;
+  overflow: auto;
+  padding-right: 2px;
+}
+
 .modal-header {
   align-items: start;
   border-bottom: 2px solid var(--line);
@@ -892,6 +937,12 @@ h1 {
   justify-content: space-between;
   margin-bottom: 16px;
   padding-bottom: 12px;
+}
+
+.modal-header-actions {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 8px;
 }
 
 .modal-kicker {
@@ -1213,6 +1264,30 @@ h1 {
   display: grid;
   gap: 8px;
   grid-template-columns: minmax(0, 1fr) minmax(120px, 0.35fr) auto;
+}
+
+.logo-editor-row {
+  align-items: stretch;
+  grid-template-columns: 1fr;
+}
+
+.logo-editor-row .mini-button {
+  width: 100%;
+}
+
+.logo-preview {
+  align-items: center;
+  background: conic-gradient(from 20deg, var(--gold), #98d8a4, #33a5bd, var(--coral), var(--gold));
+  border: 3px solid var(--ink);
+  border-radius: var(--radius);
+  color: var(--ink);
+  display: grid;
+  font-weight: 950;
+  height: 78px;
+  justify-self: start;
+  overflow: hidden;
+  place-items: center;
+  width: 78px;
 }
 
 .file-input-label {

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Jeopardy Matematico</title>
-    <link rel="stylesheet" href="/styles.css?v=feedback-image-1">
+    <link rel="stylesheet" href="/styles.css?v=logo-editor-1">
     <script>
       window.MathJax = {
         tex: {
@@ -16,7 +16,7 @@
       };
     </script>
     <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-    <script defer src="/app.js?v=feedback-image-1"></script>
+    <script defer src="/app.js?v=logo-editor-1"></script>
   </head>
   <body>
     <svg class="icon-sprite" aria-hidden="true">
@@ -43,7 +43,7 @@
         <span></span><span></span><span></span><span></span><span></span>
       </div>
       <div class="start-content">
-        <div class="brand-mark large">JQ</div>
+        <div id="startLogoMark" class="brand-mark large">JQ</div>
         <p class="show-label">Concurso academico</p>
         <h1 id="startTitle">Jeopardy Matematico</h1>
         <p class="start-copy">Categorias, puntajes, TeX matematico y buzzers remotos para celulares.</p>
@@ -66,7 +66,7 @@
     <div id="gameShell" class="app-shell hidden">
       <header class="topbar">
         <div class="brand-block">
-          <div class="brand-mark">JQ</div>
+          <div id="gameLogoMark" class="brand-mark">JQ</div>
           <div>
             <h1 id="gameTitle">Jeopardy Matematico</h1>
             <p id="subtitle">TeX, equipos y buzzers remotos</p>
@@ -212,13 +212,26 @@
             <p class="modal-kicker">Configuracion</p>
             <h2 id="editorTitle">Editor del juego</h2>
           </div>
-          <button class="icon-button" data-close="editor" title="Cerrar" type="button"><svg><use href="#i-x"></use></svg></button>
+          <div class="modal-header-actions">
+            <button id="editorFullscreenBtn" class="icon-button" title="Pantalla completa" type="button"><svg><use href="#i-full"></use></svg></button>
+            <button class="icon-button" data-close="editor" title="Cerrar" type="button"><svg><use href="#i-x"></use></svg></button>
+          </div>
         </header>
         <div class="editor-grid">
           <section class="editor-column">
             <label class="field-label">Titulo
               <input id="editTitle" type="text" maxlength="80">
             </label>
+            <div class="image-editor-row logo-editor-row">
+              <label class="field-label">Logo del juego
+                <input id="editLogoImage" type="url" placeholder="URL o data:image/...">
+              </label>
+              <label class="file-input-label">Subir
+                <input id="editLogoImageFile" type="file" accept="image/*">
+              </label>
+              <button id="clearLogoImage" class="mini-button" type="button">Quitar</button>
+            </div>
+            <div id="logoPreview" class="logo-preview">JQ</div>
             <div class="editor-heading">
               <h3>Equipos</h3>
               <button id="editorAddTeam" class="mini-button" type="button"><svg><use href="#i-plus"></use></svg></button>

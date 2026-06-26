@@ -5,6 +5,7 @@ const PUBLIC_BUZZER_URL = "https://jeopardy-matematico-web.onrender.com/buzzer";
 
 const defaultGame = {
   title: "Jeopardy Matematico",
+  logoImage: "",
   final: {
     category: "Reto final",
     question: "Encuentra el valor de $x$ si $$2x+5=17.$$",
@@ -170,6 +171,9 @@ function bindUi() {
     saveAndRender();
     sendHostState();
   });
+  $("#editLogoImage").addEventListener("input", updateLogoFromEditor);
+  bindLogoEditorControls();
+  $("#editorFullscreenBtn").addEventListener("click", toggleEditorFullscreen);
   $("#categorySelect").addEventListener("change", renderClueEditor);
   $("#clueSelect").addEventListener("change", renderClueEditor);
   ["editValue", "editQuestion", "editQuestionImage", "editAnswer", "editAnswerImage", "editHint", "editHintImage", "editExplanation", "editExplanationImage"].forEach((id) => {
@@ -206,6 +210,7 @@ function loadGame() {
 
 function normalizeGame(raw) {
   const safe = { ...clone(defaultGame), ...raw };
+  safe.logoImage = normalizeImageSource(raw.logoImage);
   safe.teams = Array.isArray(raw.teams) && raw.teams.length ? raw.teams : clone(defaultGame.teams);
   safe.teams = safe.teams.map((team, index) => ({
     id: team.id || `team-${index + 1}`,
@@ -335,9 +340,30 @@ function renderGameSurface() {
   $("#startCategoryCount").textContent = `${game.categories.length} categorias`;
   $("#startTeamCount").textContent = `${game.teams.length} equipos`;
   document.title = game.title;
+  renderLogo($("#gameLogoMark"), game.logoImage);
+  renderLogo($("#startLogoMark"), game.logoImage);
   renderBoard();
   renderTeams();
   renderBuzzes();
+}
+
+function renderLogo(container, imageSource) {
+  if (!container) return;
+  const safeImageSource = normalizeImageSource(imageSource);
+  container.textContent = "";
+  container.classList.toggle("has-logo-image", Boolean(safeImageSource));
+
+  if (safeImageSource) {
+    const image = document.createElement("img");
+    image.src = safeImageSource;
+    image.alt = `Logo de ${game.title || "Jeopardy"}`;
+    image.loading = "lazy";
+    image.decoding = "async";
+    container.append(image);
+    return;
+  }
+
+  container.textContent = "JQ";
 }
 
 function renderBoard() {
@@ -763,6 +789,20 @@ function toggleFullscreen() {
   document.documentElement.requestFullscreen?.();
 }
 
+function toggleEditorFullscreen() {
+  const modal = $("#editorModal");
+  modal.classList.toggle("editor-fullscreen");
+  updateEditorFullscreenButton();
+}
+
+function updateEditorFullscreenButton() {
+  const button = $("#editorFullscreenBtn");
+  if (!button) return;
+  const expanded = $("#editorModal")?.classList.contains("editor-fullscreen");
+  button.title = expanded ? "Restaurar configurador" : "Pantalla completa";
+  button.setAttribute("aria-label", button.title);
+}
+
 function playTone(frequency, seconds) {
   playNotes([[frequency, 0, seconds]]);
 }
@@ -976,6 +1016,7 @@ function markMathDensity(element, sourceText) {
 function openEditor() {
   renderEditorShell();
   exportJson();
+  updateEditorFullscreenButton();
   $("#editorModal").classList.remove("hidden");
 }
 
@@ -983,6 +1024,9 @@ function renderEditorShell(categoryIndex = Number($("#categorySelect")?.value ||
   const titleInput = $("#editTitle");
   if (!titleInput) return;
   titleInput.value = game.title;
+  $("#editLogoImage").value = game.logoImage || "";
+  $("#editLogoImageFile").value = "";
+  renderLogoPreview();
   renderTeamEditor();
   renderCategoryEditor();
   renderEditorSelects(categoryIndex, clueIndex);
@@ -1098,6 +1142,51 @@ function bindImageEditorControls(kind) {
     fileInput.value = "";
     updateCurrentClueFromEditor();
   });
+}
+
+function bindLogoEditorControls() {
+  const urlInput = $("#editLogoImage");
+  const fileInput = $("#editLogoImageFile");
+  const clearButton = $("#clearLogoImage");
+  if (!urlInput || !fileInput || !clearButton) return;
+
+  fileInput.addEventListener("change", () => {
+    const file = fileInput.files?.[0];
+    if (!file) return;
+    if (!file.type.startsWith("image/")) {
+      alert("El archivo seleccionado no es una imagen.");
+      fileInput.value = "";
+      return;
+    }
+    if (file.size > MAX_IMAGE_BYTES) {
+      alert("La imagen es muy grande. Usa una imagen menor a 1.2 MB o pega una URL.");
+      fileInput.value = "";
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.addEventListener("load", () => {
+      urlInput.value = reader.result;
+      updateLogoFromEditor();
+    });
+    reader.readAsDataURL(file);
+  });
+
+  clearButton.addEventListener("click", () => {
+    urlInput.value = "";
+    fileInput.value = "";
+    updateLogoFromEditor();
+  });
+}
+
+function updateLogoFromEditor() {
+  game.logoImage = normalizeImageSource($("#editLogoImage").value);
+  saveAndRender();
+  renderLogoPreview();
+}
+
+function renderLogoPreview() {
+  renderLogo($("#logoPreview"), game.logoImage);
 }
 
 function renderClueEditor() {

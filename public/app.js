@@ -117,6 +117,7 @@ function clue(value, question, answer, hint = "", explanation = "", images = {})
     questionImage: images.questionImage || "",
     hintImage: images.hintImage || "",
     answerImage: images.answerImage || "",
+    explanationImage: images.explanationImage || "",
     answered: false
   };
 }
@@ -171,12 +172,13 @@ function bindUi() {
   });
   $("#categorySelect").addEventListener("change", renderClueEditor);
   $("#clueSelect").addEventListener("change", renderClueEditor);
-  ["editValue", "editQuestion", "editQuestionImage", "editAnswer", "editAnswerImage", "editHint", "editHintImage", "editExplanation"].forEach((id) => {
+  ["editValue", "editQuestion", "editQuestionImage", "editAnswer", "editAnswerImage", "editHint", "editHintImage", "editExplanation", "editExplanationImage"].forEach((id) => {
     $(`#${id}`).addEventListener("input", updateCurrentClueFromEditor);
   });
   bindImageEditorControls("Question");
   bindImageEditorControls("Answer");
   bindImageEditorControls("Hint");
+  bindImageEditorControls("Explanation");
   $("#editorAddTeam").addEventListener("click", addTeam);
   $("#addCategoryBtn").addEventListener("click", addCategory);
   $("#exportJsonBtn").addEventListener("click", exportJson);
@@ -238,6 +240,7 @@ function ensureClues(clues) {
     questionImage: normalizeImageSource(clues?.[index]?.questionImage),
     hintImage: normalizeImageSource(clues?.[index]?.hintImage),
     answerImage: normalizeImageSource(clues?.[index]?.answerImage),
+    explanationImage: normalizeImageSource(clues?.[index]?.explanationImage),
     answered: Boolean(clues?.[index]?.answered)
   }));
 }
@@ -510,8 +513,13 @@ function showFeedback(isCorrect, value = 0, teamName = "") {
   }
 
   const explanationText = currentClue.clue.explanation || currentClue.clue.hint || "Repasa el procedimiento y contrasta cada paso con la respuesta mostrada.";
-  explanation.textContent = `Explicacion: ${explanationText}`;
-  renderMath(explanation);
+  renderRichContent(
+    explanation,
+    `Explicacion: ${explanationText}`,
+    currentClue.clue.explanationImage,
+    "",
+    "Imagen de retroalimentacion"
+  );
 }
 
 function scoreCurrent(isCorrect) {
@@ -1106,6 +1114,8 @@ function renderClueEditor() {
   $("#editHintImage").value = clueData.hintImage || "";
   $("#editHintImageFile").value = "";
   $("#editExplanation").value = clueData.explanation || "";
+  $("#editExplanationImage").value = clueData.explanationImage || "";
+  $("#editExplanationImageFile").value = "";
   renderPreview();
 }
 
@@ -1121,6 +1131,7 @@ function updateCurrentClueFromEditor() {
   clueData.hint = $("#editHint").value;
   clueData.hintImage = normalizeImageSource($("#editHintImage").value);
   clueData.explanation = $("#editExplanation").value;
+  clueData.explanationImage = normalizeImageSource($("#editExplanationImage").value);
   saveAndRender();
   renderEditorSelects(categoryIndex, clueIndex);
   $("#categorySelect").value = String(categoryIndex);
@@ -1135,7 +1146,7 @@ function renderPreview() {
     ["Pregunta", $("#editQuestion").value, $("#editQuestionImage").value],
     ["Pista", $("#editHint").value, $("#editHintImage").value],
     ["Respuesta", $("#editAnswer").value, $("#editAnswerImage").value],
-    ["Explicacion", $("#editExplanation").value, ""]
+    ["Retroalimentacion", $("#editExplanation").value, $("#editExplanationImage").value]
   ].forEach(([label, text, imageSource]) => {
     const section = document.createElement("section");
     section.className = "preview-section";

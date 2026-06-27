@@ -7,12 +7,12 @@ let registered = false;
 let hostState = { title: "Buzzer", teams: [] };
 let buzzerOpen = false;
 let reconnectTimer = null;
+let currentBuzzes = [];
 
 const $ = (selector) => document.querySelector(selector);
 
 document.addEventListener("DOMContentLoaded", () => {
   $("#playerName").value = localStorage.getItem(NAME_KEY) || "";
-  $("#playerTeam").value = localStorage.getItem(TEAM_KEY) || "";
   $("#playerForm").addEventListener("submit", registerPlayer);
   $("#playerName").addEventListener("input", updatePlayer);
   $("#playerTeam").addEventListener("change", updatePlayer);
@@ -27,7 +27,6 @@ function connect() {
 
   socket.addEventListener("open", () => {
     setStatus("ok", "Conectado");
-    if ($("#playerName").value.trim()) registerPlayer(new Event("submit"));
   });
 
   socket.addEventListener("message", (event) => {
@@ -39,6 +38,7 @@ function connect() {
       buzzerOpen = Boolean(message.buzzerOpen);
       renderHostState();
       renderBuzzState(message.buzzes || []);
+      if ($("#playerName").value.trim() && $("#playerTeam").value) registerPlayer();
     }
     if (message.type === "registered") {
       registered = true;
@@ -67,11 +67,21 @@ function connect() {
     }
     if (message.type === "buzzer-status") {
       buzzerOpen = Boolean(message.buzzerOpen);
-      renderBuzzState([]);
+      renderBuzzState(currentBuzzes);
     }
     if (message.type === "buzz-rejected") {
-      $("#buzzMessage").textContent = message.reason === "duplicate" ? "Ya entraste" : "Buzzer cerrado";
+      $("#buzzMessage").textContent = message.reason === "duplicate"
+        ? "Ya entraste"
+        : message.reason === "team-required"
+          ? "Selecciona un equipo"
+          : "Buzzer cerrado";
       navigator.vibrate?.(120);
+      renderBuzzState(message.buzzes || []);
+    }
+    if (message.type === "registration-rejected") {
+      registered = false;
+      $("#buzzMessage").textContent = "Selecciona un equipo para entrar";
+      $("#playerTeam").focus();
       renderBuzzState(message.buzzes || []);
     }
   });
@@ -86,31 +96,48 @@ function connect() {
 }
 
 function registerPlayer(event) {
-  event.preventDefault();
+  event?.preventDefault();
   const name = $("#playerName").value.trim();
-  if (!name || socket?.readyState !== WebSocket.OPEN) return;
+  const teamId = $("#playerTeam").value;
+  if (!name || !teamId || !isKnownTeam(teamId) || socket?.readyState !== WebSocket.OPEN) {
+    if (name && !teamId) {
+      $("#buzzMessage").textContent = "Selecciona un equipo para entrar";
+      $("#playerTeam").focus();
+    }
+    return;
+  }
   localStorage.setItem(NAME_KEY, name);
-  localStorage.setItem(TEAM_KEY, $("#playerTeam").value);
+  localStorage.setItem(TEAM_KEY, teamId);
   socket.send(JSON.stringify({
     type: "register-player",
     name,
-    teamId: $("#playerTeam").value
+    teamId
   }));
 }
 
 function updatePlayer() {
-  if (!registered || socket?.readyState !== WebSocket.OPEN) return;
-  localStorage.setItem(NAME_KEY, $("#playerName").value.trim());
-  localStorage.setItem(TEAM_KEY, $("#playerTeam").value);
+  const name = $("#playerName").value.trim();
+  const teamId = $("#playerTeam").value;
+  localStorage.setItem(NAME_KEY, name);
+  localStorage.setItem(TEAM_KEY, teamId);
+  if (!registered || socket?.readyState !== WebSocket.OPEN) {
+    renderBuzzState(currentBuzzes);
+    return;
+  }
+  if (!isKnownTeam(teamId)) {
+    registered = false;
+    renderBuzzState(currentBuzzes);
+    return;
+  }
   socket.send(JSON.stringify({
     type: "update-player",
-    name: $("#playerName").value.trim(),
-    teamId: $("#playerTeam").value
+    name,
+    teamId
   }));
 }
 
 function buzz() {
-  if (!registered || !buzzerOpen || socket?.readyState !== WebSocket.OPEN) return;
+  if (!registered || !isKnownTeam($("#playerTeam").value) || !buzzerOpen || socket?.readyState !== WebSocket.OPEN) return;
   $("#buzzButton").disabled = true;
   $("#buzzButton").className = "buzz-button sent";
   $("#buzzMessage").textContent = "Enviado";
@@ -122,21 +149,30 @@ function renderHostState() {
   const select = $("#playerTeam");
   const current = select.value || localStorage.getItem(TEAM_KEY) || "";
   select.innerHTML = "";
-  select.add(new Option("Sin equipo", ""));
+  const placeholder = new Option("Selecciona un equipo", "");
+  placeholder.disabled = true;
+  select.add(placeholder);
   for (const team of hostState.teams || []) {
     select.add(new Option(team.name, team.id));
   }
-  select.value = [...select.options].some((option) => option.value === current) ? current : "";
+  select.value = isKnownTeam(current) ? current : "";
+  if (registered && !select.value) registered = false;
 }
 
 function renderBuzzState(activeBuzzes) {
+  currentBuzzes = activeBuzzes;
   const ownBuzz = activeBuzzes.find((buzz) => buzz.playerId === clientId);
   const hasName = Boolean($("#playerName").value.trim());
-  $("#buzzButton").disabled = !registered || !hasName || !buzzerOpen || Boolean(ownBuzz);
-  $("#buzzButton").className = `buzz-button${buzzerOpen && registered ? " ready" : ""}${ownBuzz ? " sent" : ""}`;
+  const hasTeam = isKnownTeam($("#playerTeam").value);
+  $("#buzzButton").disabled = !registered || !hasName || !hasTeam || !buzzerOpen || Boolean(ownBuzz);
+  $("#buzzButton").className = `buzz-button${buzzerOpen && registered && hasTeam ? " ready" : ""}${ownBuzz ? " sent" : ""}`;
 
-  if (!registered) {
+  if (!hasName) {
     $("#buzzMessage").textContent = "Ingresa tu nombre";
+  } else if (!hasTeam) {
+    $("#buzzMessage").textContent = "Selecciona un equipo";
+  } else if (!registered) {
+    $("#buzzMessage").textContent = "Pulsa Entrar";
   } else if (ownBuzz) {
     $("#buzzMessage").textContent = `Entraste #${ownBuzz.rank}`;
   } else if (activeBuzzes.length) {
@@ -144,6 +180,10 @@ function renderBuzzState(activeBuzzes) {
   } else {
     $("#buzzMessage").textContent = buzzerOpen ? "Listo" : "Buzzer cerrado";
   }
+}
+
+function isKnownTeam(teamId) {
+  return Boolean(teamId && (hostState.teams || []).some((team) => team.id === teamId));
 }
 
 function setStatus(kind, text) {

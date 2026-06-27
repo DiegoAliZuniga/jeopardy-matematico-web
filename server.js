@@ -267,9 +267,14 @@ function handleMessage(client, raw) {
   }
 
   if (message.type === "register-player") {
+    const teamId = getKnownTeamId(message.teamId);
+    if (!teamId) {
+      send(client, { type: "registration-rejected", reason: "team-required", buzzes, buzzerOpen });
+      return;
+    }
     client.role = "player";
     client.name = cleanText(message.name || "Jugador", 40);
-    client.teamId = cleanText(message.teamId || "", 64);
+    client.teamId = teamId;
     players.set(client.id, {
       id: client.id,
       name: client.name,
@@ -288,8 +293,13 @@ function handleMessage(client, raw) {
   }
 
   if (message.type === "update-player" && client.role === "player") {
+    const teamId = getKnownTeamId(message.teamId);
+    if (!teamId) {
+      send(client, { type: "registration-rejected", reason: "team-required", buzzes, buzzerOpen });
+      return;
+    }
     client.name = cleanText(message.name || client.name || "Jugador", 40);
-    client.teamId = cleanText(message.teamId || "", 64);
+    client.teamId = teamId;
     players.set(client.id, {
       id: client.id,
       name: client.name,
@@ -301,6 +311,10 @@ function handleMessage(client, raw) {
   }
 
   if (message.type === "buzz" && client.role === "player") {
+    if (!getKnownTeamId(client.teamId)) {
+      send(client, { type: "buzz-rejected", reason: "team-required", buzzes, buzzerOpen });
+      return;
+    }
     if (!buzzerOpen) {
       send(client, { type: "buzz-rejected", reason: "closed", buzzes, buzzerOpen });
       return;
@@ -378,4 +392,9 @@ function writeFrame(socket, payload, opcode = 0x1) {
 
 function cleanText(value, maxLength) {
   return String(value).replace(/[\u0000-\u001f\u007f]/g, "").trim().slice(0, maxLength);
+}
+
+function getKnownTeamId(value) {
+  const teamId = cleanText(value || "", 64);
+  return hostState.teams.some((team) => team.id === teamId) ? teamId : "";
 }

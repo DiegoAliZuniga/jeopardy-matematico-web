@@ -400,18 +400,21 @@ function renderBoard() {
 function renderTeams() {
   const teamList = $("#teamList");
   teamList.innerHTML = "";
+  const firstBuzz = buzzes[0] || null;
   if (!game.teams.some((team) => team.id === selectedTeamId)) {
     selectedTeamId = game.teams[0]?.id || "";
   }
 
   game.teams.forEach((team) => {
     const row = document.createElement("article");
-    row.className = `team-row${team.id === selectedTeamId ? " selected" : ""}`;
+    const hasFirstBuzz = firstBuzz?.teamId === team.id;
+    row.className = `team-row${team.id === selectedTeamId ? " selected" : ""}${hasFirstBuzz ? " first-buzz" : ""}`;
     row.dataset.teamId = team.id;
     row.style.setProperty("--team-color", team.color);
     row.innerHTML = `
       <div class="team-main">
         <div class="team-name"></div>
+        <div class="team-first-buzz" hidden></div>
         <div class="score-tools">
           <button type="button" data-delta="-100">-</button>
           <button type="button" data-delta="100">+</button>
@@ -421,6 +424,11 @@ function renderTeams() {
     `;
     row.querySelector(".team-name").textContent = team.name;
     row.querySelector(".team-score").textContent = formatScore(team.score);
+    if (hasFirstBuzz) {
+      const firstBuzzLabel = row.querySelector(".team-first-buzz");
+      firstBuzzLabel.hidden = false;
+      firstBuzzLabel.textContent = `Primero: ${firstBuzz.name}`;
+    }
     row.addEventListener("click", () => {
       selectedTeamId = team.id;
       renderTeams();
@@ -687,7 +695,10 @@ function connectSocket() {
       buzzerOpen = Boolean(message.buzzerOpen);
       buzzes = message.buzzes || [];
       players = message.players || [];
+      const firstTeamId = buzzes[0]?.teamId;
+      if (firstTeamId && game.teams.some((team) => team.id === firstTeamId)) selectedTeamId = firstTeamId;
       renderBuzzes();
+      renderTeams();
     }
     if (message.type === "players") {
       players = message.players || [];
@@ -696,13 +707,18 @@ function connectSocket() {
     if (message.type === "buzz") {
       const teamId = message.buzz?.teamId;
       if (teamId && game.teams.some((team) => team.id === teamId)) selectedTeamId = teamId;
+      if (message.buzz && !buzzes.some((buzz) => buzz.playerId === message.buzz.playerId)) buzzes = [message.buzz, ...buzzes];
       playTone(880, 0.12);
       renderTeams();
+      renderBuzzes();
     }
     if (message.type === "buzzes") {
       buzzes = message.buzzes || [];
       buzzerOpen = Boolean(message.buzzerOpen);
+      const firstTeamId = buzzes[0]?.teamId;
+      if (firstTeamId && game.teams.some((team) => team.id === firstTeamId)) selectedTeamId = firstTeamId;
       renderBuzzes();
+      renderTeams();
     }
     if (message.type === "buzzer-status") {
       buzzerOpen = Boolean(message.buzzerOpen);
@@ -729,6 +745,7 @@ function sendWs(payload) {
 function clearBuzzers() {
   buzzes = [];
   renderBuzzes();
+  renderTeams();
   sendWs({ type: "clear-buzzes" });
 }
 

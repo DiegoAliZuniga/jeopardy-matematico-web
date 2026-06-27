@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Buzzer</title>
-    <link rel="stylesheet" href="/styles.css?v=image-support-1">
-    <script defer src="/buzzer.js?v=layout-fit-2"></script>
+    <link rel="stylesheet" href="/styles.css?v=buzzer-team-1">
+    <script defer src="/buzzer.js?v=buzzer-team-1"></script>
   </head>
   <body class="buzzer-page">
     <main class="buzzer-shell">
@@ -20,7 +20,9 @@
             <input id="playerName" type="text" maxlength="40" autocomplete="name" required>
           </label>
           <label class="field-label">Equipo
-            <select id="playerTeam"></select>
+            <select id="playerTeam" required>
+              <option value="" selected disabled>Selecciona un equipo</option>
+            </select>
           </label>
           <button class="tool-button primary full" type="submit">Entrar</button>
         </form>

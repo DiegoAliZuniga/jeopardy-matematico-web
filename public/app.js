@@ -568,7 +568,7 @@ function showFeedback(isCorrect, value = 0, teamName = "") {
     title.textContent = "No es correcto";
     feedback.textContent = `${teamName} pierde ${formatScore(value)}. Revisemos la respuesta correcta.`;
   } else {
-    title.textContent = "Retroalimentacion";
+    title.textContent = "Retroalimentación";
     feedback.textContent = currentClue.clue.explanationImage && !currentClue.clue.explanation
       ? ""
       : "Compara la respuesta del equipo con la solucion antes de asignar puntos.";
@@ -578,10 +578,10 @@ function showFeedback(isCorrect, value = 0, teamName = "") {
     || (!currentClue.clue.explanationImage ? currentClue.clue.hint || "Repasa el procedimiento y contrasta cada paso con la respuesta mostrada." : "");
   renderRichContent(
     explanation,
-    explanationText ? `Explicacion: ${explanationText}` : "",
+    explanationText ? `Explicación: ${explanationText}` : "",
     currentClue.clue.explanationImage,
     "",
-    "Imagen de retroalimentacion"
+    "Imagen de retroalimentación"
   );
 }
 
@@ -893,6 +893,7 @@ function renderRichContent(element, text, imageSource = "", fallbackText = "", i
   }
 
   const safeImageSource = normalizeImageSource(imageSource);
+  element.classList.toggle("image-only", Boolean(safeImageSource) && !sourceText);
   if (safeImageSource) {
     const image = document.createElement("img");
     image.className = "content-image";
@@ -1281,7 +1282,7 @@ function renderPreview() {
     ["Pregunta", $("#editQuestion").value, $("#editQuestionImage").value],
     ["Pista", $("#editHint").value, $("#editHintImage").value],
     ["Respuesta", $("#editAnswer").value, $("#editAnswerImage").value],
-    ["Retroalimentacion", $("#editExplanation").value, $("#editExplanationImage").value]
+    ["Retroalimentación", $("#editExplanation").value, $("#editExplanationImage").value]
   ].forEach(([label, text, imageSource]) => {
     const section = document.createElement("section");
     section.className = "preview-section";

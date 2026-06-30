@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Jeopardy Matematico</title>
-    <link rel="stylesheet" href="/styles.css?v=buzzer-team-1">
+    <link rel="stylesheet" href="/styles.css?v=image-center-1">
     <script>
       window.MathJax = {
         tex: {
@@ -16,7 +16,7 @@
       };
     </script>
     <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-    <script defer src="/app.js?v=empty-fields-1"></script>
+    <script defer src="/app.js?v=image-center-1"></script>
   </head>
   <body>
     <svg class="icon-sprite" aria-hidden="true">
@@ -81,7 +81,7 @@
           <button id="instructionsBtn" class="tool-button" title="Instrucciones" type="button"><svg><use href="#i-eye"></use></svg><span>Reglas</span></button>
           <button id="muteBtn" class="tool-button" title="Sonido" type="button"><svg><use href="#i-sound"></use></svg><span>Sonido</span></button>
           <button id="fullscreenBtn" class="tool-button" title="Pantalla completa" type="button"><svg><use href="#i-full"></use></svg><span>Pantalla</span></button>
-          <button id="finalBtn" class="tool-button accent" type="button"><svg><use href="#i-play"></use></svg><span>Final</span></button>
+          <button id="finalBtn" class="tool-button accent hidden" type="button"><svg><use href="#i-play"></use></svg><span>Final</span></button>
           <button id="resultsBtn" class="tool-button success" type="button"><svg><use href="#i-trophy"></use></svg><span>Resultados</span></button>
           <button id="editBtn" class="tool-button primary" type="button"><svg><use href="#i-edit"></use></svg><span>Editar</span></button>
         </nav>
@@ -290,11 +290,11 @@
               </label>
               <button id="clearHintImage" class="mini-button" type="button">Quitar</button>
             </div>
-            <label class="field-label">Explicacion
+            <label class="field-label">Explicación
               <textarea id="editExplanation" rows="3"></textarea>
             </label>
             <div class="image-editor-row">
-              <label class="field-label">Imagen de retroalimentacion
+              <label class="field-label">Imagen de retroalimentación
                 <input id="editExplanationImage" type="url" placeholder="URL o data:image/...">
               </label>
               <label class="file-input-label">Subir
@@ -363,7 +363,7 @@
           </article>
           <article>
             <h3>3. Puntuar</h3>
-            <p>Una respuesta correcta suma el valor de la casilla. Una respuesta incorrecta resta ese valor y muestra la retroalimentacion.</p>
+            <p>Una respuesta correcta suma el valor de la casilla. Una respuesta incorrecta resta ese valor y muestra la retroalimentación.</p>
           </article>
           <article>
             <h3>4. Ganar</h3>

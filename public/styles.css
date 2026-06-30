@@ -993,8 +993,20 @@ h1 {
   height: auto;
   max-height: 34vh;
   max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
   object-fit: contain;
   width: auto;
+}
+
+.math-box.image-only {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.math-box.image-only .content-image {
+  margin: auto;
 }
 
 .question-box .content-image {

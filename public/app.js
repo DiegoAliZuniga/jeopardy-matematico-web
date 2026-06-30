@@ -225,8 +225,8 @@ function normalizeGame(raw) {
   }));
   safe.final = {
     category: raw.final?.category || defaultGame.final.category,
-    question: raw.final?.question || defaultGame.final.question,
-    answer: raw.final?.answer || defaultGame.final.answer,
+    question: textOrImageFallback(raw.final?.question, raw.final?.questionImage, defaultGame.final.question),
+    answer: textOrImageFallback(raw.final?.answer, raw.final?.answerImage, defaultGame.final.answer),
     explanation: raw.final?.explanation || defaultGame.final.explanation,
     questionImage: normalizeImageSource(raw.final?.questionImage),
     answerImage: normalizeImageSource(raw.final?.answerImage)
@@ -236,22 +236,48 @@ function normalizeGame(raw) {
 
 function ensureClues(clues) {
   const values = [100, 200, 300, 400, 500];
-  return values.map((value, index) => ({
-    value: Number(clues?.[index]?.value || value),
-    question: clues?.[index]?.question || `Pregunta por $${value}`,
-    answer: clues?.[index]?.answer || "Respuesta",
-    hint: clues?.[index]?.hint || "",
-    explanation: clues?.[index]?.explanation || clues?.[index]?.hint || "Compara el procedimiento con la respuesta correcta.",
-    questionImage: normalizeImageSource(clues?.[index]?.questionImage),
-    hintImage: normalizeImageSource(clues?.[index]?.hintImage),
-    answerImage: normalizeImageSource(clues?.[index]?.answerImage),
-    explanationImage: normalizeImageSource(clues?.[index]?.explanationImage),
-    answered: Boolean(clues?.[index]?.answered)
-  }));
+  return values.map((value, index) => {
+    const clueData = clues?.[index] || {};
+    const questionImage = normalizeImageSource(clueData.questionImage);
+    const hintImage = normalizeImageSource(clueData.hintImage);
+    const answerImage = normalizeImageSource(clueData.answerImage);
+    const explanationImage = normalizeImageSource(clueData.explanationImage);
+    const hint = normalizeText(clueData.hint);
+    const explanationFallback = hint || "Compara el procedimiento con la respuesta correcta.";
+
+    return {
+      value: Number(clueData.value || value),
+      question: textOrImageFallback(clueData.question, questionImage, `Pregunta por $${value}`),
+      answer: textOrImageFallback(clueData.answer, answerImage, "Respuesta"),
+      hint,
+      explanation: textOrImageFallback(
+        clueData.explanation,
+        explanationImage,
+        explanationFallback,
+        ["Compara el procedimiento con la respuesta correcta."]
+      ),
+      questionImage,
+      hintImage,
+      answerImage,
+      explanationImage,
+      answered: Boolean(clueData.answered)
+    };
+  });
 }
 
 function normalizeImageSource(value) {
   return typeof value === "string" ? value.trim() : "";
+}
+
+function normalizeText(value) {
+  return typeof value === "string" ? value : "";
+}
+
+function textOrImageFallback(value, imageSource, fallback, legacyFillers = []) {
+  const text = normalizeText(value);
+  const hasImage = Boolean(normalizeImageSource(imageSource));
+  if (hasImage && (!text || text === fallback || legacyFillers.includes(text))) return "";
+  return text || fallback;
 }
 
 function clone(value) {
@@ -543,13 +569,16 @@ function showFeedback(isCorrect, value = 0, teamName = "") {
     feedback.textContent = `${teamName} pierde ${formatScore(value)}. Revisemos la respuesta correcta.`;
   } else {
     title.textContent = "Retroalimentacion";
-    feedback.textContent = "Compara la respuesta del equipo con la solucion antes de asignar puntos.";
+    feedback.textContent = currentClue.clue.explanationImage && !currentClue.clue.explanation
+      ? ""
+      : "Compara la respuesta del equipo con la solucion antes de asignar puntos.";
   }
 
-  const explanationText = currentClue.clue.explanation || currentClue.clue.hint || "Repasa el procedimiento y contrasta cada paso con la respuesta mostrada.";
+  const explanationText = currentClue.clue.explanation
+    || (!currentClue.clue.explanationImage ? currentClue.clue.hint || "Repasa el procedimiento y contrasta cada paso con la respuesta mostrada." : "");
   renderRichContent(
     explanation,
-    `Explicacion: ${explanationText}`,
+    explanationText ? `Explicacion: ${explanationText}` : "",
     currentClue.clue.explanationImage,
     "",
     "Imagen de retroalimentacion"

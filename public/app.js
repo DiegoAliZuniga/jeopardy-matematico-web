@@ -10,7 +10,10 @@ const defaultGame = {
     category: "Reto final",
     question: "Encuentra el valor de $x$ si $$2x+5=17.$$",
     answer: "$x=6$",
-    explanation: "Restamos 5 en ambos lados para obtener $2x=12$ y luego dividimos entre 2."
+    explanation: "Restamos 5 en ambos lados para obtener $2x=12$ y luego dividimos entre 2.",
+    questionImage: "",
+    answerImage: "",
+    explanationImage: ""
   },
   teams: [
     { id: "team-1", name: "Equipo Azul", score: 0, color: "#1f88b5" },
@@ -179,7 +182,7 @@ function bindUi() {
   ["editValue", "editQuestion", "editQuestionImage", "editAnswer", "editAnswerImage", "editHint", "editHintImage", "editExplanation", "editExplanationImage"].forEach((id) => {
     $(`#${id}`).addEventListener("input", updateCurrentClueFromEditor);
   });
-  ["editFinalCategory", "editFinalQuestion", "editFinalQuestionImage", "editFinalAnswer", "editFinalAnswerImage", "editFinalExplanation"].forEach((id) => {
+  ["editFinalCategory", "editFinalQuestion", "editFinalQuestionImage", "editFinalAnswer", "editFinalAnswerImage", "editFinalExplanation", "editFinalExplanationImage"].forEach((id) => {
     $(`#${id}`).addEventListener("input", updateFinalFromEditor);
   });
   bindImageEditorControls("Question");
@@ -188,6 +191,7 @@ function bindUi() {
   bindImageEditorControls("Explanation");
   bindFinalImageEditorControls("Question");
   bindFinalImageEditorControls("Answer");
+  bindFinalImageEditorControls("Explanation");
   $("#editorAddTeam").addEventListener("click", addTeam);
   $("#addCategoryBtn").addEventListener("click", addCategory);
   $("#exportJsonBtn").addEventListener("click", exportJson);
@@ -234,9 +238,10 @@ function normalizeGame(raw) {
     category: raw.final?.category || defaultGame.final.category,
     question: textOrImageFallback(raw.final?.question, raw.final?.questionImage, defaultGame.final.question),
     answer: textOrImageFallback(raw.final?.answer, raw.final?.answerImage, defaultGame.final.answer),
-    explanation: raw.final?.explanation || defaultGame.final.explanation,
+    explanation: textOrImageFallback(raw.final?.explanation, raw.final?.explanationImage, defaultGame.final.explanation),
     questionImage: normalizeImageSource(raw.final?.questionImage),
-    answerImage: normalizeImageSource(raw.final?.answerImage)
+    answerImage: normalizeImageSource(raw.final?.answerImage),
+    explanationImage: normalizeImageSource(raw.final?.explanationImage)
   };
   return safe;
 }
@@ -1288,6 +1293,8 @@ function renderFinalEditor() {
   $("#editFinalAnswerImage").value = game.final.answerImage || "";
   $("#editFinalAnswerImageFile").value = "";
   $("#editFinalExplanation").value = game.final.explanation || "";
+  $("#editFinalExplanationImage").value = game.final.explanationImage || "";
+  $("#editFinalExplanationImageFile").value = "";
 }
 
 function updateFinalFromEditor() {
@@ -1297,6 +1304,7 @@ function updateFinalFromEditor() {
   game.final.answer = $("#editFinalAnswer").value;
   game.final.answerImage = normalizeImageSource($("#editFinalAnswerImage").value);
   game.final.explanation = $("#editFinalExplanation").value;
+  game.final.explanationImage = normalizeImageSource($("#editFinalExplanationImage").value);
   saveAndRender();
 }
 
@@ -1472,7 +1480,9 @@ function openFinal() {
   renderRichContent(
     $("#finalExplanation"),
     game.final.explanation ? `Explicación: ${game.final.explanation}` : "",
-    ""
+    game.final.explanationImage,
+    "",
+    "Imagen de la explicación final"
   );
   $("#finalAnswer").classList.add("hidden");
   $("#finalExplanation").classList.add("hidden");

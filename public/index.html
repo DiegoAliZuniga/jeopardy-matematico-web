@@ -16,7 +16,7 @@
       };
     </script>
     <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-    <script defer src="/app.js?v=final-editor-1"></script>
+    <script defer src="/app.js?v=final-editor-2"></script>
   </head>
   <body>
     <svg class="icon-sprite" aria-hidden="true">
@@ -339,6 +339,15 @@
             <label class="field-label">Explicación final
               <textarea id="editFinalExplanation" rows="3"></textarea>
             </label>
+            <div class="image-editor-row">
+              <label class="field-label">Imagen de explicación final
+                <input id="editFinalExplanationImage" type="url" placeholder="URL o data:image/...">
+              </label>
+              <label class="file-input-label">Subir
+                <input id="editFinalExplanationImageFile" type="file" accept="image/*">
+              </label>
+              <button id="clearFinalExplanationImage" class="mini-button" type="button">Quitar</button>
+            </div>
             <div class="editor-heading">
               <h3>JSON</h3>
               <button id="downloadJsonBtn" class="mini-button" title="Descargar JSON" type="button"><svg><use href="#i-download"></use></svg></button>

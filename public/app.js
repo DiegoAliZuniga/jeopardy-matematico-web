@@ -179,10 +179,15 @@ function bindUi() {
   ["editValue", "editQuestion", "editQuestionImage", "editAnswer", "editAnswerImage", "editHint", "editHintImage", "editExplanation", "editExplanationImage"].forEach((id) => {
     $(`#${id}`).addEventListener("input", updateCurrentClueFromEditor);
   });
+  ["editFinalCategory", "editFinalQuestion", "editFinalQuestionImage", "editFinalAnswer", "editFinalAnswerImage", "editFinalExplanation"].forEach((id) => {
+    $(`#${id}`).addEventListener("input", updateFinalFromEditor);
+  });
   bindImageEditorControls("Question");
   bindImageEditorControls("Answer");
   bindImageEditorControls("Hint");
   bindImageEditorControls("Explanation");
+  bindFinalImageEditorControls("Question");
+  bindFinalImageEditorControls("Answer");
   $("#editorAddTeam").addEventListener("click", addTeam);
   $("#addCategoryBtn").addEventListener("click", addCategory);
   $("#exportJsonBtn").addEventListener("click", exportJson);
@@ -192,7 +197,9 @@ function bindUi() {
 
   $("#showFinalAnswerBtn").addEventListener("click", () => {
     $("#finalAnswer").classList.remove("hidden");
+    $("#finalExplanation").classList.remove("hidden");
     renderMath($("#finalAnswer"));
+    renderMath($("#finalExplanation"));
   });
   $("#applyFinalCorrect").addEventListener("click", () => applyFinal(true));
   $("#applyFinalWrong").addEventListener("click", () => applyFinal(false));
@@ -1078,6 +1085,7 @@ function renderEditorShell(categoryIndex = Number($("#categorySelect")?.value ||
   renderCategoryEditor();
   renderEditorSelects(categoryIndex, clueIndex);
   renderClueEditor();
+  renderFinalEditor();
 }
 
 function renderTeamEditor() {
@@ -1191,6 +1199,41 @@ function bindImageEditorControls(kind) {
   });
 }
 
+function bindFinalImageEditorControls(kind) {
+  const urlInput = $(`#editFinal${kind}Image`);
+  const fileInput = $(`#editFinal${kind}ImageFile`);
+  const clearButton = $(`#clearFinal${kind}Image`);
+  if (!urlInput || !fileInput || !clearButton) return;
+
+  fileInput.addEventListener("change", () => {
+    const file = fileInput.files?.[0];
+    if (!file) return;
+    if (!file.type.startsWith("image/")) {
+      alert("El archivo seleccionado no es una imagen.");
+      fileInput.value = "";
+      return;
+    }
+    if (file.size > MAX_IMAGE_BYTES) {
+      alert("La imagen es muy grande. Usa una imagen menor a 1.2 MB o pega una URL.");
+      fileInput.value = "";
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.addEventListener("load", () => {
+      urlInput.value = reader.result;
+      updateFinalFromEditor();
+    });
+    reader.readAsDataURL(file);
+  });
+
+  clearButton.addEventListener("click", () => {
+    urlInput.value = "";
+    fileInput.value = "";
+    updateFinalFromEditor();
+  });
+}
+
 function bindLogoEditorControls() {
   const urlInput = $("#editLogoImage");
   const fileInput = $("#editLogoImageFile");
@@ -1234,6 +1277,27 @@ function updateLogoFromEditor() {
 
 function renderLogoPreview() {
   renderLogo($("#logoPreview"), game.logoImage);
+}
+
+function renderFinalEditor() {
+  $("#editFinalCategory").value = game.final.category || "";
+  $("#editFinalQuestion").value = game.final.question || "";
+  $("#editFinalQuestionImage").value = game.final.questionImage || "";
+  $("#editFinalQuestionImageFile").value = "";
+  $("#editFinalAnswer").value = game.final.answer || "";
+  $("#editFinalAnswerImage").value = game.final.answerImage || "";
+  $("#editFinalAnswerImageFile").value = "";
+  $("#editFinalExplanation").value = game.final.explanation || "";
+}
+
+function updateFinalFromEditor() {
+  game.final.category = $("#editFinalCategory").value;
+  game.final.question = $("#editFinalQuestion").value;
+  game.final.questionImage = normalizeImageSource($("#editFinalQuestionImage").value);
+  game.final.answer = $("#editFinalAnswer").value;
+  game.final.answerImage = normalizeImageSource($("#editFinalAnswerImage").value);
+  game.final.explanation = $("#editFinalExplanation").value;
+  saveAndRender();
 }
 
 function renderClueEditor() {
@@ -1405,7 +1469,13 @@ function openFinal() {
   $("#finalCategory").textContent = game.final.category;
   renderRichContent($("#finalQuestion"), game.final.question, game.final.questionImage, "Pregunta final sin texto", "Imagen de la pregunta final");
   renderRichContent($("#finalAnswer"), game.final.answer, game.final.answerImage, "Respuesta final sin texto", "Imagen de la respuesta final");
+  renderRichContent(
+    $("#finalExplanation"),
+    game.final.explanation ? `Explicación: ${game.final.explanation}` : "",
+    ""
+  );
   $("#finalAnswer").classList.add("hidden");
+  $("#finalExplanation").classList.add("hidden");
   renderFinalWagers();
   $("#finalModal").classList.remove("hidden");
   playNotes([[262, 0, 0.12], [392, 0.14, 0.12]]);

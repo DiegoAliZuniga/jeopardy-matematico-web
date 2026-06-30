@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Jeopardy Matematico</title>
-    <link rel="stylesheet" href="/styles.css?v=image-center-1">
+    <link rel="stylesheet" href="/styles.css?v=final-editor-1">
     <script>
       window.MathJax = {
         tex: {
@@ -16,7 +16,7 @@
       };
     </script>
     <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-    <script defer src="/app.js?v=image-center-1"></script>
+    <script defer src="/app.js?v=final-editor-1"></script>
   </head>
   <body>
     <svg class="icon-sprite" aria-hidden="true">
@@ -81,7 +81,7 @@
           <button id="instructionsBtn" class="tool-button" title="Instrucciones" type="button"><svg><use href="#i-eye"></use></svg><span>Reglas</span></button>
           <button id="muteBtn" class="tool-button" title="Sonido" type="button"><svg><use href="#i-sound"></use></svg><span>Sonido</span></button>
           <button id="fullscreenBtn" class="tool-button" title="Pantalla completa" type="button"><svg><use href="#i-full"></use></svg><span>Pantalla</span></button>
-          <button id="finalBtn" class="tool-button accent hidden" type="button"><svg><use href="#i-play"></use></svg><span>Final</span></button>
+          <button id="finalBtn" class="tool-button accent" type="button"><svg><use href="#i-play"></use></svg><span>Final</span></button>
           <button id="resultsBtn" class="tool-button success" type="button"><svg><use href="#i-trophy"></use></svg><span>Resultados</span></button>
           <button id="editBtn" class="tool-button primary" type="button"><svg><use href="#i-edit"></use></svg><span>Editar</span></button>
         </nav>
@@ -307,6 +307,39 @@
 
           <section class="editor-column json-column">
             <div class="editor-heading">
+              <h3>Reto final</h3>
+            </div>
+            <label class="field-label">Categoría final
+              <input id="editFinalCategory" type="text" maxlength="80">
+            </label>
+            <label class="field-label">Pregunta final
+              <textarea id="editFinalQuestion" rows="4"></textarea>
+            </label>
+            <div class="image-editor-row">
+              <label class="field-label">Imagen de pregunta final
+                <input id="editFinalQuestionImage" type="url" placeholder="URL o data:image/...">
+              </label>
+              <label class="file-input-label">Subir
+                <input id="editFinalQuestionImageFile" type="file" accept="image/*">
+              </label>
+              <button id="clearFinalQuestionImage" class="mini-button" type="button">Quitar</button>
+            </div>
+            <label class="field-label">Respuesta final
+              <textarea id="editFinalAnswer" rows="3"></textarea>
+            </label>
+            <div class="image-editor-row">
+              <label class="field-label">Imagen de respuesta final
+                <input id="editFinalAnswerImage" type="url" placeholder="URL o data:image/...">
+              </label>
+              <label class="file-input-label">Subir
+                <input id="editFinalAnswerImageFile" type="file" accept="image/*">
+              </label>
+              <button id="clearFinalAnswerImage" class="mini-button" type="button">Quitar</button>
+            </div>
+            <label class="field-label">Explicación final
+              <textarea id="editFinalExplanation" rows="3"></textarea>
+            </label>
+            <div class="editor-heading">
               <h3>JSON</h3>
               <button id="downloadJsonBtn" class="mini-button" title="Descargar JSON" type="button"><svg><use href="#i-download"></use></svg></button>
             </div>
@@ -333,6 +366,7 @@
         </header>
         <div id="finalQuestion" class="math-box question-box"></div>
         <div id="finalAnswer" class="math-box answer-box hidden"></div>
+        <div id="finalExplanation" class="math-box explanation-box hidden"></div>
         <div id="finalWagers" class="final-wagers"></div>
         <div class="modal-actions">
           <button id="showFinalAnswerBtn" class="tool-button accent" type="button"><svg><use href="#i-eye"></use></svg><span>Respuesta</span></button>

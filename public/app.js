@@ -4,7 +4,7 @@ const MAX_IMAGE_BYTES = 1_200_000;
 const PUBLIC_BUZZER_URL = "https://jeopardy-matematico-web.onrender.com/buzzer";
 
 const defaultGame = window.DEFAULT_GAME || {
-  title: "Jeopardy Matemático",
+  title: "La Gran Apuesta",
   logoImage: "",
   final: {
     category: "Reto final",
@@ -112,7 +112,7 @@ function bindUi() {
   $("#timerBtn").addEventListener("click", toggleTimer);
 
   $("#editTitle").addEventListener("input", (event) => {
-    game.title = event.target.value.trim() || "Jeopardy Matemático";
+    game.title = event.target.value.trim() || "La Gran Apuesta";
     saveAndRender();
     sendHostState();
   });
@@ -155,7 +155,9 @@ function loadGame() {
   try {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (!stored) return clone(defaultGame);
-    return normalizeGame(JSON.parse(stored));
+    const normalized = normalizeGame(JSON.parse(stored));
+    if (normalized.title === "Jeopardy Matemático") normalized.title = "La Gran Apuesta";
+    return normalized;
   } catch {
     return clone(defaultGame);
   }

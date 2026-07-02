@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Jeopardy Matematico</title>
-    <link rel="stylesheet" href="/styles.css?v=final-editor-1">
+    <title>Jeopardy Matemático</title>
+    <link rel="stylesheet" href="/styles.css?v=orthography-default-1">
     <script>
       window.MathJax = {
         tex: {
@@ -16,7 +16,8 @@
       };
     </script>
     <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-    <script defer src="/app.js?v=final-editor-2"></script>
+    <script defer src="/default-game.js?v=geometry-1"></script>
+    <script defer src="/app.js?v=orthography-default-1"></script>
   </head>
   <body>
     <svg class="icon-sprite" aria-hidden="true">
@@ -44,16 +45,16 @@
       </div>
       <div class="start-content">
         <div id="startLogoMark" class="brand-mark large">JQ</div>
-        <p class="show-label">Concurso academico</p>
-        <h1 id="startTitle">Jeopardy Matematico</h1>
+        <p class="show-label">Concurso académico</p>
+        <h1 id="startTitle">Jeopardy Matemático</h1>
         <div class="start-actions">
           <button id="startGameBtn" class="show-button primary" type="button"><svg><use href="#i-play"></use></svg><span>Iniciar partida</span></button>
           <button id="showInstructionsBtn" class="show-button" type="button"><svg><use href="#i-eye"></use></svg><span>Instrucciones</span></button>
           <button id="startSetupBtn" class="show-button" type="button"><svg><use href="#i-edit"></use></svg><span>Configurar</span></button>
         </div>
         <div class="start-stats">
-          <span id="startCategoryCount">6 categorias</span>
-          <span>Valores 100-500</span>
+          <span id="startCategoryCount">6 categorías</span>
+          <span id="startValueRange">Valores: 200-1000</span>
           <span id="startTeamCount">3 equipos</span>
         </div>
       </div>
@@ -67,7 +68,7 @@
         <div class="brand-block">
           <div id="gameLogoMark" class="brand-mark">JQ</div>
           <div>
-            <h1 id="gameTitle">Jeopardy Matematico</h1>
+            <h1 id="gameTitle">Jeopardy Matemático</h1>
           </div>
         </div>
         <div class="room-strip">
@@ -102,7 +103,7 @@
             <button id="buzzerQrButton" class="buzzer-qr-card" type="button" aria-label="Ampliar QR de buzzers">
               <img id="buzzerQrImage" src="/buzzer-qr.svg?v=2" alt="QR para abrir los buzzers en el celular">
               <span id="buzzerUrl" class="buzzer-url">https://jeopardy-matematico-web.onrender.com/buzzer</span>
-              <span class="qr-hint">Click para ampliar</span>
+              <span class="qr-hint">Haz clic para ampliar</span>
             </button>
             <div class="buzzer-switch">
               <button id="openBuzzers" class="small-action success" type="button">Abrir</button>
@@ -126,8 +127,8 @@
             </header>
             <div class="control-grid">
               <button id="resetBoardBtn" class="small-action" type="button">Reiniciar tablero</button>
-              <button id="resetScoresBtn" class="small-action" type="button">Puntajes a 0</button>
-              <button id="showResultsPanelBtn" class="small-action success wide-action" type="button">Premiacion</button>
+              <button id="resetScoresBtn" class="small-action" type="button">Restablecer puntajes</button>
+              <button id="showResultsPanelBtn" class="small-action success wide-action" type="button">Premiación</button>
             </div>
           </section>
         </aside>
@@ -137,9 +138,9 @@
     <section id="resultsScreen" class="result-screen hidden">
       <div id="confettiLayer" class="confetti-layer" aria-hidden="true"></div>
       <div class="result-panel">
-        <p class="show-label">Premiacion</p>
+        <p class="show-label">Premiación</p>
         <h2 id="winnerTitle">Equipo ganador</h2>
-        <p id="winnerSubtitle" class="winner-subtitle">Puntuacion final</p>
+        <p id="winnerSubtitle" class="winner-subtitle">Puntuación final</p>
         <div class="trophy-badge"><svg><use href="#i-trophy"></use></svg></div>
         <div id="podium" class="podium"></div>
         <div class="result-actions">
@@ -155,7 +156,7 @@
         <header class="modal-header">
           <div>
             <p class="modal-kicker">Buzzers remotos</p>
-            <h2 id="qrTitle">Escanear QR</h2>
+            <h2 id="qrTitle">Escanear el código QR</h2>
           </div>
           <button class="icon-button" data-close="qr" title="Cerrar" type="button"><svg><use href="#i-x"></use></svg></button>
         </header>
@@ -197,7 +198,7 @@
           <button id="showAnswerBtn" class="tool-button accent" type="button"><svg><use href="#i-eye"></use></svg><span>Respuesta</span></button>
           <button id="wrongBtn" class="tool-button danger" type="button"><svg><use href="#i-x"></use></svg><span>Incorrecta</span></button>
           <button id="correctBtn" class="tool-button success" type="button"><svg><use href="#i-check"></use></svg><span>Correcta</span></button>
-          <button id="markAnsweredBtn" class="tool-button" type="button"><span>Marcar usada</span></button>
+          <button id="markAnsweredBtn" class="tool-button" type="button"><span>Marcar como usada</span></button>
         </div>
       </section>
     </div>
@@ -207,7 +208,7 @@
       <section class="modal-panel editor-panel">
         <header class="modal-header">
           <div>
-            <p class="modal-kicker">Configuracion</p>
+            <p class="modal-kicker">Configuración</p>
             <h2 id="editorTitle">Editor del juego</h2>
           </div>
           <div class="modal-header-actions">
@@ -217,7 +218,7 @@
         </header>
         <div class="editor-grid">
           <section class="editor-column">
-            <label class="field-label">Titulo
+            <label class="field-label">Título
               <input id="editTitle" type="text" maxlength="80">
             </label>
             <div class="image-editor-row logo-editor-row">
@@ -236,7 +237,7 @@
             </div>
             <div id="teamEditor" class="stack-list"></div>
             <div class="editor-heading">
-              <h3>Categorias</h3>
+              <h3>Categorías</h3>
               <button id="addCategoryBtn" class="mini-button" type="button"><svg><use href="#i-plus"></use></svg></button>
             </div>
             <div id="categoryEditor" class="stack-list"></div>
@@ -244,7 +245,7 @@
 
           <section class="editor-column editor-main">
             <div class="field-row">
-              <label class="field-label">Categoria
+              <label class="field-label">Categoría
                 <select id="categorySelect"></select>
               </label>
               <label class="field-label">Casilla
@@ -258,7 +259,7 @@
               <textarea id="editQuestion" rows="5"></textarea>
             </label>
             <div class="image-editor-row">
-              <label class="field-label">Imagen de pregunta
+              <label class="field-label">Imagen de la pregunta
                 <input id="editQuestionImage" type="url" placeholder="URL o data:image/...">
               </label>
               <label class="file-input-label">Subir
@@ -270,7 +271,7 @@
               <textarea id="editAnswer" rows="3"></textarea>
             </label>
             <div class="image-editor-row">
-              <label class="field-label">Imagen de respuesta
+              <label class="field-label">Imagen de la respuesta
                 <input id="editAnswerImage" type="url" placeholder="URL o data:image/...">
               </label>
               <label class="file-input-label">Subir
@@ -282,7 +283,7 @@
               <textarea id="editHint" rows="2"></textarea>
             </label>
             <div class="image-editor-row">
-              <label class="field-label">Imagen de pista
+              <label class="field-label">Imagen de la pista
                 <input id="editHintImage" type="url" placeholder="URL o data:image/...">
               </label>
               <label class="file-input-label">Subir
@@ -294,7 +295,7 @@
               <textarea id="editExplanation" rows="3"></textarea>
             </label>
             <div class="image-editor-row">
-              <label class="field-label">Imagen de retroalimentación
+              <label class="field-label">Imagen de la retroalimentación
                 <input id="editExplanationImage" type="url" placeholder="URL o data:image/...">
               </label>
               <label class="file-input-label">Subir
@@ -316,7 +317,7 @@
               <textarea id="editFinalQuestion" rows="4"></textarea>
             </label>
             <div class="image-editor-row">
-              <label class="field-label">Imagen de pregunta final
+              <label class="field-label">Imagen de la pregunta final
                 <input id="editFinalQuestionImage" type="url" placeholder="URL o data:image/...">
               </label>
               <label class="file-input-label">Subir
@@ -328,7 +329,7 @@
               <textarea id="editFinalAnswer" rows="3"></textarea>
             </label>
             <div class="image-editor-row">
-              <label class="field-label">Imagen de respuesta final
+              <label class="field-label">Imagen de la respuesta final
                 <input id="editFinalAnswerImage" type="url" placeholder="URL o data:image/...">
               </label>
               <label class="file-input-label">Subir
@@ -340,7 +341,7 @@
               <textarea id="editFinalExplanation" rows="3"></textarea>
             </label>
             <div class="image-editor-row">
-              <label class="field-label">Imagen de explicación final
+              <label class="field-label">Imagen de la explicación final
                 <input id="editFinalExplanationImage" type="url" placeholder="URL o data:image/...">
               </label>
               <label class="file-input-label">Subir
@@ -369,7 +370,7 @@
         <header class="modal-header">
           <div>
             <p id="finalCategory" class="modal-kicker">Final</p>
-            <h2 id="finalTitle">Jeopardy final</h2>
+            <h2 id="finalTitle">Reto final</h2>
           </div>
           <button class="icon-button" data-close="final" title="Cerrar" type="button"><svg><use href="#i-x"></use></svg></button>
         </header>
@@ -379,8 +380,8 @@
         <div id="finalWagers" class="final-wagers"></div>
         <div class="modal-actions">
           <button id="showFinalAnswerBtn" class="tool-button accent" type="button"><svg><use href="#i-eye"></use></svg><span>Respuesta</span></button>
-          <button id="applyFinalCorrect" class="tool-button success" type="button"><svg><use href="#i-check"></use></svg><span>Aplicar +</span></button>
-          <button id="applyFinalWrong" class="tool-button danger" type="button"><svg><use href="#i-x"></use></svg><span>Aplicar -</span></button>
+          <button id="applyFinalCorrect" class="tool-button success" type="button"><svg><use href="#i-check"></use></svg><span>Sumar apuesta</span></button>
+          <button id="applyFinalWrong" class="tool-button danger" type="button"><svg><use href="#i-x"></use></svg><span>Restar apuesta</span></button>
         </div>
       </section>
     </div>
@@ -391,14 +392,14 @@
         <header class="modal-header">
           <div>
             <p class="modal-kicker">Reglas del concurso</p>
-            <h2 id="instructionsTitle">Como jugar</h2>
+            <h2 id="instructionsTitle">Cómo jugar</h2>
           </div>
           <button class="icon-button" data-close="instructions" title="Cerrar" type="button"><svg><use href="#i-x"></use></svg></button>
         </header>
         <div class="instruction-grid">
           <article>
-            <h3>1. Elegir casilla</h3>
-            <p>El anfitrion selecciona una categoria y un valor. Las casillas de mayor valor representan mayor dificultad.</p>
+            <h3>1. Elegir una casilla</h3>
+            <p>El anfitrión selecciona una categoría y un valor. Las casillas de mayor valor representan una dificultad mayor.</p>
           </article>
           <article>
             <h3>2. Responder</h3>
@@ -410,7 +411,7 @@
           </article>
           <article>
             <h3>4. Ganar</h3>
-            <p>Al final gana el equipo con mayor dinero ficticio. La ronda final permite apostar puntos antes de una ultima pregunta.</p>
+            <p>Al final, gana el equipo con más dinero ficticio. La ronda final permite apostar puntos antes de una última pregunta.</p>
           </article>
         </div>
       </section>

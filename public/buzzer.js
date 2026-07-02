@@ -58,7 +58,7 @@ function connect() {
         $("#buzzButton").className = "buzz-button sent";
         navigator.vibrate?.([80, 40, 80]);
       } else {
-        $("#buzzMessage").textContent = `${message.buzz?.name || "Otro jugador"} entro primero`;
+        $("#buzzMessage").textContent = `${message.buzz?.name || "Otro jugador"} entró primero`;
       }
     }
     if (message.type === "buzzes") {
@@ -87,12 +87,12 @@ function connect() {
   });
 
   socket.addEventListener("close", () => {
-    setStatus("off", "Sin conexion");
+    setStatus("off", "Sin conexión");
     $("#buzzButton").disabled = true;
     reconnectTimer = setTimeout(connect, 1200);
   });
 
-  socket.addEventListener("error", () => setStatus("off", "Sin conexion"));
+  socket.addEventListener("error", () => setStatus("off", "Sin conexión"));
 }
 
 function registerPlayer(event) {
@@ -176,7 +176,7 @@ function renderBuzzState(activeBuzzes) {
   } else if (ownBuzz) {
     $("#buzzMessage").textContent = `Entraste #${ownBuzz.rank}`;
   } else if (activeBuzzes.length) {
-    $("#buzzMessage").textContent = `${activeBuzzes[0].name} entro primero`;
+    $("#buzzMessage").textContent = `${activeBuzzes[0].name} entró primero`;
   } else {
     $("#buzzMessage").textContent = buzzerOpen ? "Listo" : "Buzzer cerrado";
   }

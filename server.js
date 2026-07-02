@@ -23,7 +23,7 @@ const clients = new Map();
 const players = new Map();
 let buzzes = [];
 let buzzerOpen = true;
-let hostState = { title: "Jeopardy Matematico", teams: [] };
+let hostState = { title: "Jeopardy Matemático", teams: [] };
 
 const server = http.createServer((req, res) => {
   const url = new URL(req.url, `http://${req.headers.host || "localhost"}`);
@@ -111,9 +111,9 @@ server.on("upgrade", (req, socket) => {
 });
 
 server.listen(PORT, HOST, () => {
-  console.log(`Jeopardy Matematico listo en http://localhost:${PORT}`);
+  console.log(`Jeopardy Matemático listo en http://localhost:${PORT}`);
   for (const url of getLanUrls()) {
-    console.log(`Buzzer movil: ${url}/buzzer`);
+    console.log(`Buzzer móvil: ${url}/buzzer`);
   }
 });
 
@@ -234,7 +234,7 @@ function handleMessage(client, raw) {
   try {
     message = JSON.parse(raw);
   } catch {
-    send(client, { type: "error", message: "JSON invalido" });
+    send(client, { type: "error", message: "JSON inválido" });
     return;
   }
 
@@ -253,7 +253,7 @@ function handleMessage(client, raw) {
 
   if (message.type === "host-state" && client.role === "host") {
     hostState = {
-      title: cleanText(message.title || "Jeopardy Matematico", 80),
+      title: cleanText(message.title || "Jeopardy Matemático", 80),
       teams: Array.isArray(message.teams)
         ? message.teams.map((team) => ({
             id: cleanText(team.id || "", 64),

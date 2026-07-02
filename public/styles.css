@@ -1021,6 +1021,10 @@ h1 {
   max-height: 24vh;
 }
 
+.explanation-box .content-image {
+  max-height: 27.6vh;
+}
+
 .math-box mjx-container {
   color: inherit;
   display: inline-block !important;

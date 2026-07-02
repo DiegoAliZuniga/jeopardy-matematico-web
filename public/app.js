@@ -1,16 +1,16 @@
-const STORAGE_KEY = "jeopardy-matematico-state-v1";
+const STORAGE_KEY = "jeopardy-matematico-state-v2";
 const TIMER_SECONDS = 30;
 const MAX_IMAGE_BYTES = 1_200_000;
 const PUBLIC_BUZZER_URL = "https://jeopardy-matematico-web.onrender.com/buzzer";
 
-const defaultGame = {
-  title: "Jeopardy Matematico",
+const defaultGame = window.DEFAULT_GAME || {
+  title: "Jeopardy Matemático",
   logoImage: "",
   final: {
     category: "Reto final",
-    question: "Encuentra el valor de $x$ si $$2x+5=17.$$",
-    answer: "$x=6$",
-    explanation: "Restamos 5 en ambos lados para obtener $2x=12$ y luego dividimos entre 2.",
+    question: "",
+    answer: "",
+    explanation: "",
     questionImage: "",
     answerImage: "",
     explanationImage: ""
@@ -20,68 +20,10 @@ const defaultGame = {
     { id: "team-2", name: "Equipo Verde", score: 0, color: "#2ea66f" },
     { id: "team-3", name: "Equipo Coral", score: 0, color: "#ef8a62" }
   ],
-  categories: [
-    {
-      title: "Numeros naturales",
-      clues: [
-        clue(100, "Calcula $24+18$.", "$42$", "Suma decenas y unidades.", "$24+18=(20+10)+(4+8)=30+12=42$."),
-        clue(200, "Escribe el sucesor de $999$.", "$1000$", "Va justo despues.", "El sucesor se obtiene sumando $1$: $999+1=1000$."),
-        clue(300, "Calcula $12\\times 8$.", "$96$", "Puedes usar $12\\times(10-2)$.", "$12\\times8=12\\times(10-2)=120-24=96$."),
-        clue(400, "Cuantos divisores tiene $12$?", "$6$: $1,2,3,4,6,12$.", "Haz una lista ordenada.", "Los divisores son los numeros que dividen a $12$ sin residuo: $1,2,3,4,6,12$."),
-        clue(500, "El minimo comun multiplo de $8$ y $12$ es...", "$24$", "Busca el primer multiplo compartido.", "Multiples de $8$: $8,16,24$. Multiples de $12$: $12,24$. El primero comun es $24$.")
-      ]
-    },
-    {
-      title: "Numeros enteros",
-      clues: [
-        clue(100, "Calcula $-7+12$.", "$5$", "Avanza 12 desde -7.", "Desde $-7$, avanzar $12$ unidades llega a $5$."),
-        clue(200, "Calcula $-4\\times 6$.", "$-24$", "Signos distintos dan negativo.", "El producto de signos distintos es negativo y $4\\times6=24$."),
-        clue(300, "Ordena de menor a mayor: $-2, 5, -8, 0$.", "$-8, -2, 0, 5$", "Mas a la izquierda en la recta numerica es menor.", "En la recta numerica, $-8$ esta mas a la izquierda que $-2$, luego viene $0$ y despues $5$."),
-        clue(400, "Calcula $|-15|+|-3|$.", "$18$", "El valor absoluto es distancia a cero.", "$|-15|=15$ y $|-3|=3$, por eso $15+3=18$."),
-        clue(500, "Resuelve $x-9=-14$.", "$x=-5$", "Suma 9 a ambos lados.", "Al sumar $9$ en ambos lados queda $x=-14+9=-5$.")
-      ]
-    },
-    {
-      title: "Fracciones",
-      clues: [
-        clue(100, "Simplifica $\\frac{6}{8}$.", "$\\frac{3}{4}$", "Divide numerador y denominador por 2.", "$\\frac{6}{8}=\\frac{6\\div2}{8\\div2}=\\frac{3}{4}$."),
-        clue(200, "Calcula $\\frac{1}{3}+\\frac{1}{6}$.", "$\\frac{1}{2}$", "Usa denominador comun 6.", "$\\frac{1}{3}=\\frac{2}{6}$, entonces $\\frac{2}{6}+\\frac{1}{6}=\\frac{3}{6}=\\frac{1}{2}$."),
-        clue(300, "Calcula $\\frac{5}{7}-\\frac{2}{7}$.", "$\\frac{3}{7}$", "Mismo denominador.", "Con denominadores iguales, se restan numeradores: $\\frac{5-2}{7}=\\frac{3}{7}$."),
-        clue(400, "Multiplica $\\frac{3}{5}\\cdot\\frac{10}{9}$.", "$\\frac{2}{3}$", "Puedes simplificar cruzado.", "$\\frac{3\\cdot10}{5\\cdot9}=\\frac{30}{45}=\\frac{2}{3}$."),
-        clue(500, "Convierte $1.25$ a fraccion simplificada.", "$\\frac{5}{4}$", "$1.25=\\frac{125}{100}$.", "$1.25=\\frac{125}{100}$ y al dividir entre $25$ queda $\\frac{5}{4}$.")
-      ]
-    },
-    {
-      title: "Algebra",
-      clues: [
-        clue(100, "Si $x=4$, calcula $3x+2$.", "$14$", "Sustituye $x$ por 4.", "$3(4)+2=12+2=14$."),
-        clue(200, "Resuelve $x+7=19$.", "$x=12$", "Resta 7.", "Al restar $7$ en ambos lados queda $x=19-7=12$."),
-        clue(300, "Factoriza $x^2+5x$.", "$x(x+5)$", "Busca factor comun.", "Ambos terminos tienen factor $x$, por eso $x^2+5x=x(x+5)$."),
-        clue(400, "Resuelve $3x=\\frac{27}{2}$.", "$x=\\frac{9}{2}$", "Divide por 3.", "$x=\\frac{27}{2}\\div3=\\frac{27}{2}\\cdot\\frac{1}{3}=\\frac{9}{2}$."),
-        clue(500, "Expande $(x+3)^2$.", "$x^2+6x+9$", "Cuadrado de binomio.", "$(x+3)^2=(x+3)(x+3)=x^2+3x+3x+9=x^2+6x+9$.")
-      ]
-    },
-    {
-      title: "Areas",
-      clues: [
-        clue(100, "Area de un rectangulo con base $8$ y altura $5$.", "$40$", "$A=bh$.", "$A=8\\cdot5=40$ unidades cuadradas."),
-        clue(200, "Formula del area de un triangulo.", "$A=\\frac{bh}{2}$", "Es la mitad de un rectangulo.", "Un triangulo con la misma base y altura ocupa la mitad del rectangulo: $A=\\frac{bh}{2}$."),
-        clue(300, "Area de un circulo de radio $r$.", "$A=\\pi r^2$", "Depende del radio al cuadrado.", "La formula del area circular usa el radio al cuadrado: $A=\\pi r^2$."),
-        clue(400, "Area de un trapecio con bases $B,b$ y altura $h$.", "$A=\\frac{(B+b)h}{2}$", "Promedio de bases por altura.", "Se promedian las bases y se multiplica por la altura: $A=\\frac{(B+b)h}{2}$."),
-        clue(500, "Un cuadrado tiene area $81$. Cual es su lado?", "$9$", "El lado es la raiz cuadrada del area.", "En un cuadrado $A=l^2$. Si $l^2=81$, entonces $l=\\sqrt{81}=9$.")
-      ]
-    },
-    {
-      title: "Sorpresa",
-      clues: [
-        clue(100, "Que numero primo es par?", "$2$", "Solo uno.", "$2$ es primo porque solo tiene divisores $1$ y $2$, y es el unico primo par."),
-        clue(200, "Calcula $2^5$.", "$32$", "$2\\cdot2\\cdot2\\cdot2\\cdot2$.", "$2^5$ significa multiplicar cinco factores de $2$: $2\\cdot2\\cdot2\\cdot2\\cdot2=32$."),
-        clue(300, "Si una razon es $3:4$, el total de partes es...", "$7$", "Suma las partes.", "La razon tiene $3$ partes de un tipo y $4$ de otro: $3+4=7$."),
-        clue(400, "La media de $4, 8, 10, 18$ es...", "$10$", "Suma y divide entre 4.", "La media es $\\frac{4+8+10+18}{4}=\\frac{40}{4}=10$."),
-        clue(500, "Resuelve $\\sqrt{144}+3^2$.", "$21$", "$12+9$.", "$\\sqrt{144}=12$ y $3^2=9$, entonces $12+9=21$.")
-      ]
-    }
-  ]
+  categories: [{
+    title: "General",
+    clues: [100, 200, 300, 400, 500].map((value) => clue(value, "", ""))
+  }]
 };
 
 let game = loadGame();
@@ -170,7 +112,7 @@ function bindUi() {
   $("#timerBtn").addEventListener("click", toggleTimer);
 
   $("#editTitle").addEventListener("input", (event) => {
-    game.title = event.target.value.trim() || "Jeopardy Matematico";
+    game.title = event.target.value.trim() || "Jeopardy Matemático";
     saveAndRender();
     sendHostState();
   });
@@ -231,7 +173,7 @@ function normalizeGame(raw) {
   }));
   safe.categories = Array.isArray(raw.categories) && raw.categories.length ? raw.categories : clone(defaultGame.categories);
   safe.categories = safe.categories.map((category, categoryIndex) => ({
-    title: category.title || `Categoria ${categoryIndex + 1}`,
+    title: category.title || `Categoría ${categoryIndex + 1}`,
     clues: ensureClues(category.clues)
   }));
   safe.final = {
@@ -375,8 +317,13 @@ function renderAll() {
 function renderGameSurface() {
   $("#gameTitle").textContent = game.title;
   $("#startTitle").textContent = game.title;
-  $("#startCategoryCount").textContent = `${game.categories.length} categorias`;
-  $("#startTeamCount").textContent = `${game.teams.length} equipos`;
+  $("#startCategoryCount").textContent = formatCount(game.categories.length, "categoría", "categorías");
+  $("#startTeamCount").textContent = formatCount(game.teams.length, "equipo", "equipos");
+  const clueValues = game.categories.flatMap((category) => category.clues.map((clue) => Number(clue.value) || 0));
+  const positiveValues = clueValues.filter((value) => value > 0);
+  $("#startValueRange").textContent = positiveValues.length
+    ? `Valores: ${Math.min(...positiveValues)}-${Math.max(...positiveValues)}`
+    : "Valores: sin definir";
   document.title = game.title;
   renderLogo($("#gameLogoMark"), game.logoImage);
   renderLogo($("#startLogoMark"), game.logoImage);
@@ -504,7 +451,7 @@ function renderTeamChooser() {
 }
 
 function renderBuzzes() {
-  $("#playerCount").textContent = `${players.length} celulares`;
+  $("#playerCount").textContent = formatCount(players.length, "celular", "celulares");
   $("#buzzList").innerHTML = "";
   if (!buzzes.length) {
     const empty = document.createElement("li");
@@ -573,17 +520,17 @@ function showFeedback(isCorrect, value = 0, teamName = "") {
 
   if (isCorrect === true) {
     box.classList.add("correct");
-    title.textContent = "Correcto";
-    feedback.textContent = `${teamName} gana ${formatScore(value)}. Excelente respuesta.`;
+    title.textContent = "¡Correcto!";
+    feedback.textContent = `${teamName} gana ${formatScore(value)}. ¡Excelente respuesta!`;
   } else if (isCorrect === false) {
     box.classList.add("wrong");
-    title.textContent = "No es correcto";
+    title.textContent = "Respuesta incorrecta";
     feedback.textContent = `${teamName} pierde ${formatScore(value)}. Revisemos la respuesta correcta.`;
   } else {
     title.textContent = "Retroalimentación";
     feedback.textContent = currentClue.clue.explanationImage && !currentClue.clue.explanation
       ? ""
-      : "Compara la respuesta del equipo con la solucion antes de asignar puntos.";
+      : "Compara la respuesta del equipo con la solución antes de asignar puntos.";
   }
 
   const explanationText = currentClue.clue.explanation
@@ -644,14 +591,18 @@ function formatScore(score) {
   return `$${Number(score || 0).toLocaleString("es-CR")}`;
 }
 
+function formatCount(count, singular, plural) {
+  return `${count} ${count === 1 ? singular : plural}`;
+}
+
 function resetBoard() {
-  if (!confirm("Reiniciar las casillas usadas?")) return;
+  if (!confirm("¿Restablecer las casillas utilizadas?")) return;
   game.categories.forEach((category) => category.clues.forEach((item) => { item.answered = false; }));
   saveAndRender();
 }
 
 function resetScores() {
-  if (!confirm("Poner todos los puntajes en 0?")) return;
+  if (!confirm("¿Restablecer todos los puntajes a 0?")) return;
   game.teams.forEach((team) => { team.score = 0; });
   saveAndRender();
 }
@@ -673,7 +624,7 @@ function addTeam() {
 
 function addCategory() {
   game.categories.push({
-    title: `Categoria ${game.categories.length + 1}`,
+    title: `Categoría ${game.categories.length + 1}`,
     clues: ensureClues([])
   });
   saveAndRender();
@@ -768,12 +719,12 @@ function connectSocket() {
   });
 
   socket.addEventListener("close", () => {
-    setStatus("off", "Sin conexion");
+    setStatus("off", "Sin conexión");
     reconnectTimer = setTimeout(connectSocket, 1200);
   });
 
   socket.addEventListener("error", () => {
-    setStatus("off", "Sin conexion");
+    setStatus("off", "Sin conexión");
   });
 }
 
@@ -1134,13 +1085,13 @@ function renderCategoryEditor() {
     const row = document.createElement("div");
     row.className = "stack-row category-stack-row";
     row.innerHTML = `
-      <input type="text" value="" maxlength="40" aria-label="Categoria">
+      <input type="text" value="" maxlength="40" aria-label="Categoría">
       <button class="mini-button" type="button" title="Eliminar"><svg><use href="#i-trash"></use></svg></button>
     `;
     const input = row.querySelector("input");
     input.value = category.title;
     input.addEventListener("input", () => {
-      category.title = input.value || `Categoria ${index + 1}`;
+      category.title = input.value || `Categoría ${index + 1}`;
       saveAndRender();
       renderEditorSelects(index, Number($("#clueSelect").value || 0));
     });
@@ -1397,7 +1348,7 @@ function importJson() {
     saveAndRender();
     renderEditorShell();
   } catch (error) {
-    alert(`JSON invalido: ${error.message}`);
+    alert(`JSON inválido: ${error.message}`);
   }
 }
 
@@ -1413,7 +1364,7 @@ function downloadJson() {
 }
 
 function resetTemplate() {
-  if (!confirm("Restaurar la plantilla inicial?")) return;
+  if (!confirm("¿Restaurar la plantilla inicial?")) return;
   game = clone(defaultGame);
   saveAndRender();
   renderEditorShell();
@@ -1431,7 +1382,7 @@ function openResults() {
     : `${winners[0]?.name || "Sin equipos"} gana`;
   $("#winnerSubtitle").textContent = winners.length > 1
     ? `${winners.map((team) => team.name).join(" y ")} terminan con ${formatScore(topScore)}`
-    : `Reconocimiento academico con ${formatScore(topScore)}`;
+    : `Puntuación final: ${formatScore(topScore)}`;
 
   const podium = $("#podium");
   podium.innerHTML = "";

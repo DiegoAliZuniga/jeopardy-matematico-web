@@ -1,4 +1,4 @@
-const STORAGE_KEY = "jeopardy-matematico-state-v2";
+const STORAGE_KEY = "jeopardy-matematico-state-v3";
 const TIMER_SECONDS = 30;
 const MAX_IMAGE_BYTES = 1_200_000;
 const PUBLIC_BUZZER_URL = "https://jeopardy-matematico-web.onrender.com/buzzer";

@@ -847,6 +847,7 @@ function renderRichContent(element, text, imageSource = "", fallbackText = "", i
   const sourceText = String(text || "").trim() || (!imageSource ? fallbackText : "");
   element.textContent = "";
   element.dataset.mathSource = "";
+  element.classList.remove("wide-image", "tall-image");
 
   if (sourceText) {
     const textNode = document.createElement("div");
@@ -866,6 +867,7 @@ function renderRichContent(element, text, imageSource = "", fallbackText = "", i
     image.alt = imageAlt;
     image.loading = "lazy";
     image.decoding = "async";
+    markImageShape(element, image);
     element.append(image);
   }
 
@@ -873,6 +875,23 @@ function renderRichContent(element, text, imageSource = "", fallbackText = "", i
     renderMath(element);
   } else {
     markMathDensity(element, "");
+  }
+}
+
+function markImageShape(container, image) {
+  const updateShape = () => {
+    const width = image.naturalWidth || 0;
+    const height = image.naturalHeight || 0;
+    if (!width || !height) return;
+    const ratio = width / height;
+    container.classList.toggle("wide-image", ratio >= 3.2);
+    container.classList.toggle("tall-image", ratio <= 0.7);
+  };
+
+  if (image.complete) {
+    updateShape();
+  } else {
+    image.addEventListener("load", updateShape, { once: true });
   }
 }
 

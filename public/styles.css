@@ -989,6 +989,7 @@ h1 {
   background: var(--white);
   border: 2px solid var(--line);
   border-radius: var(--radius);
+  box-sizing: border-box;
   display: block;
   height: auto;
   max-height: 34vh;
@@ -1009,6 +1010,10 @@ h1 {
   margin: auto;
 }
 
+.math-box.image-only.wide-image .content-image {
+  width: 100%;
+}
+
 .question-box .content-image {
   margin-left: auto;
   margin-right: auto;
@@ -1023,6 +1028,11 @@ h1 {
 
 .explanation-box .content-image {
   max-height: 27.6vh;
+}
+
+.explanation-box.image-only .content-image {
+  max-height: min(46vh, 520px);
+  max-width: min(100%, 720px);
 }
 
 .math-box mjx-container {

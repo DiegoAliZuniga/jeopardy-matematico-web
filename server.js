@@ -23,7 +23,7 @@ const clients = new Map();
 const players = new Map();
 let buzzes = [];
 let buzzerOpen = true;
-let hostState = { title: "La Gran Apuesta", teams: [] };
+let hostState = { title: "Jeopardy Matemático", teams: [] };
 
 const server = http.createServer((req, res) => {
   const url = new URL(req.url, `http://${req.headers.host || "localhost"}`);
@@ -111,7 +111,7 @@ server.on("upgrade", (req, socket) => {
 });
 
 server.listen(PORT, HOST, () => {
-  console.log(`La Gran Apuesta está lista en http://localhost:${PORT}`);
+  console.log(`Jeopardy Matemático está listo en http://localhost:${PORT}`);
   for (const url of getLanUrls()) {
     console.log(`Buzzer móvil: ${url}/buzzer`);
   }
@@ -253,7 +253,7 @@ function handleMessage(client, raw) {
 
   if (message.type === "host-state" && client.role === "host") {
     hostState = {
-      title: cleanText(message.title || "La Gran Apuesta", 80),
+      title: cleanText(message.title || "Jeopardy Matemático", 80),
       teams: Array.isArray(message.teams)
         ? message.teams.map((team) => ({
             id: cleanText(team.id || "", 64),

@@ -1,0 +1,425 @@
+{
+  "title": "Jeopardy Matematico",
+  "logoImage": "",
+  "final": {
+    "category": "Reto final",
+    "question": "Encuentra el valor de $x$ si $$2x+5=17.$$",
+    "answer": "$x=6$",
+    "explanation": "Restamos 5 en ambos lados para obtener $2x=12$ y luego dividimos entre 2.",
+    "questionImage": "",
+    "answerImage": "",
+    "explanationImage": ""
+  },
+  "teams": [
+    {
+      "id": "team-1",
+      "name": "Equipo Azul",
+      "score": 0,
+      "color": "#1f88b5"
+    },
+    {
+      "id": "team-2",
+      "name": "Equipo Verde",
+      "score": 0,
+      "color": "#2ea66f"
+    },
+    {
+      "id": "team-3",
+      "name": "Equipo Coral",
+      "score": 0,
+      "color": "#ef8a62"
+    }
+  ],
+  "categories": [
+    {
+      "title": "Numeros naturales",
+      "clues": [
+        {
+          "value": 100,
+          "question": "Calcula $24+18$.",
+          "answer": "$42$",
+          "hint": "Suma decenas y unidades.",
+          "explanation": "$24+18=(20+10)+(4+8)=30+12=42$.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        },
+        {
+          "value": 200,
+          "question": "Escribe el sucesor de $999$.",
+          "answer": "$1000$",
+          "hint": "Va justo despues.",
+          "explanation": "El sucesor se obtiene sumando $1$: $999+1=1000$.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        },
+        {
+          "value": 300,
+          "question": "Calcula $12\\times 8$.",
+          "answer": "$96$",
+          "hint": "Puedes usar $12\\times(10-2)$.",
+          "explanation": "$12\\times8=12\\times(10-2)=120-24=96$.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        },
+        {
+          "value": 400,
+          "question": "Cuantos divisores tiene $12$?",
+          "answer": "$6$: $1,2,3,4,6,12$.",
+          "hint": "Haz una lista ordenada.",
+          "explanation": "Los divisores son los numeros que dividen a $12$ sin residuo: $1,2,3,4,6,12$.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        },
+        {
+          "value": 500,
+          "question": "El minimo comun multiplo de $8$ y $12$ es...",
+          "answer": "$24$",
+          "hint": "Busca el primer multiplo compartido.",
+          "explanation": "Multiples de $8$: $8,16,24$. Multiples de $12$: $12,24$. El primero comun es $24$.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        }
+      ]
+    },
+    {
+      "title": "Numeros enteros",
+      "clues": [
+        {
+          "value": 100,
+          "question": "Calcula $-7+12$.",
+          "answer": "$5$",
+          "hint": "Avanza 12 desde -7.",
+          "explanation": "Desde $-7$, avanzar $12$ unidades llega a $5$.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        },
+        {
+          "value": 200,
+          "question": "Calcula $-4\\times 6$.",
+          "answer": "$-24$",
+          "hint": "Signos distintos dan negativo.",
+          "explanation": "El producto de signos distintos es negativo y $4\\times6=24$.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        },
+        {
+          "value": 300,
+          "question": "Ordena de menor a mayor: $-2, 5, -8, 0$.",
+          "answer": "$-8, -2, 0, 5$",
+          "hint": "Mas a la izquierda en la recta numerica es menor.",
+          "explanation": "En la recta numerica, $-8$ esta mas a la izquierda que $-2$, luego viene $0$ y despues $5$.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        },
+        {
+          "value": 400,
+          "question": "Calcula $|-15|+|-3|$.",
+          "answer": "$18$",
+          "hint": "El valor absoluto es distancia a cero.",
+          "explanation": "$|-15|=15$ y $|-3|=3$, por eso $15+3=18$.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        },
+        {
+          "value": 500,
+          "question": "Resuelve $x-9=-14$.",
+          "answer": "$x=-5$",
+          "hint": "Suma 9 a ambos lados.",
+          "explanation": "Al sumar $9$ en ambos lados queda $x=-14+9=-5$.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        }
+      ]
+    },
+    {
+      "title": "Fracciones",
+      "clues": [
+        {
+          "value": 100,
+          "question": "Simplifica $\\frac{6}{8}$.",
+          "answer": "$\\frac{3}{4}$",
+          "hint": "Divide numerador y denominador por 2.",
+          "explanation": "$\\frac{6}{8}=\\frac{6\\div2}{8\\div2}=\\frac{3}{4}$.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        },
+        {
+          "value": 200,
+          "question": "Calcula $\\frac{1}{3}+\\frac{1}{6}$.",
+          "answer": "$\\frac{1}{2}$",
+          "hint": "Usa denominador comun 6.",
+          "explanation": "$\\frac{1}{3}=\\frac{2}{6}$, entonces $\\frac{2}{6}+\\frac{1}{6}=\\frac{3}{6}=\\frac{1}{2}$.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        },
+        {
+          "value": 300,
+          "question": "Calcula $\\frac{5}{7}-\\frac{2}{7}$.",
+          "answer": "$\\frac{3}{7}$",
+          "hint": "Mismo denominador.",
+          "explanation": "Con denominadores iguales, se restan numeradores: $\\frac{5-2}{7}=\\frac{3}{7}$.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        },
+        {
+          "value": 400,
+          "question": "Multiplica $\\frac{3}{5}\\cdot\\frac{10}{9}$.",
+          "answer": "$\\frac{2}{3}$",
+          "hint": "Puedes simplificar cruzado.",
+          "explanation": "$\\frac{3\\cdot10}{5\\cdot9}=\\frac{30}{45}=\\frac{2}{3}$.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        },
+        {
+          "value": 500,
+          "question": "Convierte $1.25$ a fraccion simplificada.",
+          "answer": "$\\frac{5}{4}$",
+          "hint": "$1.25=\\frac{125}{100}$.",
+          "explanation": "$1.25=\\frac{125}{100}$ y al dividir entre $25$ queda $\\frac{5}{4}$.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        }
+      ]
+    },
+    {
+      "title": "Algebra",
+      "clues": [
+        {
+          "value": 100,
+          "question": "Si $x=4$, calcula $3x+2$.",
+          "answer": "$14$",
+          "hint": "Sustituye $x$ por 4.",
+          "explanation": "$3(4)+2=12+2=14$.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        },
+        {
+          "value": 200,
+          "question": "Resuelve $x+7=19$.",
+          "answer": "$x=12$",
+          "hint": "Resta 7.",
+          "explanation": "Al restar $7$ en ambos lados queda $x=19-7=12$.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        },
+        {
+          "value": 300,
+          "question": "Factoriza $x^2+5x$.",
+          "answer": "$x(x+5)$",
+          "hint": "Busca factor comun.",
+          "explanation": "Ambos terminos tienen factor $x$, por eso $x^2+5x=x(x+5)$.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        },
+        {
+          "value": 400,
+          "question": "Resuelve $3x=\\frac{27}{2}$.",
+          "answer": "$x=\\frac{9}{2}$",
+          "hint": "Divide por 3.",
+          "explanation": "$x=\\frac{27}{2}\\div3=\\frac{27}{2}\\cdot\\frac{1}{3}=\\frac{9}{2}$.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        },
+        {
+          "value": 500,
+          "question": "Expande $(x+3)^2$.",
+          "answer": "$x^2+6x+9$",
+          "hint": "Cuadrado de binomio.",
+          "explanation": "$(x+3)^2=(x+3)(x+3)=x^2+3x+3x+9=x^2+6x+9$.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        }
+      ]
+    },
+    {
+      "title": "Areas",
+      "clues": [
+        {
+          "value": 100,
+          "question": "Area de un rectangulo con base $8$ y altura $5$.",
+          "answer": "$40$",
+          "hint": "$A=bh$.",
+          "explanation": "$A=8\\cdot5=40$ unidades cuadradas.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        },
+        {
+          "value": 200,
+          "question": "Formula del area de un triangulo.",
+          "answer": "$A=\\frac{bh}{2}$",
+          "hint": "Es la mitad de un rectangulo.",
+          "explanation": "Un triangulo con la misma base y altura ocupa la mitad del rectangulo: $A=\\frac{bh}{2}$.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        },
+        {
+          "value": 300,
+          "question": "Area de un circulo de radio $r$.",
+          "answer": "$A=\\pi r^2$",
+          "hint": "Depende del radio al cuadrado.",
+          "explanation": "La formula del area circular usa el radio al cuadrado: $A=\\pi r^2$.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        },
+        {
+          "value": 400,
+          "question": "Area de un trapecio con bases $B,b$ y altura $h$.",
+          "answer": "$A=\\frac{(B+b)h}{2}$",
+          "hint": "Promedio de bases por altura.",
+          "explanation": "Se promedian las bases y se multiplica por la altura: $A=\\frac{(B+b)h}{2}$.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        },
+        {
+          "value": 500,
+          "question": "Un cuadrado tiene area $81$. Cual es su lado?",
+          "answer": "$9$",
+          "hint": "El lado es la raiz cuadrada del area.",
+          "explanation": "En un cuadrado $A=l^2$. Si $l^2=81$, entonces $l=\\sqrt{81}=9$.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        }
+      ]
+    },
+    {
+      "title": "Sorpresa",
+      "clues": [
+        {
+          "value": 100,
+          "question": "Que numero primo es par?",
+          "answer": "$2$",
+          "hint": "Solo uno.",
+          "explanation": "$2$ es primo porque solo tiene divisores $1$ y $2$, y es el unico primo par.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        },
+        {
+          "value": 200,
+          "question": "Calcula $2^5$.",
+          "answer": "$32$",
+          "hint": "$2\\cdot2\\cdot2\\cdot2\\cdot2$.",
+          "explanation": "$2^5$ significa multiplicar cinco factores de $2$: $2\\cdot2\\cdot2\\cdot2\\cdot2=32$.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        },
+        {
+          "value": 300,
+          "question": "Si una razon es $3:4$, el total de partes es...",
+          "answer": "$7$",
+          "hint": "Suma las partes.",
+          "explanation": "La razon tiene $3$ partes de un tipo y $4$ de otro: $3+4=7$.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        },
+        {
+          "value": 400,
+          "question": "La media de $4, 8, 10, 18$ es...",
+          "answer": "$10$",
+          "hint": "Suma y divide entre 4.",
+          "explanation": "La media es $\\frac{4+8+10+18}{4}=\\frac{40}{4}=10$.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        },
+        {
+          "value": 500,
+          "question": "Resuelve $\\sqrt{144}+3^2$.",
+          "answer": "$21$",
+          "hint": "$12+9$.",
+          "explanation": "$\\sqrt{144}=12$ y $3^2=9$, entonces $12+9=21$.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        }
+      ]
+    }
+  ]
+}

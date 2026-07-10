@@ -1,4 +1,4 @@
-const STORAGE_KEY = "jeopardy-matematico-state-v5";
+const STORAGE_KEY = "jeopardy-matematico-state-v6";
 const TIMER_SECONDS = 30;
 const MAX_IMAGE_BYTES = 1_200_000;
 const PUBLIC_BUZZER_URL = "https://jeopardy-matematico-web.onrender.com/buzzer";
@@ -169,7 +169,7 @@ function normalizeGame(raw) {
   safe.teams = safe.teams.map((team, index) => ({
     id: team.id || `team-${index + 1}`,
     name: team.name || `Equipo ${index + 1}`,
-    score: Number(team.score || 0),
+    score: numberOrFallback(team.score, 0),
     color: team.color || ["#1f88b5", "#2ea66f", "#ef8a62", "#ffe45b"][index % 4]
   }));
   safe.categories = Array.isArray(raw.categories) && raw.categories.length ? raw.categories : clone(defaultGame.categories);
@@ -201,7 +201,7 @@ function ensureClues(clues) {
     const explanationFallback = hint || "Compara el procedimiento con la respuesta correcta.";
 
     return {
-      value: Number(clueData.value || value),
+      value: numberOrFallback(clueData.value, value),
       question: textOrImageFallback(clueData.question, questionImage, `Pregunta por $${value}`),
       answer: textOrImageFallback(clueData.answer, answerImage, "Respuesta"),
       hint,
@@ -226,6 +226,11 @@ function normalizeImageSource(value) {
 
 function normalizeText(value) {
   return typeof value === "string" ? value : "";
+}
+
+function numberOrFallback(value, fallback = 0) {
+  const numericValue = typeof value === "object" && value !== null ? NaN : Number(value);
+  return Number.isFinite(numericValue) ? numericValue : fallback;
 }
 
 function textOrImageFallback(value, imageSource, fallback, legacyFillers = []) {
@@ -589,7 +594,7 @@ function pulseTeam(teamId) {
 }
 
 function formatScore(score) {
-  return `$${Number(score || 0).toLocaleString("es-CR")}`;
+  return `$${numberOrFallback(score, 0).toLocaleString("es-CR")}`;
 }
 
 function formatCount(count, singular, plural) {

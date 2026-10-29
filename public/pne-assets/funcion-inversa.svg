@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-label="Una función y su inversa">
+  <rect width="960" height="540" rx="24" fill="#f8fbfc"/>
+  <rect x="1" y="1" width="958" height="538" rx="23" fill="none" stroke="#c8d9de" stroke-width="2"/>
+  <style>
+    text { font-family: Arial, Helvetica, sans-serif; fill: #07313d; letter-spacing: 0; }
+    .title { font-size: 30px; font-weight: 700; }
+    .subtitle { font-size: 20px; fill: #5d737a; }
+    .label { font-size: 22px; font-weight: 700; }
+    .small { font-size: 18px; }
+    .tiny { font-size: 15px; }
+  </style>
+  <text x="48" y="52" class="title">Una función y su inversa</text>
+  
+  <line x1="290" y1="105" x2="290" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="290" y="374.28571428571433" text-anchor="middle" class="tiny">-5</text>
+<line x1="317.14285714285717" y1="105" x2="317.14285714285717" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="317.14285714285717" y="374.28571428571433" text-anchor="middle" class="tiny">-4</text>
+<line x1="344.2857142857143" y1="105" x2="344.2857142857143" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="344.2857142857143" y="374.28571428571433" text-anchor="middle" class="tiny">-3</text>
+<line x1="371.42857142857144" y1="105" x2="371.42857142857144" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="371.42857142857144" y="374.28571428571433" text-anchor="middle" class="tiny">-2</text>
+<line x1="398.57142857142856" y1="105" x2="398.57142857142856" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="398.57142857142856" y="374.28571428571433" text-anchor="middle" class="tiny">-1</text>
+<line x1="425.7142857142857" y1="105" x2="425.7142857142857" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<line x1="452.8571428571429" y1="105" x2="452.8571428571429" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="452.8571428571429" y="374.28571428571433" text-anchor="middle" class="tiny">1</text>
+<line x1="480" y1="105" x2="480" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="480" y="374.28571428571433" text-anchor="middle" class="tiny">2</text>
+<line x1="507.1428571428571" y1="105" x2="507.1428571428571" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="507.1428571428571" y="374.28571428571433" text-anchor="middle" class="tiny">3</text>
+<line x1="534.2857142857143" y1="105" x2="534.2857142857143" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="534.2857142857143" y="374.28571428571433" text-anchor="middle" class="tiny">4</text>
+<line x1="561.4285714285714" y1="105" x2="561.4285714285714" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="561.4285714285714" y="374.28571428571433" text-anchor="middle" class="tiny">5</text>
+<line x1="588.5714285714286" y1="105" x2="588.5714285714286" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="588.5714285714286" y="374.28571428571433" text-anchor="middle" class="tiny">6</text>
+<line x1="615.7142857142858" y1="105" x2="615.7142857142858" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="615.7142857142858" y="374.28571428571433" text-anchor="middle" class="tiny">7</text>
+<line x1="642.8571428571429" y1="105" x2="642.8571428571429" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="642.8571428571429" y="374.28571428571433" text-anchor="middle" class="tiny">8</text>
+<line x1="670" y1="105" x2="670" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="670" y="374.28571428571433" text-anchor="middle" class="tiny">9</text>
+<line x1="290" y1="485" x2="670" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="411.7142857142857" y="491" text-anchor="end" class="tiny">-5</text>
+<line x1="290" y1="457.8571428571429" x2="670" y2="457.8571428571429" stroke="#d8e6ea" stroke-width="1"/>
+<text x="411.7142857142857" y="463.8571428571429" text-anchor="end" class="tiny">-4</text>
+<line x1="290" y1="430.7142857142857" x2="670" y2="430.7142857142857" stroke="#d8e6ea" stroke-width="1"/>
+<text x="411.7142857142857" y="436.7142857142857" text-anchor="end" class="tiny">-3</text>
+<line x1="290" y1="403.57142857142856" x2="670" y2="403.57142857142856" stroke="#d8e6ea" stroke-width="1"/>
+<text x="411.7142857142857" y="409.57142857142856" text-anchor="end" class="tiny">-2</text>
+<line x1="290" y1="376.42857142857144" x2="670" y2="376.42857142857144" stroke="#d8e6ea" stroke-width="1"/>
+<text x="411.7142857142857" y="382.42857142857144" text-anchor="end" class="tiny">-1</text>
+<line x1="290" y1="349.28571428571433" x2="670" y2="349.28571428571433" stroke="#d8e6ea" stroke-width="1"/>
+<line x1="290" y1="322.1428571428571" x2="670" y2="322.1428571428571" stroke="#d8e6ea" stroke-width="1"/>
+<text x="411.7142857142857" y="328.1428571428571" text-anchor="end" class="tiny">1</text>
+<line x1="290" y1="295" x2="670" y2="295" stroke="#d8e6ea" stroke-width="1"/>
+<text x="411.7142857142857" y="301" text-anchor="end" class="tiny">2</text>
+<line x1="290" y1="267.8571428571429" x2="670" y2="267.8571428571429" stroke="#d8e6ea" stroke-width="1"/>
+<text x="411.7142857142857" y="273.8571428571429" text-anchor="end" class="tiny">3</text>
+<line x1="290" y1="240.71428571428572" x2="670" y2="240.71428571428572" stroke="#d8e6ea" stroke-width="1"/>
+<text x="411.7142857142857" y="246.71428571428572" text-anchor="end" class="tiny">4</text>
+<line x1="290" y1="213.57142857142856" x2="670" y2="213.57142857142856" stroke="#d8e6ea" stroke-width="1"/>
+<text x="411.7142857142857" y="219.57142857142856" text-anchor="end" class="tiny">5</text>
+<line x1="290" y1="186.42857142857144" x2="670" y2="186.42857142857144" stroke="#d8e6ea" stroke-width="1"/>
+<text x="411.7142857142857" y="192.42857142857144" text-anchor="end" class="tiny">6</text>
+<line x1="290" y1="159.28571428571428" x2="670" y2="159.28571428571428" stroke="#d8e6ea" stroke-width="1"/>
+<text x="411.7142857142857" y="165.28571428571428" text-anchor="end" class="tiny">7</text>
+<line x1="290" y1="132.14285714285714" x2="670" y2="132.14285714285714" stroke="#d8e6ea" stroke-width="1"/>
+<text x="411.7142857142857" y="138.14285714285714" text-anchor="end" class="tiny">8</text>
+<line x1="290" y1="105" x2="670" y2="105" stroke="#d8e6ea" stroke-width="1"/>
+<text x="411.7142857142857" y="111" text-anchor="end" class="tiny">9</text>
+<line x1="290" y1="349.28571428571433" x2="670" y2="349.28571428571433" stroke="#07313d" stroke-width="3"/>
+<line x1="425.7142857142857" y1="105" x2="425.7142857142857" y2="485" stroke="#07313d" stroke-width="3"/>
+<text x="688" y="355.28571428571433" class="small">x</text>
+<text x="437.7142857142857" y="93" class="small">y</text>
+<line x1="290" y1="485" x2="670" y2="105" stroke="#5d737a" stroke-width="4" stroke-dasharray="10 7"/>
+<line x1="436.57142857142856" y1="485" x2="561.4285714285714" y2="105" stroke="#146c86" stroke-width="4" />
+<line x1="290" y1="340.3285714285714" x2="670" y2="213.57142857142856" stroke="#e36b55" stroke-width="4" />
+<rect x="635" y="116" width="210" height="58" rx="10" fill="white" stroke="#bcd0d6"/>
+<text x="740" y="152" text-anchor="middle" class="small" font-weight="700">simetría en y=x</text>
+</svg>

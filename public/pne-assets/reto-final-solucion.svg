@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-label="Recta tangente en P">
+  <rect width="960" height="540" rx="24" fill="#f8fbfc"/>
+  <rect x="1" y="1" width="958" height="538" rx="23" fill="none" stroke="#c8d9de" stroke-width="2"/>
+  <style>
+    text { font-family: Arial, Helvetica, sans-serif; fill: #07313d; letter-spacing: 0; }
+    .title { font-size: 30px; font-weight: 700; }
+    .subtitle { font-size: 20px; fill: #5d737a; }
+    .label { font-size: 22px; font-weight: 700; }
+    .small { font-size: 18px; }
+    .tiny { font-size: 15px; }
+  </style>
+  <text x="48" y="52" class="title">Recta tangente en P</text>
+  
+  <line x1="301.875" y1="105" x2="301.875" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="301.875" y="320" text-anchor="middle" class="tiny">-5</text>
+<line x1="325.625" y1="105" x2="325.625" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="325.625" y="320" text-anchor="middle" class="tiny">-4</text>
+<line x1="349.375" y1="105" x2="349.375" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="349.375" y="320" text-anchor="middle" class="tiny">-3</text>
+<line x1="373.125" y1="105" x2="373.125" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="373.125" y="320" text-anchor="middle" class="tiny">-2</text>
+<line x1="396.875" y1="105" x2="396.875" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="396.875" y="320" text-anchor="middle" class="tiny">-1</text>
+<line x1="420.625" y1="105" x2="420.625" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<line x1="444.375" y1="105" x2="444.375" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="444.375" y="320" text-anchor="middle" class="tiny">1</text>
+<line x1="468.125" y1="105" x2="468.125" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="468.125" y="320" text-anchor="middle" class="tiny">2</text>
+<line x1="491.875" y1="105" x2="491.875" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="491.875" y="320" text-anchor="middle" class="tiny">3</text>
+<line x1="515.625" y1="105" x2="515.625" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="515.625" y="320" text-anchor="middle" class="tiny">4</text>
+<line x1="539.375" y1="105" x2="539.375" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="539.375" y="320" text-anchor="middle" class="tiny">5</text>
+<line x1="563.125" y1="105" x2="563.125" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="563.125" y="320" text-anchor="middle" class="tiny">6</text>
+<line x1="586.875" y1="105" x2="586.875" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="586.875" y="320" text-anchor="middle" class="tiny">7</text>
+<line x1="610.625" y1="105" x2="610.625" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="610.625" y="320" text-anchor="middle" class="tiny">8</text>
+<line x1="634.375" y1="105" x2="634.375" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="634.375" y="320" text-anchor="middle" class="tiny">9</text>
+<line x1="658.125" y1="105" x2="658.125" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="658.125" y="320" text-anchor="middle" class="tiny">10</text>
+<line x1="301.875" y1="485" x2="658.125" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="406.625" y="491" text-anchor="end" class="tiny">-8</text>
+<line x1="301.875" y1="461.25" x2="658.125" y2="461.25" stroke="#d8e6ea" stroke-width="1"/>
+<text x="406.625" y="467.25" text-anchor="end" class="tiny">-7</text>
+<line x1="301.875" y1="437.5" x2="658.125" y2="437.5" stroke="#d8e6ea" stroke-width="1"/>
+<text x="406.625" y="443.5" text-anchor="end" class="tiny">-6</text>
+<line x1="301.875" y1="413.75" x2="658.125" y2="413.75" stroke="#d8e6ea" stroke-width="1"/>
+<text x="406.625" y="419.75" text-anchor="end" class="tiny">-5</text>
+<line x1="301.875" y1="390" x2="658.125" y2="390" stroke="#d8e6ea" stroke-width="1"/>
+<text x="406.625" y="396" text-anchor="end" class="tiny">-4</text>
+<line x1="301.875" y1="366.25" x2="658.125" y2="366.25" stroke="#d8e6ea" stroke-width="1"/>
+<text x="406.625" y="372.25" text-anchor="end" class="tiny">-3</text>
+<line x1="301.875" y1="342.5" x2="658.125" y2="342.5" stroke="#d8e6ea" stroke-width="1"/>
+<text x="406.625" y="348.5" text-anchor="end" class="tiny">-2</text>
+<line x1="301.875" y1="318.75" x2="658.125" y2="318.75" stroke="#d8e6ea" stroke-width="1"/>
+<text x="406.625" y="324.75" text-anchor="end" class="tiny">-1</text>
+<line x1="301.875" y1="295" x2="658.125" y2="295" stroke="#d8e6ea" stroke-width="1"/>
+<line x1="301.875" y1="271.25" x2="658.125" y2="271.25" stroke="#d8e6ea" stroke-width="1"/>
+<text x="406.625" y="277.25" text-anchor="end" class="tiny">1</text>
+<line x1="301.875" y1="247.5" x2="658.125" y2="247.5" stroke="#d8e6ea" stroke-width="1"/>
+<text x="406.625" y="253.5" text-anchor="end" class="tiny">2</text>
+<line x1="301.875" y1="223.75" x2="658.125" y2="223.75" stroke="#d8e6ea" stroke-width="1"/>
+<text x="406.625" y="229.75" text-anchor="end" class="tiny">3</text>
+<line x1="301.875" y1="200" x2="658.125" y2="200" stroke="#d8e6ea" stroke-width="1"/>
+<text x="406.625" y="206" text-anchor="end" class="tiny">4</text>
+<line x1="301.875" y1="176.25" x2="658.125" y2="176.25" stroke="#d8e6ea" stroke-width="1"/>
+<text x="406.625" y="182.25" text-anchor="end" class="tiny">5</text>
+<line x1="301.875" y1="152.5" x2="658.125" y2="152.5" stroke="#d8e6ea" stroke-width="1"/>
+<text x="406.625" y="158.5" text-anchor="end" class="tiny">6</text>
+<line x1="301.875" y1="128.75" x2="658.125" y2="128.75" stroke="#d8e6ea" stroke-width="1"/>
+<text x="406.625" y="134.75" text-anchor="end" class="tiny">7</text>
+<line x1="301.875" y1="105" x2="658.125" y2="105" stroke="#d8e6ea" stroke-width="1"/>
+<text x="406.625" y="111" text-anchor="end" class="tiny">8</text>
+<line x1="301.875" y1="295" x2="658.125" y2="295" stroke="#07313d" stroke-width="3"/>
+<line x1="420.625" y1="105" x2="420.625" y2="485" stroke="#07313d" stroke-width="3"/>
+<text x="676.125" y="301" class="small">x</text>
+<text x="432.625" y="93" class="small">y</text>
+<circle cx="468.125" cy="318.75" r="118.75" fill="none" fill-opacity="0.08" stroke="#146c86" stroke-width="4" />
+<line x1="468.125" y1="318.75" x2="539.375" y2="223.75" stroke="#e36b55" stroke-width="4" />
+<line x1="385" y1="107.96875" x2="658.125" y2="312.8125" stroke="#6d4bc3" stroke-width="4" />
+<circle cx="468.125" cy="318.75" r="7" fill="#e36b55" stroke="white" stroke-width="2"/>
+<text x="480.125" y="306.75" class="small" font-weight="700">C</text>
+<circle cx="539.375" cy="223.75" r="7" fill="#2ea66f" stroke="white" stroke-width="2"/>
+<text x="551.375" y="211.75" class="small" font-weight="700">P</text>
+<rect x="635" y="116" width="210" height="58" rx="10" fill="white" stroke="#bcd0d6"/>
+<text x="740" y="152" text-anchor="middle" class="small" font-weight="700">m_t = -3/4</text>
+</svg>

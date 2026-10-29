@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-label="Crecimiento de una población">
+  <rect width="960" height="540" rx="24" fill="#f8fbfc"/>
+  <rect x="1" y="1" width="958" height="538" rx="23" fill="none" stroke="#c8d9de" stroke-width="2"/>
+  <style>
+    text { font-family: Arial, Helvetica, sans-serif; fill: #07313d; letter-spacing: 0; }
+    .title { font-size: 30px; font-weight: 700; }
+    .subtitle { font-size: 20px; fill: #5d737a; }
+    .label { font-size: 22px; font-weight: 700; }
+    .small { font-size: 18px; }
+    .tiny { font-size: 15px; }
+  </style>
+  <text x="48" y="52" class="title">Crecimiento de una población</text>
+  <text x="48" y="88" class="subtitle">Identifica el factor multiplicativo constante.</text>
+  <rect x="95" y="135" width="770" height="132" rx="12" fill="white" stroke="#b8cdd3" stroke-width="3"/>
+<rect x="95" y="135" width="770" height="66" rx="12" fill="#146c86"/>
+<text x="159.16666666666669" y="177" text-anchor="middle" font-size="22" font-weight="700" fill="white">t</text>
+<text x="287.5" y="177" text-anchor="middle" font-size="22" font-weight="700" fill="white">0</text>
+<text x="415.83333333333337" y="177" text-anchor="middle" font-size="22" font-weight="700" fill="white">1</text>
+<text x="544.1666666666667" y="177" text-anchor="middle" font-size="22" font-weight="700" fill="white">2</text>
+<text x="672.5" y="177" text-anchor="middle" font-size="22" font-weight="700" fill="white">3</text>
+<text x="800.8333333333334" y="177" text-anchor="middle" font-size="22" font-weight="700" fill="white">4</text>
+<text x="159.16666666666669" y="243" text-anchor="middle" font-size="23" font-weight="400">P(t)</text>
+<text x="287.5" y="243" text-anchor="middle" font-size="23" font-weight="400">80</text>
+<text x="415.83333333333337" y="243" text-anchor="middle" font-size="23" font-weight="400">120</text>
+<text x="544.1666666666667" y="243" text-anchor="middle" font-size="23" font-weight="400">180</text>
+<text x="672.5" y="243" text-anchor="middle" font-size="23" font-weight="400">270</text>
+<text x="800.8333333333334" y="243" text-anchor="middle" font-size="23" font-weight="400">?</text>
+<line x1="223.33333333333334" y1="135" x2="223.33333333333334" y2="267" stroke="#b8cdd3" stroke-width="2"/>
+<line x1="351.6666666666667" y1="135" x2="351.6666666666667" y2="267" stroke="#b8cdd3" stroke-width="2"/>
+<line x1="480" y1="135" x2="480" y2="267" stroke="#b8cdd3" stroke-width="2"/>
+<line x1="608.3333333333334" y1="135" x2="608.3333333333334" y2="267" stroke="#b8cdd3" stroke-width="2"/>
+<line x1="736.6666666666667" y1="135" x2="736.6666666666667" y2="267" stroke="#b8cdd3" stroke-width="2"/>
+<line x1="95" y1="201" x2="865" y2="201" stroke="#b8cdd3" stroke-width="2"/>
+</svg>

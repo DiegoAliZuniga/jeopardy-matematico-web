@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-label="Datos de una situación">
+  <rect width="960" height="540" rx="24" fill="#f8fbfc"/>
+  <rect x="1" y="1" width="958" height="538" rx="23" fill="none" stroke="#c8d9de" stroke-width="2"/>
+  <style>
+    text { font-family: Arial, Helvetica, sans-serif; fill: #07313d; letter-spacing: 0; }
+    .title { font-size: 30px; font-weight: 700; }
+    .subtitle { font-size: 20px; fill: #5d737a; }
+    .label { font-size: 22px; font-weight: 700; }
+    .small { font-size: 18px; }
+    .tiny { font-size: 15px; }
+  </style>
+  <text x="48" y="52" class="title">Datos de una situación</text>
+  <text x="48" y="88" class="subtitle">Observa las diferencias entre valores consecutivos.</text>
+  <rect x="95" y="135" width="770" height="132" rx="12" fill="white" stroke="#b8cdd3" stroke-width="3"/>
+<rect x="95" y="135" width="770" height="66" rx="12" fill="#146c86"/>
+<text x="172" y="177" text-anchor="middle" font-size="22" font-weight="700" fill="white">t</text>
+<text x="326" y="177" text-anchor="middle" font-size="22" font-weight="700" fill="white">0</text>
+<text x="480" y="177" text-anchor="middle" font-size="22" font-weight="700" fill="white">1</text>
+<text x="634" y="177" text-anchor="middle" font-size="22" font-weight="700" fill="white">2</text>
+<text x="788" y="177" text-anchor="middle" font-size="22" font-weight="700" fill="white">3</text>
+<text x="172" y="243" text-anchor="middle" font-size="23" font-weight="400">y</text>
+<text x="326" y="243" text-anchor="middle" font-size="23" font-weight="400">4</text>
+<text x="480" y="243" text-anchor="middle" font-size="23" font-weight="400">7</text>
+<text x="634" y="243" text-anchor="middle" font-size="23" font-weight="400">10</text>
+<text x="788" y="243" text-anchor="middle" font-size="23" font-weight="400">13</text>
+<line x1="249" y1="135" x2="249" y2="267" stroke="#b8cdd3" stroke-width="2"/>
+<line x1="403" y1="135" x2="403" y2="267" stroke="#b8cdd3" stroke-width="2"/>
+<line x1="557" y1="135" x2="557" y2="267" stroke="#b8cdd3" stroke-width="2"/>
+<line x1="711" y1="135" x2="711" y2="267" stroke="#b8cdd3" stroke-width="2"/>
+<line x1="95" y1="201" x2="865" y2="201" stroke="#b8cdd3" stroke-width="2"/>
+</svg>

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-label="Comparación de diagramas de cajas">
+  <rect width="960" height="540" rx="24" fill="#f8fbfc"/>
+  <rect x="1" y="1" width="958" height="538" rx="23" fill="none" stroke="#c8d9de" stroke-width="2"/>
+  <style>
+    text { font-family: Arial, Helvetica, sans-serif; fill: #07313d; letter-spacing: 0; }
+    .title { font-size: 30px; font-weight: 700; }
+    .subtitle { font-size: 20px; fill: #5d737a; }
+    .label { font-size: 22px; font-weight: 700; }
+    .small { font-size: 18px; }
+    .tiny { font-size: 15px; }
+  </style>
+  <text x="48" y="52" class="title">Comparación de diagramas de cajas</text>
+  <text x="48" y="88" class="subtitle">Compara medianas y recorridos intercuartílicos.</text>
+  <line x1="130" y1="150" x2="130" y2="455" stroke="#d8e6ea" stroke-width="1"/>
+<text x="130" y="490" text-anchor="middle" class="small">0</text>
+<line x1="200" y1="150" x2="200" y2="455" stroke="#d8e6ea" stroke-width="1"/>
+<text x="200" y="490" text-anchor="middle" class="small">1</text>
+<line x1="270" y1="150" x2="270" y2="455" stroke="#d8e6ea" stroke-width="1"/>
+<text x="270" y="490" text-anchor="middle" class="small">2</text>
+<line x1="340" y1="150" x2="340" y2="455" stroke="#d8e6ea" stroke-width="1"/>
+<text x="340" y="490" text-anchor="middle" class="small">3</text>
+<line x1="410" y1="150" x2="410" y2="455" stroke="#d8e6ea" stroke-width="1"/>
+<text x="410" y="490" text-anchor="middle" class="small">4</text>
+<line x1="480" y1="150" x2="480" y2="455" stroke="#d8e6ea" stroke-width="1"/>
+<text x="480" y="490" text-anchor="middle" class="small">5</text>
+<line x1="550" y1="150" x2="550" y2="455" stroke="#d8e6ea" stroke-width="1"/>
+<text x="550" y="490" text-anchor="middle" class="small">6</text>
+<line x1="620" y1="150" x2="620" y2="455" stroke="#d8e6ea" stroke-width="1"/>
+<text x="620" y="490" text-anchor="middle" class="small">7</text>
+<line x1="690" y1="150" x2="690" y2="455" stroke="#d8e6ea" stroke-width="1"/>
+<text x="690" y="490" text-anchor="middle" class="small">8</text>
+<line x1="760" y1="150" x2="760" y2="455" stroke="#d8e6ea" stroke-width="1"/>
+<text x="760" y="490" text-anchor="middle" class="small">9</text>
+<line x1="830" y1="150" x2="830" y2="455" stroke="#d8e6ea" stroke-width="1"/>
+<text x="830" y="490" text-anchor="middle" class="small">10</text>
+<text x="70" y="240" class="label">A</text><text x="70" y="375" class="label">B</text>
+<line x1="270" y1="220" x2="760" y2="220" stroke="#146c86" stroke-width="4"/>
+<line x1="270" y1="195" x2="270" y2="245" stroke="#146c86" stroke-width="4"/>
+<line x1="760" y1="195" x2="760" y2="245" stroke="#146c86" stroke-width="4"/>
+<rect x="410" y="175" width="280" height="90" fill="white" stroke="#146c86" stroke-width="5"/>
+<line x1="620" y1="175" x2="620" y2="265" stroke="#146c86" stroke-width="5"/>
+<line x1="200" y1="355" x2="830" y2="355" stroke="#e36b55" stroke-width="4"/>
+<line x1="200" y1="330" x2="200" y2="380" stroke="#e36b55" stroke-width="4"/>
+<line x1="830" y1="330" x2="830" y2="380" stroke="#e36b55" stroke-width="4"/>
+<rect x="270" y="310" width="420" height="90" fill="white" stroke="#e36b55" stroke-width="5"/>
+<line x1="480" y1="310" x2="480" y2="400" stroke="#e36b55" stroke-width="5"/>
+</svg>

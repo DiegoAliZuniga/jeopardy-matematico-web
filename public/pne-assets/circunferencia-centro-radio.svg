@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-label="Circunferencia en el plano">
+  <rect width="960" height="540" rx="24" fill="#f8fbfc"/>
+  <rect x="1" y="1" width="958" height="538" rx="23" fill="none" stroke="#c8d9de" stroke-width="2"/>
+  <style>
+    text { font-family: Arial, Helvetica, sans-serif; fill: #07313d; letter-spacing: 0; }
+    .title { font-size: 30px; font-weight: 700; }
+    .subtitle { font-size: 20px; fill: #5d737a; }
+    .label { font-size: 22px; font-weight: 700; }
+    .small { font-size: 18px; }
+    .tiny { font-size: 15px; }
+  </style>
+  <text x="48" y="52" class="title">Circunferencia en el plano</text>
+  
+  <line x1="268.8888888888889" y1="105" x2="268.8888888888889" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="268.8888888888889" y="425.55555555555554" text-anchor="middle" class="tiny">-6</text>
+<line x1="311.11111111111114" y1="105" x2="311.11111111111114" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="311.11111111111114" y="425.55555555555554" text-anchor="middle" class="tiny">-5</text>
+<line x1="353.33333333333337" y1="105" x2="353.33333333333337" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="353.33333333333337" y="425.55555555555554" text-anchor="middle" class="tiny">-4</text>
+<line x1="395.55555555555554" y1="105" x2="395.55555555555554" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="395.55555555555554" y="425.55555555555554" text-anchor="middle" class="tiny">-3</text>
+<line x1="437.7777777777778" y1="105" x2="437.7777777777778" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="437.7777777777778" y="425.55555555555554" text-anchor="middle" class="tiny">-2</text>
+<line x1="480" y1="105" x2="480" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="480" y="425.55555555555554" text-anchor="middle" class="tiny">-1</text>
+<line x1="522.2222222222222" y1="105" x2="522.2222222222222" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<line x1="564.4444444444445" y1="105" x2="564.4444444444445" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="564.4444444444445" y="425.55555555555554" text-anchor="middle" class="tiny">1</text>
+<line x1="606.6666666666667" y1="105" x2="606.6666666666667" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="606.6666666666667" y="425.55555555555554" text-anchor="middle" class="tiny">2</text>
+<line x1="648.8888888888889" y1="105" x2="648.8888888888889" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="648.8888888888889" y="425.55555555555554" text-anchor="middle" class="tiny">3</text>
+<line x1="691.1111111111111" y1="105" x2="691.1111111111111" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="691.1111111111111" y="425.55555555555554" text-anchor="middle" class="tiny">4</text>
+<line x1="268.8888888888889" y1="485" x2="691.1111111111111" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="508.2222222222222" y="491" text-anchor="end" class="tiny">-2</text>
+<line x1="268.8888888888889" y1="442.77777777777777" x2="691.1111111111111" y2="442.77777777777777" stroke="#d8e6ea" stroke-width="1"/>
+<text x="508.2222222222222" y="448.77777777777777" text-anchor="end" class="tiny">-1</text>
+<line x1="268.8888888888889" y1="400.55555555555554" x2="691.1111111111111" y2="400.55555555555554" stroke="#d8e6ea" stroke-width="1"/>
+<line x1="268.8888888888889" y1="358.3333333333333" x2="691.1111111111111" y2="358.3333333333333" stroke="#d8e6ea" stroke-width="1"/>
+<text x="508.2222222222222" y="364.3333333333333" text-anchor="end" class="tiny">1</text>
+<line x1="268.8888888888889" y1="316.1111111111111" x2="691.1111111111111" y2="316.1111111111111" stroke="#d8e6ea" stroke-width="1"/>
+<text x="508.2222222222222" y="322.1111111111111" text-anchor="end" class="tiny">2</text>
+<line x1="268.8888888888889" y1="273.8888888888889" x2="691.1111111111111" y2="273.8888888888889" stroke="#d8e6ea" stroke-width="1"/>
+<text x="508.2222222222222" y="279.8888888888889" text-anchor="end" class="tiny">3</text>
+<line x1="268.8888888888889" y1="231.66666666666666" x2="691.1111111111111" y2="231.66666666666666" stroke="#d8e6ea" stroke-width="1"/>
+<text x="508.2222222222222" y="237.66666666666666" text-anchor="end" class="tiny">4</text>
+<line x1="268.8888888888889" y1="189.44444444444446" x2="691.1111111111111" y2="189.44444444444446" stroke="#d8e6ea" stroke-width="1"/>
+<text x="508.2222222222222" y="195.44444444444446" text-anchor="end" class="tiny">5</text>
+<line x1="268.8888888888889" y1="147.22222222222223" x2="691.1111111111111" y2="147.22222222222223" stroke="#d8e6ea" stroke-width="1"/>
+<text x="508.2222222222222" y="153.22222222222223" text-anchor="end" class="tiny">6</text>
+<line x1="268.8888888888889" y1="105" x2="691.1111111111111" y2="105" stroke="#d8e6ea" stroke-width="1"/>
+<text x="508.2222222222222" y="111" text-anchor="end" class="tiny">7</text>
+<line x1="268.8888888888889" y1="400.55555555555554" x2="691.1111111111111" y2="400.55555555555554" stroke="#07313d" stroke-width="3"/>
+<line x1="522.2222222222222" y1="105" x2="522.2222222222222" y2="485" stroke="#07313d" stroke-width="3"/>
+<text x="709.1111111111111" y="406.55555555555554" class="small">x</text>
+<text x="534.2222222222222" y="93" class="small">y</text>
+<circle cx="437.7777777777778" cy="273.8888888888889" r="84.44444444444444" fill="none" fill-opacity="0.08" stroke="#146c86" stroke-width="4" />
+<line x1="437.7777777777778" y1="273.8888888888889" x2="522.2222222222222" y2="273.8888888888889" stroke="#e36b55" stroke-width="4" />
+<circle cx="437.7777777777778" cy="273.8888888888889" r="7" fill="#e36b55" stroke="white" stroke-width="2"/>
+<text x="449.7777777777778" y="261.8888888888889" class="small" font-weight="700">C(-2, 3)</text>
+<rect x="635" y="116" width="210" height="58" rx="10" fill="white" stroke="#bcd0d6"/>
+<text x="740" y="152" text-anchor="middle" class="small" font-weight="700">radio = 2</text>
+</svg>

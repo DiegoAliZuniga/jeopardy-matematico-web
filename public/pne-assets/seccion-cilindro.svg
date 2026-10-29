@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-label="Sección axial de un cilindro">
+  <rect width="960" height="540" rx="24" fill="#f8fbfc"/>
+  <rect x="1" y="1" width="958" height="538" rx="23" fill="none" stroke="#c8d9de" stroke-width="2"/>
+  <style>
+    text { font-family: Arial, Helvetica, sans-serif; fill: #07313d; letter-spacing: 0; }
+    .title { font-size: 30px; font-weight: 700; }
+    .subtitle { font-size: 20px; fill: #5d737a; }
+    .label { font-size: 22px; font-weight: 700; }
+    .small { font-size: 18px; }
+    .tiny { font-size: 15px; }
+  </style>
+  <text x="48" y="52" class="title">Sección axial de un cilindro</text>
+  <text x="48" y="88" class="subtitle">El corte vertical pasa por el eje del cilindro.</text>
+  
+  <ellipse cx="480" cy="165" rx="150" ry="48" fill="#d9f0f5" stroke="#146c86" stroke-width="5"/>
+  <path d="M 330 165 V 405 C 330 432 397 453 480 453 C 563 453 630 432 630 405 V 165" fill="#d9f0f5" fill-opacity="0.45" stroke="#146c86" stroke-width="5"/>
+  <ellipse cx="480" cy="405" rx="150" ry="48" fill="#cce8ee" stroke="#146c86" stroke-width="5"/>
+  <rect x="330" y="165" width="300" height="240" fill="#f4cf3f" fill-opacity="0.35" stroke="#e36b55" stroke-width="5" stroke-dasharray="10 7"/>
+  <line x1="480" y1="165" x2="630" y2="165" stroke="#6d4bc3" stroke-width="5"/>
+  <text x="555" y="145" text-anchor="middle" class="label">r = 3 cm</text>
+  <text x="680" y="295" class="label">h = 8 cm</text>
+
+</svg>

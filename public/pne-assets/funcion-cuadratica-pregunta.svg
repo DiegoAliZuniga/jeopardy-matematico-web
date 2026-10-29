@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-label="Función cuadrática">
+  <rect width="960" height="540" rx="24" fill="#f8fbfc"/>
+  <rect x="1" y="1" width="958" height="538" rx="23" fill="none" stroke="#c8d9de" stroke-width="2"/>
+  <style>
+    text { font-family: Arial, Helvetica, sans-serif; fill: #07313d; letter-spacing: 0; }
+    .title { font-size: 30px; font-weight: 700; }
+    .subtitle { font-size: 20px; fill: #5d737a; }
+    .label { font-size: 22px; font-weight: 700; }
+    .small { font-size: 18px; }
+    .tiny { font-size: 15px; }
+  </style>
+  <text x="48" y="52" class="title">Función cuadrática</text>
+  
+  <line x1="95" y1="105" x2="95" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="95" y="320" text-anchor="middle" class="tiny">-1</text>
+<line x1="191.25" y1="105" x2="191.25" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<line x1="287.5" y1="105" x2="287.5" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="287.5" y="320" text-anchor="middle" class="tiny">1</text>
+<line x1="383.75" y1="105" x2="383.75" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="383.75" y="320" text-anchor="middle" class="tiny">2</text>
+<line x1="480" y1="105" x2="480" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="480" y="320" text-anchor="middle" class="tiny">3</text>
+<line x1="576.25" y1="105" x2="576.25" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="576.25" y="320" text-anchor="middle" class="tiny">4</text>
+<line x1="672.5" y1="105" x2="672.5" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="672.5" y="320" text-anchor="middle" class="tiny">5</text>
+<line x1="768.75" y1="105" x2="768.75" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="768.75" y="320" text-anchor="middle" class="tiny">6</text>
+<line x1="865" y1="105" x2="865" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="865" y="320" text-anchor="middle" class="tiny">7</text>
+<line x1="95" y1="485" x2="865" y2="485" stroke="#d8e6ea" stroke-width="1"/>
+<text x="177.25" y="491" text-anchor="end" class="tiny">-6</text>
+<line x1="95" y1="453.3333333333333" x2="865" y2="453.3333333333333" stroke="#d8e6ea" stroke-width="1"/>
+<text x="177.25" y="459.3333333333333" text-anchor="end" class="tiny">-5</text>
+<line x1="95" y1="421.6666666666667" x2="865" y2="421.6666666666667" stroke="#d8e6ea" stroke-width="1"/>
+<text x="177.25" y="427.6666666666667" text-anchor="end" class="tiny">-4</text>
+<line x1="95" y1="390" x2="865" y2="390" stroke="#d8e6ea" stroke-width="1"/>
+<text x="177.25" y="396" text-anchor="end" class="tiny">-3</text>
+<line x1="95" y1="358.3333333333333" x2="865" y2="358.3333333333333" stroke="#d8e6ea" stroke-width="1"/>
+<text x="177.25" y="364.3333333333333" text-anchor="end" class="tiny">-2</text>
+<line x1="95" y1="326.6666666666667" x2="865" y2="326.6666666666667" stroke="#d8e6ea" stroke-width="1"/>
+<text x="177.25" y="332.6666666666667" text-anchor="end" class="tiny">-1</text>
+<line x1="95" y1="295" x2="865" y2="295" stroke="#d8e6ea" stroke-width="1"/>
+<line x1="95" y1="263.33333333333337" x2="865" y2="263.33333333333337" stroke="#d8e6ea" stroke-width="1"/>
+<text x="177.25" y="269.33333333333337" text-anchor="end" class="tiny">1</text>
+<line x1="95" y1="231.66666666666666" x2="865" y2="231.66666666666666" stroke="#d8e6ea" stroke-width="1"/>
+<text x="177.25" y="237.66666666666666" text-anchor="end" class="tiny">2</text>
+<line x1="95" y1="200" x2="865" y2="200" stroke="#d8e6ea" stroke-width="1"/>
+<text x="177.25" y="206" text-anchor="end" class="tiny">3</text>
+<line x1="95" y1="168.33333333333331" x2="865" y2="168.33333333333331" stroke="#d8e6ea" stroke-width="1"/>
+<text x="177.25" y="174.33333333333331" text-anchor="end" class="tiny">4</text>
+<line x1="95" y1="136.66666666666666" x2="865" y2="136.66666666666666" stroke="#d8e6ea" stroke-width="1"/>
+<text x="177.25" y="142.66666666666666" text-anchor="end" class="tiny">5</text>
+<line x1="95" y1="105" x2="865" y2="105" stroke="#d8e6ea" stroke-width="1"/>
+<text x="177.25" y="111" text-anchor="end" class="tiny">6</text>
+<line x1="95" y1="295" x2="865" y2="295" stroke="#07313d" stroke-width="3"/>
+<line x1="191.25" y1="105" x2="191.25" y2="485" stroke="#07313d" stroke-width="3"/>
+<text x="883" y="301" class="small">x</text>
+<text x="203.25" y="93" class="small">y</text>
+<polyline points="95,675 119.0625,613.6458333333334 143.125,556.25 167.1875,502.8125 191.25,453.3333333333333 215.3125,407.8125 239.375,366.25 263.4375,328.6458333333333 287.5,295 311.5625,265.3125 335.625,239.58333333333334 359.6875,217.8125 383.75,200 407.8125,186.14583333333331 431.875,176.25 455.9375,170.3125 480,168.33333333333331 504.0625,170.3125 528.125,176.25 552.1875,186.14583333333331 576.25,200 600.3125,217.8125 624.375,239.58333333333334 648.4375,265.3125 672.5,295 696.5625,328.6458333333333 720.625,366.25 744.6875,407.8125 768.75,453.3333333333333 792.8125,502.8125 816.875,556.25 840.9375,613.6458333333334 865,675" fill="none" stroke="#146c86" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>

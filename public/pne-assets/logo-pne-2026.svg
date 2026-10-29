@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="PNE Matemática 2026">
+  <rect width="512" height="512" rx="112" fill="#146c86"/>
+  <path d="M 112 330 Q 256 42 400 330" fill="none" stroke="#f4cf3f" stroke-width="44" stroke-linecap="round"/>
+  <line x1="105" y1="374" x2="407" y2="374" stroke="white" stroke-width="38" stroke-linecap="round"/>
+  <text x="256" y="304" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="108" font-weight="800" fill="white">PNE</text>
+  <text x="256" y="445" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700" fill="white">2026</text>
+</svg>

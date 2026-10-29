@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-label="Funciones f y g">
+  <rect width="960" height="540" rx="24" fill="#f8fbfc"/>
+  <rect x="1" y="1" width="958" height="538" rx="23" fill="none" stroke="#c8d9de" stroke-width="2"/>
+  <style>
+    text { font-family: Arial, Helvetica, sans-serif; fill: #07313d; letter-spacing: 0; }
+    .title { font-size: 30px; font-weight: 700; }
+    .subtitle { font-size: 20px; fill: #5d737a; }
+    .label { font-size: 22px; font-weight: 700; }
+    .small { font-size: 18px; }
+    .tiny { font-size: 15px; }
+  </style>
+  <text x="48" y="52" class="title">Funciones f y g</text>
+  <text x="48" y="88" class="subtitle">Determina el orden correcto para calcular (f∘g)(3).</text>
+  
+  <rect x="150" y="185" width="280" height="170" rx="18" fill="#e8f5f7" stroke="#146c86" stroke-width="4"/>
+  <rect x="530" y="185" width="280" height="170" rx="18" fill="#f2ecfb" stroke="#6d4bc3" stroke-width="4"/>
+  <text x="290" y="255" text-anchor="middle" class="label">f(x)=2x+1</text>
+  <text x="290" y="305" text-anchor="middle" class="small">función f</text>
+  <text x="670" y="255" text-anchor="middle" class="label">g(x)=√(x+1)</text>
+  <text x="670" y="305" text-anchor="middle" class="small">función g</text>
+
+</svg>

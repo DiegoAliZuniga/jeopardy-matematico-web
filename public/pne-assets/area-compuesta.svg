@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-label="Figura compuesta">
+  <rect width="960" height="540" rx="24" fill="#f8fbfc"/>
+  <rect x="1" y="1" width="958" height="538" rx="23" fill="none" stroke="#c8d9de" stroke-width="2"/>
+  <style>
+    text { font-family: Arial, Helvetica, sans-serif; fill: #07313d; letter-spacing: 0; }
+    .title { font-size: 30px; font-weight: 700; }
+    .subtitle { font-size: 20px; fill: #5d737a; }
+    .label { font-size: 22px; font-weight: 700; }
+    .small { font-size: 18px; }
+    .tiny { font-size: 15px; }
+  </style>
+  <text x="48" y="52" class="title">Figura compuesta</text>
+  <text x="48" y="88" class="subtitle">Rectángulo de 10 m por 6 m con una esquina de 4 m por 2 m retirada.</text>
+  
+  <path d="M 190 145 H 520 V 245 H 770 V 435 H 190 Z" fill="#d9f0f5" stroke="#146c86" stroke-width="6"/>
+  <rect x="520" y="145" width="250" height="100" fill="#fff4ce" fill-opacity="0.55" stroke="#e36b55" stroke-width="3" stroke-dasharray="10 7"/>
+  <line x1="190" y1="465" x2="770" y2="465" stroke="#07313d" stroke-width="3"/>
+  <line x1="190" y1="450" x2="190" y2="480" stroke="#07313d" stroke-width="3"/>
+  <line x1="770" y1="450" x2="770" y2="480" stroke="#07313d" stroke-width="3"/>
+  <text x="480" y="505" text-anchor="middle" class="label">10 m</text>
+  <text x="135" y="300" text-anchor="middle" class="label">6 m</text>
+  <text x="645" y="135" text-anchor="middle" class="label">4 m</text>
+  <text x="548" y="205" class="label">2 m</text>
+
+</svg>

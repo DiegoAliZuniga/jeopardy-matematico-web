@@ -122,7 +122,7 @@ function resolvePublicPath(routePath) {
   if (requested === "/") requested = "/index.html";
   if (requested === "/buzzer") requested = "/buzzer.html";
   if (requested === "/geoanalitica" || requested === "/geoanalitica/") requested = "/index.html";
-  if (requested === "/estadistica7" || requested === "/estadistica7/") requested = "/index.html";
+  if (requested === "/e7" || requested === "/e7/") requested = "/index.html";
 
   let decoded;
   try {

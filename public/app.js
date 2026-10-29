@@ -2,6 +2,12 @@ const STORAGE_KEY = "jeopardy-matematico-state-v6";
 const TIMER_SECONDS = 30;
 const MAX_IMAGE_BYTES = 1_200_000;
 const PUBLIC_BUZZER_URL = "https://jeopardy-matematico-web.onrender.com/buzzer";
+const ROUTE_PATH = location.pathname.replace(/\/+$/, "") || "/";
+const PRESET_CONFIGS = {
+  "/geoanalitica": "/configurations/geoanalitica.json"
+};
+const PRESET_CONFIG_URL = PRESET_CONFIGS[ROUTE_PATH] || "";
+const PRESET_PROGRESS_KEY = PRESET_CONFIG_URL ? `jeopardy-preset-progress:${ROUTE_PATH}` : "";
 
 const defaultGame = window.DEFAULT_GAME || {
   title: "Jeopardy Matemático",
@@ -26,7 +32,7 @@ const defaultGame = window.DEFAULT_GAME || {
   }]
 };
 
-let game = loadGame();
+let game = PRESET_CONFIG_URL ? clone(defaultGame) : loadGame();
 let currentClue = null;
 let selectedTeamId = game.teams[0]?.id || "";
 let socket = null;
@@ -40,7 +46,11 @@ let muted = false;
 
 const $ = (selector) => document.querySelector(selector);
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+  if (PRESET_CONFIG_URL) {
+    game = await loadPresetGame();
+    selectedTeamId = game.teams[0]?.id || "";
+  }
   bindUi();
   renderAll();
   connectSocket();
@@ -162,6 +172,37 @@ function loadGame() {
   }
 }
 
+async function loadPresetGame() {
+  try {
+    const response = await fetch(PRESET_CONFIG_URL, { cache: "no-store" });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    return applyPresetProgress(normalizeGame(await response.json()));
+  } catch (error) {
+    console.error("No se pudo cargar la configuración publicada.", error);
+    alert("No se pudo cargar la configuración de Geometría Analítica. Intenta actualizar la página.");
+    return clone(defaultGame);
+  }
+}
+
+function applyPresetProgress(presetGame) {
+  try {
+    const progress = JSON.parse(localStorage.getItem(PRESET_PROGRESS_KEY) || "null");
+    if (!progress) return presetGame;
+    const scores = new Map((progress.teams || []).map((team) => [team.id, Number(team.score) || 0]));
+    presetGame.teams.forEach((team) => {
+      if (scores.has(team.id)) team.score = scores.get(team.id);
+    });
+    presetGame.categories.forEach((category, categoryIndex) => {
+      category.clues.forEach((clueData, clueIndex) => {
+        clueData.answered = Boolean(progress.answered?.[categoryIndex]?.[clueIndex]);
+      });
+    });
+    return presetGame;
+  } catch {
+    return presetGame;
+  }
+}
+
 function normalizeGame(raw) {
   const safe = { ...clone(defaultGame), ...raw };
   safe.logoImage = normalizeImageSource(raw.logoImage);
@@ -245,10 +286,31 @@ function clone(value) {
 }
 
 function saveGame() {
+  if (PRESET_CONFIG_URL) {
+    try {
+      localStorage.setItem(PRESET_PROGRESS_KEY, JSON.stringify({
+        teams: game.teams.map(({ id, score }) => ({ id, score })),
+        answered: game.categories.map((category) => category.clues.map((clueData) => Boolean(clueData.answered)))
+      }));
+    } catch (error) {
+      console.warn("No se pudo guardar el progreso local de la partida.", error);
+    }
+    return;
+  }
+
   try {
+    clearLegacyGameStorage();
     localStorage.setItem(STORAGE_KEY, JSON.stringify(game));
   } catch {
-    alert("No se pudo guardar. Es posible que una imagen sea demasiado pesada para el almacenamiento del navegador.");
+    alert("No se pudo guardar porque la configuración supera el espacio disponible del navegador. Reduce el tamaño de las imágenes o usa una configuración publicada.");
+  }
+}
+
+function clearLegacyGameStorage() {
+  const legacyPrefix = "jeopardy-matematico-state-v";
+  for (let index = localStorage.length - 1; index >= 0; index -= 1) {
+    const key = localStorage.key(index);
+    if (key?.startsWith(legacyPrefix) && key !== STORAGE_KEY) localStorage.removeItem(key);
   }
 }
 

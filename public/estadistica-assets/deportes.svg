@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 390" role="img" aria-labelledby="title desc">
+  <title id="title">Deportes preferidos por diez estudiantes</title>
+  <desc id="desc">Fútbol: cinco. Baloncesto: tres. Voleibol: dos.</desc>
+  <rect width="720" height="390" rx="8" fill="#fff"/>
+  <text x="30" y="37" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#083345">Deportes preferidos</text>
+  <text x="30" y="64" font-family="Arial,sans-serif" font-size="15" fill="#49606b">Cantidad de estudiantes</text>
+  <g transform="translate(0 70)">
+  <path d="M90 235H684" stroke="#8ca2ad" stroke-width="2"/>
+  <g font-family="Arial,sans-serif" font-size="15" fill="#49606b" text-anchor="end">
+    <text x="77" y="240">0</text><text x="77" y="200">1</text><text x="77" y="160">2</text><text x="77" y="120">3</text><text x="77" y="80">4</text><text x="77" y="40">5</text>
+  </g>
+  <g stroke="#e1e8eb" stroke-width="1"><path d="M90 195H684M90 155H684M90 115H684M90 75H684M90 35H684"/></g>
+  <rect x="145" y="35" width="105" height="200" rx="4" fill="#14799a"/>
+  <rect x="330" y="115" width="105" height="120" rx="4" fill="#e4915f"/>
+  <rect x="515" y="155" width="105" height="80" rx="4" fill="#2a9c70"/>
+  <g font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#083345" text-anchor="middle">
+    <text x="197" y="29">5</text><text x="382" y="109">3</text><text x="567" y="149">2</text>
+  </g>
+  <g font-family="Arial,sans-serif" font-size="17" fill="#083345" text-anchor="middle">
+    <text x="197" y="266">Fútbol</text><text x="382" y="266">Baloncesto</text><text x="567" y="266">Voleibol</text>
+  </g>
+  </g>
+</svg>

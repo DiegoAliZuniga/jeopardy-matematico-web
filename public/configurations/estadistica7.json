@@ -1,0 +1,360 @@
+{
+  "title": "Laboratorio de Datos: 7.º año",
+  "logoImage": "",
+  "final": {
+    "category": "Reto final: la encuesta de sabores",
+    "question": "La imagen resume las calificaciones de 20 personas para fresa y chocolate. Indica la moda y el recorrido de cada sabor. Ambos tienen media 3,20: ¿permite eso afirmar que recibieron las mismas calificaciones o que uno es el favorito de toda Costa Rica?",
+    "answer": "Fresa: moda 3 y recorrido 4 (de 1 a 5). Chocolate: moda 2 y recorrido 3 (de 2 a 5). Tener la misma media no significa tener la misma distribución. Una encuesta de 20 personas no demuestra cuál es el favorito de toda Costa Rica.",
+    "explanation": "Fresa tiene frecuencias 2, 4, 6, 4 y 4 para las notas 1 a 5; chocolate tiene 0, 7, 5, 5 y 3. En ambos casos la suma de calificaciones es 64 y la media es 64 ÷ 20 = 3,20, pero sus modas y recorridos son distintos. La conclusión solo describe a las personas encuestadas.",
+    "questionImage": "/estadistica-assets/sabores.svg",
+    "answerImage": "",
+    "explanationImage": ""
+  },
+  "teams": [
+    {
+      "id": "team-1",
+      "name": "Equipo Azul",
+      "score": 0,
+      "color": "#1f88b5"
+    },
+    {
+      "id": "team-2",
+      "name": "Equipo Verde",
+      "score": 0,
+      "color": "#2ea66f"
+    },
+    {
+      "id": "team-3",
+      "name": "Equipo Coral",
+      "score": 0,
+      "color": "#ef8a62"
+    }
+  ],
+  "categories": [
+    {
+      "title": "Recolección de datos",
+      "clues": [
+        {
+          "value": 100,
+          "question": "Una clase responde un cuestionario sobre su deporte favorito. ¿Se obtienen los datos por observación o por interrogación?",
+          "answer": "Por interrogación.",
+          "hint": "Piensa si se preguntó a las personas o si se registró un hecho directamente.",
+          "explanation": "Un cuestionario recoge respuestas mediante preguntas; por eso es interrogación.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        },
+        {
+          "value": 200,
+          "question": "Un estudiante detiene un cronómetro cuando cree que pasaron 30 segundos y otra persona anota el tiempo. ¿Qué método de recolección se usa para obtener el tiempo?",
+          "answer": "Observación y medición.",
+          "hint": "¿Se anotó una opinión o el resultado mostrado por el cronómetro?",
+          "explanation": "Se registra el tiempo medido en el experimento, no una respuesta a una encuesta.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        },
+        {
+          "value": 300,
+          "question": "Clasifica los dos casos: A) contar los autos que pasan frente al colegio; B) preguntar a 20 personas qué sabor prefieren.",
+          "answer": "A) Observación. B) Interrogación.",
+          "hint": "En un caso se cuenta lo que ocurre y en el otro se pregunta.",
+          "explanation": "Contar autos requiere observar un fenómeno; conocer preferencias requiere preguntar a las personas.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        },
+        {
+          "value": 400,
+          "question": "En la prueba de estimar 30 segundos se anotan 27, 31 y 34. ¿Qué variable se registró y en qué unidad?",
+          "answer": "El tiempo estimado, medido en segundos.",
+          "hint": "Identifica qué representa cada número.",
+          "explanation": "Cada registro corresponde al tiempo transcurrido hasta que el participante detuvo el cronómetro.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        },
+        {
+          "value": 500,
+          "question": "Dos grupos estiman 30 segundos. Uno puede ver el reloj y el otro no. ¿Por qué no conviene comparar directamente sus resultados?",
+          "answer": "Porque las condiciones de medición son distintas; ambos grupos deben seguir el mismo procedimiento.",
+          "hint": "Piensa en qué ventaja tuvo uno de los grupos.",
+          "explanation": "Ver el reloj cambia la tarea. Para comparar resultados, la forma de obtener los datos debe ser consistente.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        }
+      ]
+    },
+    {
+      "title": "Frecuencias",
+      "clues": [
+        {
+          "value": 100,
+          "question": "Los colores elegidos fueron azul, rojo, azul, verde, azul y rojo. ¿Cuál es la frecuencia absoluta de azul?",
+          "answer": "3.",
+          "hint": "Cuenta cuántas veces aparece azul.",
+          "explanation": "La frecuencia absoluta es el número de apariciones de un valor; azul aparece tres veces.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        },
+        {
+          "value": 200,
+          "question": "En un grupo de 12 estudiantes, 3 eligieron fútbol. ¿Cuál es la frecuencia porcentual de fútbol?",
+          "answer": "25 %.",
+          "hint": "Divide la cantidad que eligió fútbol entre el total y multiplica por 100.",
+          "explanation": "3 ÷ 12 × 100 = 25 %.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        },
+        {
+          "value": 300,
+          "question": "En una tabla hay 20 respuestas. Las frecuencias de las opciones A y B son 4 y 6. ¿Cuál es la frecuencia absoluta de C si solo hay esas tres opciones? ¿Qué porcentaje representa C?",
+          "answer": "10 respuestas; 50 %.",
+          "hint": "Primero resta las frecuencias conocidas al total.",
+          "explanation": "20 - 4 - 6 = 10; luego 10 ÷ 20 × 100 = 50 %.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        },
+        {
+          "value": 400,
+          "question": "El gráfico muestra los deportes preferidos por 10 estudiantes. ¿Qué porcentaje eligió baloncesto?",
+          "answer": "30 %.",
+          "hint": "Lee la altura de la barra de baloncesto y compárala con el total.",
+          "explanation": "La barra de baloncesto representa 3 estudiantes de 10: 3 ÷ 10 × 100 = 30 %.",
+          "questionImage": "/estadistica-assets/deportes.svg",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        },
+        {
+          "value": 500,
+          "question": "En 7-A, 5 de 10 estudiantes eligieron leer; en 7-B, 8 de 20. ¿En cuál grupo fue mayor la frecuencia porcentual de lectura y por cuántos puntos porcentuales?",
+          "answer": "En 7-A, por 10 puntos porcentuales.",
+          "hint": "Convierte ambos resultados a porcentajes antes de comparar.",
+          "explanation": "7-A: 5 ÷ 10 = 50 %. 7-B: 8 ÷ 20 = 40 %. La diferencia es 10 puntos porcentuales.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        }
+      ]
+    },
+    {
+      "title": "Moda y media",
+      "clues": [
+        {
+          "value": 100,
+          "question": "En los datos 2, 3, 3 y 4, ¿cuál es la moda?",
+          "answer": "3.",
+          "hint": "Busca el dato que aparece con mayor frecuencia.",
+          "explanation": "El 3 aparece dos veces y los demás valores solo una.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        },
+        {
+          "value": 200,
+          "question": "Tres tiempos fueron 4, 6 y 8 segundos. ¿Cuál es su media aritmética?",
+          "answer": "6 segundos.",
+          "hint": "Suma los tres valores y divide entre 3.",
+          "explanation": "(4 + 6 + 8) ÷ 3 = 6 segundos.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        },
+        {
+          "value": 300,
+          "question": "Ocho estimaciones fueron 22, 27, 28, 30, 30, 31, 34 y 38 segundos. ¿Cuál es la media?",
+          "answer": "30 segundos.",
+          "hint": "La suma de los ocho tiempos es 240.",
+          "explanation": "240 ÷ 8 = 30 segundos. La media no indica que todos obtuvieron exactamente 30.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        },
+        {
+          "value": 400,
+          "question": "Las calificaciones son 2, 2, 4, 6 y 6. Indica la moda o las modas y la media.",
+          "answer": "Las modas son 2 y 6; la media es 4.",
+          "hint": "Hay dos valores empatados en la frecuencia más alta.",
+          "explanation": "El 2 y el 6 aparecen dos veces cada uno. La suma es 20 y 20 ÷ 5 = 4.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        },
+        {
+          "value": 500,
+          "question": "Una tabla de tiempos registra 20 s dos veces, 30 s tres veces y 40 s una vez. Calcula la media aritmética.",
+          "answer": "28,33 segundos aproximadamente.",
+          "hint": "Multiplica cada tiempo por su frecuencia y divide entre el total de seis registros.",
+          "explanation": "(20 × 2 + 30 × 3 + 40 × 1) ÷ 6 = 170 ÷ 6 ≈ 28,33 segundos.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        }
+      ]
+    },
+    {
+      "title": "Extremos y recorrido",
+      "clues": [
+        {
+          "value": 100,
+          "question": "Las temperaturas de Joanne fueron 35, 37, 40 y 36 °C. ¿Cuál fue el máximo?",
+          "answer": "40 °C.",
+          "hint": "Identifica el mayor dato de la lista.",
+          "explanation": "El máximo es el valor más alto registrado.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        },
+        {
+          "value": 200,
+          "question": "Las temperaturas de Luis fueron 37, 37, 40 y 37 °C. ¿Cuál fue el mínimo?",
+          "answer": "37 °C.",
+          "hint": "Identifica el menor dato de la lista.",
+          "explanation": "Aunque 37 °C se repita, sigue siendo el valor menor registrado.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        },
+        {
+          "value": 300,
+          "question": "Joanne registró 35, 37, 40 y 36 °C. ¿Cuál fue el recorrido de sus temperaturas?",
+          "answer": "5 °C.",
+          "hint": "Resta el mínimo al máximo.",
+          "explanation": "40 - 35 = 5 °C. El recorrido compara los dos extremos.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        },
+        {
+          "value": 400,
+          "question": "El gráfico muestra las temperaturas de Joanne y Luis a cuatro horas. ¿Quién tuvo mayor recorrido y cuánto mayor fue?",
+          "answer": "Joanne, por 2 °C.",
+          "hint": "Halla el máximo y el mínimo de cada línea.",
+          "explanation": "Joanne: 40 - 35 = 5 °C. Luis: 40 - 37 = 3 °C. La diferencia entre recorridos es 2 °C.",
+          "questionImage": "/estadistica-assets/temperaturas.svg",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        },
+        {
+          "value": 500,
+          "question": "El grupo A obtuvo 25, 30 y 35 segundos; el B, 20, 30 y 40. Ambos tienen media 30. ¿Cuál tiene mayor recorrido y qué muestra esa comparación?",
+          "answer": "El grupo B: recorrido 20 s frente a 10 s del grupo A. Sus resultados están más extendidos entre los extremos.",
+          "hint": "Calcula máximo menos mínimo en cada grupo.",
+          "explanation": "A: 35 - 25 = 10 s. B: 40 - 20 = 20 s. La misma media no implica la misma variabilidad.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        }
+      ]
+    },
+    {
+      "title": "Interpretación",
+      "clues": [
+        {
+          "value": 100,
+          "question": "Si la moda de una encuesta de calificaciones es 4, ¿qué significa?",
+          "answer": "Que 4 fue la calificación más frecuente.",
+          "hint": "La moda habla de repeticiones, no del promedio.",
+          "explanation": "El dato modal tiene la mayor frecuencia absoluta.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        },
+        {
+          "value": 200,
+          "question": "Dos tiempos son 22 y 38 segundos. Su media es 30. ¿Significa que ambos estimaron exactamente 30 segundos?",
+          "answer": "No.",
+          "hint": "Compara los dos registros individuales con la media.",
+          "explanation": "La media resume el conjunto: (22 + 38) ÷ 2 = 30, aunque ninguno de los dos tiempos sea 30.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        },
+        {
+          "value": 300,
+          "question": "Fresa y chocolate obtuvieron ambos media 3,20 en una encuesta. ¿Eso demuestra que recibieron las mismas calificaciones?",
+          "answer": "No; la misma media puede resultar de distribuciones diferentes.",
+          "hint": "Una media resume los datos, pero no muestra cuántas veces aparece cada calificación.",
+          "explanation": "Fresa tiene moda 3 y chocolate moda 2 en los datos de la guía. Sus distribuciones no son iguales.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        },
+        {
+          "value": 400,
+          "question": "Ocho estudiantes estimaron 22, 27, 28, 30, 30, 31, 34 y 38 segundos. Si se acepta un error máximo de 5 segundos, ¿qué porcentaje quedó entre 25 y 35 segundos, inclusive?",
+          "answer": "75 %.",
+          "hint": "Cuenta primero los valores entre 25 y 35, incluidos los extremos.",
+          "explanation": "27, 28, 30, 30, 31 y 34 cumplen el criterio: 6 de 8; 6 ÷ 8 × 100 = 75 %.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        },
+        {
+          "value": 500,
+          "question": "Una encuesta telefónica a 20 personas da media 3,20 para fresa. ¿Se puede concluir que es el sabor favorito de toda Costa Rica?",
+          "answer": "No; el resultado describe únicamente a las personas encuestadas.",
+          "hint": "Piensa en el tamaño y la representatividad de la muestra.",
+          "explanation": "Un grupo de 20 respuestas no basta, por sí solo, para generalizar a toda la población del país.",
+          "questionImage": "",
+          "hintImage": "",
+          "answerImage": "",
+          "explanationImage": "",
+          "answered": false
+        }
+      ]
+    }
+  ]
+}

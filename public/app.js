@@ -4,7 +4,8 @@ const MAX_IMAGE_BYTES = 1_200_000;
 const PUBLIC_BUZZER_URL = "https://jeopardy-matematico-web.onrender.com/buzzer";
 const ROUTE_PATH = location.pathname.replace(/\/+$/, "") || "/";
 const PRESET_CONFIGS = {
-  "/geoanalitica": "/configurations/geoanalitica.json"
+  "/geoanalitica": "/configurations/geoanalitica.json",
+  "/estadistica7": "/configurations/estadistica7.json"
 };
 const PRESET_CONFIG_URL = PRESET_CONFIGS[ROUTE_PATH] || "";
 const PRESET_PROGRESS_KEY = PRESET_CONFIG_URL ? `jeopardy-preset-progress:${ROUTE_PATH}` : "";
@@ -179,7 +180,7 @@ async function loadPresetGame() {
     return applyPresetProgress(normalizeGame(await response.json()));
   } catch (error) {
     console.error("No se pudo cargar la configuración publicada.", error);
-    alert("No se pudo cargar la configuración de Geometría Analítica. Intenta actualizar la página.");
+    alert("No se pudo cargar esta configuración. Intenta actualizar la página.");
     return clone(defaultGame);
   }
 }

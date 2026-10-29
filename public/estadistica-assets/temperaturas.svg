@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" role="img" aria-labelledby="title desc">
+  <title id="title">Temperaturas de Joanne y Luis</title>
+  <desc id="desc">Joanne: 35, 37, 40 y 36 grados. Luis: 37, 37, 40 y 37 grados, de las siete a las diez.</desc>
+  <rect width="760" height="400" rx="8" fill="#fff"/>
+  <text x="32" y="38" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#083345">Temperatura durante la mañana</text>
+  <g transform="translate(0 55)">
+  <g font-family="Arial,sans-serif" font-size="15" fill="#49606b" text-anchor="end">
+    <text x="95" y="270">34 °C</text><text x="95" y="232">35 °C</text><text x="95" y="194">36 °C</text>
+    <text x="95" y="156">37 °C</text><text x="95" y="118">38 °C</text><text x="95" y="80">39 °C</text><text x="95" y="42">40 °C</text>
+  </g>
+  <g stroke="#e1e8eb"><path d="M112 265H710M112 227H710M112 189H710M112 151H710M112 113H710M112 75H710M112 37H710"/></g>
+  <g font-family="Arial,sans-serif" font-size="16" fill="#083345" text-anchor="middle">
+    <text x="145" y="295">7:00</text><text x="315" y="295">8:00</text><text x="485" y="295">9:00</text><text x="655" y="295">10:00</text>
+  </g>
+  <polyline points="145,227 315,151 485,37 655,189" fill="none" stroke="#e27452" stroke-width="5" stroke-linejoin="round"/>
+  <polyline points="145,151 315,151 485,37 655,151" fill="none" stroke="#168a76" stroke-width="5" stroke-linejoin="round" stroke-dasharray="10 6"/>
+  <g fill="#e27452"><circle cx="145" cy="227" r="7"/><circle cx="315" cy="151" r="7"/><circle cx="485" cy="37" r="7"/><circle cx="655" cy="189" r="7"/></g>
+  <g fill="#168a76"><rect x="140" y="146" width="10" height="10"/><rect x="310" y="146" width="10" height="10"/><rect x="480" y="32" width="10" height="10"/><rect x="650" y="146" width="10" height="10"/></g>
+  <g font-family="Arial,sans-serif" font-size="16" fill="#083345">
+    <line x1="230" y1="321" x2="270" y2="321" stroke="#e27452" stroke-width="5"/><text x="280" y="326">Joanne</text>
+    <line x1="415" y1="321" x2="455" y2="321" stroke="#168a76" stroke-width="5" stroke-dasharray="10 6"/><text x="465" y="326">Luis</text>
+  </g>
+  </g>
+</svg>
